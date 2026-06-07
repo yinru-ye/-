@@ -1,0 +1,3602 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="B端UX/产品设计师个人作品集官网，展示企业级产品设计项目、专业技能、工作经历与联系方式。"
+    />
+    <title>B端UX/产品设计师作品集</title>
+    <style>
+      :root {
+        --bg: #fafafa;
+        --surface: #ffffff;
+        --surface-soft: #f4f4f5;
+        --text: #030213;
+        --muted: #717182;
+        --line: #f4f4f5;
+        --line-strong: #e4e4e7;
+        --primary: #030213;
+        --primary-dark: #27272a;
+        --green: #0f8a67;
+        --amber: #b7791f;
+        --ink: #18181b;
+        --zinc-950: #09090b;
+        --shadow: 0 25px 50px -12px rgba(24, 24, 27, 0.25);
+        --shadow-soft: 0 4px 12px rgba(24, 24, 27, 0.08);
+        --radius: 10px;
+        --radius-lg: 16px;
+        --max: 1152px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        border-bottom: 1px solid transparent;
+        background: transparent;
+        backdrop-filter: blur(18px);
+        transition:
+          background 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .site-header.scrolled {
+        border-bottom-color: #f4f4f5;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+      }
+
+      .nav {
+        width: min(100% - 120px, var(--max));
+        height: 72px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0;
+        color: #fafafa;
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+      }
+
+      .brand-ux {
+        color: #ffffff;
+      }
+
+      .brand-portfolio {
+        color: #71717a;
+      }
+
+      .site-header.scrolled .brand-ux {
+        color: #18181b;
+      }
+
+      .site-header.scrolled .brand-portfolio {
+        color: #a1a1aa;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .nav-link {
+        padding: 8px 0;
+        border-radius: var(--radius);
+        color: #e4e4e7;
+        font-size: 13px;
+        font-weight: 650;
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.24);
+        transition:
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .site-header.scrolled .nav-link {
+        color: #71717a;
+        text-shadow: none;
+      }
+
+      .site-header.scrolled .nav-link:hover,
+      .site-header.scrolled .nav-link.active {
+        color: #18181b;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: #fafafa;
+        background: transparent;
+      }
+
+      .nav-cta {
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(244, 244, 245, 0.22);
+        border-radius: var(--radius);
+        padding: 8px 17px;
+        color: #ffffff;
+        background: rgba(63, 63, 70, 0.44);
+        font-weight: 800;
+      }
+
+      .nav-cta:hover,
+      .nav-cta.active {
+        border-color: rgba(244, 244, 245, 0.38);
+        background: rgba(82, 82, 91, 0.66);
+      }
+
+      .site-header.scrolled .nav-cta {
+        border-color: #18181b;
+        color: #ffffff;
+        background: #18181b;
+      }
+
+      .site-header.scrolled .nav-cta:hover,
+      .site-header.scrolled .nav-cta.active {
+        border-color: #3f3f46;
+        background: #3f3f46;
+      }
+
+      .menu-toggle {
+        display: none;
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(244, 244, 245, 0.16);
+        border-radius: var(--radius);
+        background: rgba(24, 24, 27, 0.78);
+        color: #fafafa;
+        cursor: pointer;
+      }
+
+      .site-header.scrolled .menu-toggle {
+        border-color: #e4e4e7;
+        color: #18181b;
+        background: #ffffff;
+      }
+
+      .menu-toggle span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        margin: 4px auto;
+        border-radius: 99px;
+        background: currentColor;
+        transition:
+          transform 0.2s ease,
+          opacity 0.2s ease;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      main {
+        overflow: hidden;
+      }
+
+      section {
+        width: min(100% - 120px, var(--max));
+        margin: 0 auto;
+        padding: 96px 0;
+        scroll-margin-top: 88px;
+      }
+
+      #projects,
+      #experience {
+        width: 100%;
+        padding-left: max(60px, calc((100vw - var(--max)) / 2));
+        padding-right: max(60px, calc((100vw - var(--max)) / 2));
+        background: #ffffff;
+      }
+
+      #skills {
+        width: 100%;
+        border-top: 1px solid #f4f4f5;
+        border-bottom: 1px solid #f4f4f5;
+        padding-left: max(60px, calc((100vw - var(--max)) / 2));
+        padding-right: max(60px, calc((100vw - var(--max)) / 2));
+        background: #fafafa;
+      }
+
+      #contact {
+        position: relative;
+        width: 100%;
+        max-width: none;
+        padding-left: max(60px, calc((100vw - var(--max)) / 2));
+        padding-right: max(60px, calc((100vw - var(--max)) / 2));
+        color: #ffffff;
+        background:
+          radial-gradient(circle at 22% 26%, rgba(63, 63, 70, 0.28), transparent 30%),
+          linear-gradient(90deg, #18181b, #18181b);
+        isolation: isolate;
+        overflow: hidden;
+      }
+
+      #contact::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.48;
+        background:
+          repeating-linear-gradient(
+            10deg,
+            transparent 0 178px,
+            rgba(161, 161, 170, 0.46) 179px 180px,
+            transparent 181px 310px
+          );
+        transform: translate3d(-4%, 8%, 0);
+      }
+
+      #contact::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          radial-gradient(circle at 84% 64%, rgba(63, 63, 70, 0.24), transparent 32%),
+          #18181b;
+        pointer-events: none;
+      }
+
+      .hero {
+        --hero-cursor-x: 50%;
+        --hero-cursor-y: 45%;
+        --hero-cursor-alpha: 0;
+        position: relative;
+        width: 100%;
+        min-height: 100svh;
+        margin: 0;
+        padding: 0;
+        display: block;
+        isolation: isolate;
+        overflow: hidden;
+        background:
+          radial-gradient(ellipse at 90% 2%, rgba(243, 232, 255, 0.78), transparent 22%),
+          radial-gradient(ellipse at 78% 16%, rgba(192, 132, 252, 0.66), transparent 34%),
+          radial-gradient(ellipse at 58% 20%, rgba(109, 40, 217, 0.52), transparent 46%),
+          linear-gradient(90deg, #000000 0%, #05020d 26%, #1e0b46 58%, #5b21b6 100%);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+          linear-gradient(rgba(216, 180, 254, 0.2) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(191, 219, 254, 0.16) 1px, transparent 1px),
+          linear-gradient(90deg, transparent 0%, rgba(109, 40, 217, 0.08) 54%, rgba(168, 85, 247, 0.13) 74%, rgba(221, 214, 254, 0.2) 100%);
+        background-size: 60px 60px, 60px 60px, 60px 60px, 60px 60px, 100% 100%;
+        background-position: center;
+        opacity: 0.58;
+        mix-blend-mode: screen;
+        pointer-events: none;
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent 0%,
+          transparent 24%,
+          rgba(0, 0, 0, 0.12) 40%,
+          rgba(0, 0, 0, 0.62) 64%,
+          #000 100%
+        );
+        mask-image: linear-gradient(
+          90deg,
+          transparent 0%,
+          transparent 24%,
+          rgba(0, 0, 0, 0.12) 40%,
+          rgba(0, 0, 0, 0.62) 64%,
+          #000 100%
+        );
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: -18%;
+        z-index: 0;
+        background:
+          radial-gradient(circle at 91% 2%, rgba(255, 255, 255, 0.36), transparent 18%),
+          radial-gradient(circle at 78% 28%, rgba(168, 85, 247, 0.32), transparent 38%),
+          linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.82) 24%, rgba(0, 0, 0, 0.16) 58%, transparent 100%),
+          linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.66) 90%, #000000 100%);
+        filter: blur(0);
+        pointer-events: none;
+      }
+
+      .hero-bg-word {
+        position: absolute;
+        right: 38px;
+        top: 72px;
+        z-index: 1;
+        color: rgba(255, 255, 255, 0.018);
+        font-size: clamp(190px, 28vw, 410px);
+        font-weight: 900;
+        line-height: 0.8;
+        letter-spacing: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .hero-cursor-light {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        opacity: var(--hero-cursor-alpha);
+        background:
+          radial-gradient(
+            circle 8px at var(--hero-cursor-x) var(--hero-cursor-y),
+            rgba(255, 255, 255, 0.96),
+            rgba(221, 214, 254, 0.72) 38%,
+            rgba(168, 85, 247, 0.18) 66%,
+            transparent 100%
+          ),
+          radial-gradient(
+            circle 52px at var(--hero-cursor-x) var(--hero-cursor-y),
+            rgba(216, 180, 254, 0.16),
+            rgba(139, 92, 246, 0.1) 42%,
+            rgba(59, 130, 246, 0.05) 64%,
+            transparent 100%
+          );
+        filter: saturate(1.18);
+        mix-blend-mode: screen;
+        pointer-events: none;
+        transition: opacity 0.24s ease;
+        will-change: opacity, background;
+      }
+
+      .hero-click-ripple {
+        position: absolute;
+        left: var(--ripple-x);
+        top: var(--ripple-y);
+        z-index: 2;
+        width: 16px;
+        height: 16px;
+        border-radius: 999px;
+        pointer-events: none;
+        background:
+          radial-gradient(circle, rgba(255, 255, 255, 0.94) 0 18%, rgba(221, 214, 254, 0.62) 34%, rgba(168, 85, 247, 0.24) 58%, transparent 72%);
+        box-shadow:
+          0 0 18px rgba(221, 214, 254, 0.72),
+          0 0 34px rgba(139, 92, 246, 0.34);
+        mix-blend-mode: screen;
+        transform: translate(-50%, -50%) scale(1);
+        animation: hero-click-ripple 0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        will-change: transform, opacity;
+      }
+
+      @keyframes hero-click-ripple {
+        0% {
+          opacity: 0.82;
+          transform: translate(-50%, -50%) scale(0.82);
+        }
+
+        55% {
+          opacity: 0.34;
+        }
+
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(7.2);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        width: min(100% - 120px, var(--max));
+        margin: 0 auto;
+        min-height: 100svh;
+        padding: clamp(112px, 18.5vh, 170px) 0 42px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 0 0 38px;
+        color: #71717a;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 28px;
+        border: 1px solid rgba(244, 244, 245, 0.18);
+        border-radius: 999px;
+        padding: 4px 13px;
+        color: #cbd5e1;
+        background: rgba(39, 39, 42, 0.58);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+
+      .availability::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #00e0b8;
+        box-shadow: 0 0 16px rgba(0, 224, 184, 0.62);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: min(100%, 1040px);
+        margin-bottom: 30px;
+        color: #fafafa;
+        font-size: clamp(72px, 9vw, 112px);
+        line-height: 0.88;
+        letter-spacing: 0;
+      }
+
+      .hero-title-main,
+      .hero-title-outline {
+        display: block;
+        white-space: nowrap;
+        word-break: keep-all;
+        overflow-wrap: normal;
+      }
+
+      .hero-title-outline {
+        color: transparent;
+        width: max-content;
+        max-width: 100%;
+        white-space: nowrap !important;
+        -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.25);
+        text-stroke: 1.2px rgba(255, 255, 255, 0.25);
+      }
+
+      .hero-title-main {
+        margin-bottom: 16px;
+      }
+
+      .hero-copy {
+        max-width: 520px;
+        margin-bottom: 34px;
+        color: #c7d2fe;
+        font-size: 20px;
+        line-height: 1.62;
+      }
+
+      .hero-copy strong {
+        color: #ffffff;
+        font-weight: 760;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 0;
+      }
+
+      .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 56px;
+      }
+
+      .hero-tags .tag {
+        min-height: 30px;
+        border-color: rgba(244, 244, 245, 0.18);
+        border-radius: 6px;
+        color: #e4e4e7;
+        background: rgba(63, 63, 70, 0.58);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+      }
+
+      .btn {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid #d4d4d8;
+        border-radius: var(--radius);
+        padding: 12px 18px;
+        color: #18181b;
+        background: #ffffff;
+        font-weight: 760;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease,
+          color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        border-color: #a1a1aa;
+        background: #f4f4f5;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .btn.primary {
+        border-color: #09090b;
+        color: #fff;
+        background: #09090b;
+      }
+
+      .btn.primary:hover {
+        border-color: #27272a;
+        background: #27272a;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        max-width: 360px;
+      }
+
+      .hero .btn {
+        border-color: rgba(244, 244, 245, 0.18);
+        color: #f4f4f5;
+        background: rgba(24, 24, 27, 0.74);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+      }
+
+      .hero .btn.primary {
+        border-color: #ffffff;
+        color: #09090b;
+        background: #ffffff;
+        box-shadow: 0 16px 42px rgba(255, 255, 255, 0.12);
+      }
+
+      .hero .btn:hover {
+        border-color: rgba(244, 244, 245, 0.34);
+        background: rgba(63, 63, 70, 0.82);
+        color: #ffffff;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      .hero .btn.primary:hover {
+        border-color: #e4e4e7;
+        color: #09090b;
+        background: #e4e4e7;
+      }
+
+      .stat {
+        border-left: 0;
+        padding: 0;
+      }
+
+      .stat b {
+        display: block;
+        color: #fafafa;
+        font-size: 28px;
+        line-height: 1;
+        text-shadow: 1px 1px 0 #2563eb;
+      }
+
+      .stat span {
+        color: #a1a1aa;
+        font-size: 12px;
+      }
+
+      .hero-bottom {
+        margin-top: auto;
+        border-top: 1px solid rgba(244, 244, 245, 0.14);
+        padding-top: 42px;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .hero-hint {
+        margin: 0;
+        color: #71717a;
+        font-size: 12px;
+      }
+
+      .hero-panel {
+        position: absolute;
+        right: max(24px, calc((100vw - var(--max)) / 2));
+        top: 50%;
+        z-index: 1;
+        width: clamp(420px, 38vw, 580px);
+        border: 1px solid rgba(244, 244, 245, 0.14);
+        border-radius: var(--radius);
+        background: rgba(24, 24, 27, 0.58);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.08) inset,
+          0 28px 90px rgba(0, 0, 0, 0.42),
+          0 0 70px rgba(37, 99, 235, 0.12);
+        overflow: hidden;
+        transform: translateY(-44%);
+        opacity: 0.88;
+        backdrop-filter: blur(18px);
+      }
+
+      .hero-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(135deg, rgba(124, 58, 237, 0.2), transparent 42%),
+          linear-gradient(315deg, rgba(196, 181, 253, 0.16), transparent 42%);
+        pointer-events: none;
+      }
+
+      .dashboard-shell {
+        position: relative;
+        padding: 18px;
+      }
+
+      .window-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 12px;
+        border: 1px solid rgba(244, 244, 245, 0.12);
+        border-radius: var(--radius);
+        background: rgba(9, 9, 11, 0.54);
+      }
+
+      .dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--line-strong);
+      }
+
+      .dot:nth-child(1) {
+        background: #ef6f6c;
+      }
+
+      .dot:nth-child(2) {
+        background: #e6b84a;
+      }
+
+      .dot:nth-child(3) {
+        background: #a78bfa;
+      }
+
+      .window-title {
+        color: #a1a1aa;
+        font-size: 12px;
+        font-weight: 760;
+      }
+
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .mini-panel {
+        border: 1px solid rgba(244, 244, 245, 0.12);
+        border-radius: var(--radius);
+        background: rgba(9, 9, 11, 0.42);
+        padding: 14px;
+      }
+
+      .mini-title {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 14px;
+        color: #d4d4d8;
+        font-size: 12px;
+        font-weight: 760;
+      }
+
+      .bar-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .bar {
+        height: 8px;
+        border-radius: 99px;
+        background: rgba(244, 244, 245, 0.1);
+        overflow: hidden;
+      }
+
+      .bar i {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #4f46e5, #a78bfa);
+      }
+
+      .chart {
+        height: 156px;
+        display: flex;
+        align-items: end;
+        gap: 8px;
+        padding-top: 18px;
+      }
+
+      .chart span {
+        flex: 1;
+        min-width: 10px;
+        border-radius: 5px 5px 2px 2px;
+        background: linear-gradient(180deg, rgba(139, 92, 246, 0.88), rgba(79, 70, 229, 0.72));
+      }
+
+      .table-preview {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .table-row {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr 0.6fr;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .cell {
+        height: 8px;
+        border-radius: 99px;
+        background: rgba(244, 244, 245, 0.1);
+      }
+
+      .cell.on {
+        background: rgba(96, 165, 250, 0.34);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
+        align-items: end;
+        gap: 32px;
+        margin-bottom: 64px;
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        min-height: 26px;
+        margin-bottom: 16px;
+        border-radius: 999px;
+        padding: 4px 12px;
+        color: #52525b;
+        background: #f4f4f5;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        color: #18181b;
+        font-size: clamp(30px, 3.4vw, 40px);
+        line-height: 1.18;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .section-summary {
+        margin-bottom: 0;
+        color: #71717a;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+
+      .experience-head {
+        display: block;
+        max-width: 640px;
+        margin: 0 auto 64px;
+        text-align: center;
+      }
+
+      .experience-head h2 {
+        margin-bottom: 12px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
+        gap: 22px;
+      }
+
+      .about-copy,
+      .principles,
+      .skill-group,
+      .experience-item,
+      .contact-panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: #ffffff;
+        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+      }
+
+      .about-copy {
+        padding: 32px;
+        font-size: 18px;
+        color: #52525b;
+        line-height: 1.75;
+      }
+
+      .about-copy p:last-child {
+        margin-bottom: 0;
+      }
+
+      .principles {
+        display: grid;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .principle {
+        border-radius: 12px;
+        padding: 20px;
+        background: #fafafa;
+      }
+
+      .principle b {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .principle span {
+        color: #71717a;
+        font-size: 14px;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px;
+        align-items: stretch;
+      }
+
+      .project-card {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: #fafafa;
+        box-shadow: none;
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+          transform 0.28s ease,
+          box-shadow 0.28s ease,
+          border-color 0.28s ease;
+      }
+
+      .project-card:hover,
+      .project-card:focus-within {
+        transform: translateY(-8px);
+        border-color: #e4e4e7;
+        box-shadow: var(--shadow);
+      }
+
+      .project-visual {
+        height: 188px;
+        padding: 0;
+        border-bottom: 1px solid var(--line);
+        background: #f4f4f5;
+        overflow: hidden;
+      }
+
+      .project-cover-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+        object-fit: cover;
+        object-position: center;
+        background: #f4f4f5;
+      }
+
+      .product-frame {
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.92);
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 0.28fr 0.72fr;
+        gap: 10px;
+      }
+
+      .side-nav-preview {
+        display: grid;
+        align-content: start;
+        gap: 8px;
+        border-right: 1px solid var(--line);
+        padding-right: 10px;
+      }
+
+      .side-nav-preview span,
+      .content-line {
+        height: 7px;
+        border-radius: 99px;
+        background: var(--line-strong);
+      }
+
+      .side-nav-preview span:first-child {
+        width: 78%;
+        background: var(--primary);
+      }
+
+      .content-preview {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 10px;
+      }
+
+      .preview-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .preview-metric {
+        height: 34px;
+        border-radius: 6px;
+        background: var(--surface-soft);
+      }
+
+      .preview-chart {
+        display: flex;
+        align-items: end;
+        gap: 5px;
+        min-height: 76px;
+      }
+
+      .preview-chart i {
+        flex: 1;
+        min-width: 5px;
+        border-radius: 4px 4px 1px 1px;
+        background: rgba(25, 103, 210, 0.68);
+      }
+
+      .project-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 24px;
+      }
+
+      .project-category {
+        margin: 0 0 8px;
+        color: #a1a1aa;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+        min-height: 26px;
+      }
+
+      .tag {
+        display: inline-flex;
+        min-height: 26px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 4px 10px;
+        color: #52525b;
+        background: #fff;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .project-title {
+        margin-bottom: 8px;
+        color: #18181b;
+        font-size: 20px;
+        line-height: 1.32;
+        font-weight: 800;
+      }
+
+      .project-subtitle {
+        margin-bottom: 14px;
+        color: #71717a;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .project-desc {
+        min-height: 48px;
+        margin-bottom: 18px;
+        color: #52525b;
+        font-size: 14px;
+        line-height: 1.7;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .result-strip {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: auto;
+        margin-bottom: 16px;
+      }
+
+      .result {
+        border-left: 2px solid #18181b;
+        padding-left: 10px;
+      }
+
+      .result b {
+        display: block;
+        color: #18181b;
+        font-size: 18px;
+        line-height: 1.1;
+      }
+
+      .result span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .project-toggle {
+        width: fit-content;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        color: #18181b;
+        background: transparent;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .project-toggle::after {
+        content: "↗";
+        margin-left: 6px;
+        font-size: 13px;
+      }
+
+      .project-toggle:hover {
+        color: #52525b;
+        transform: translate(2px, -2px);
+      }
+
+      .project-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: grid;
+        place-items: center;
+        padding: 28px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.24s ease;
+      }
+
+      .project-modal.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .project-modal[hidden] {
+        display: none;
+      }
+
+      .project-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        border: 0;
+        background: rgba(9, 9, 11, 0.48);
+        backdrop-filter: blur(9px);
+        cursor: pointer;
+      }
+
+      .project-modal-panel {
+        position: relative;
+        width: min(1160px, calc(100vw - 40px));
+        max-height: min(92vh, 980px);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.36);
+        overflow: auto;
+        transform: translateY(22px) scale(0.97);
+        transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .project-modal.open .project-modal-panel {
+        transform: translateY(0) scale(1);
+      }
+
+      .project-modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        z-index: 3;
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(228, 228, 231, 0.7);
+        border-radius: 50%;
+        color: #18181b;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 14px 34px rgba(24, 24, 27, 0.16);
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .project-modal-close:hover {
+        transform: rotate(90deg);
+        background: #fff;
+      }
+
+      .project-modal-hero {
+        position: relative;
+        min-height: 288px;
+        display: grid;
+        align-items: end;
+        padding: 116px 24px 26px;
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .project-modal-hero img {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .project-modal-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(180deg, rgba(9, 9, 11, 0.28), rgba(9, 9, 11, 0.94)),
+          linear-gradient(90deg, rgba(9, 9, 11, 0.88), rgba(9, 9, 11, 0.46) 55%, rgba(9, 9, 11, 0.76));
+        pointer-events: none;
+      }
+
+      .project-modal-hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 720px;
+        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.42);
+      }
+
+      .project-modal-category {
+        margin: 0 0 8px;
+        color: #e4e4e7;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .project-modal-title {
+        margin: 0 0 8px;
+        color: #fff;
+        font-size: clamp(28px, 4vw, 40px);
+        line-height: 1.16;
+        font-weight: 900;
+      }
+
+      .project-modal-subtitle {
+        margin: 0 0 16px;
+        color: #e4e4e7;
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .project-modal-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .project-modal-tags span {
+        display: inline-flex;
+        min-height: 26px;
+        align-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.36);
+        border-radius: 6px;
+        padding: 4px 12px;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .project-modal-content {
+        display: block;
+        padding: 36px 40px 40px;
+      }
+
+      .project-modal-section {
+        width: 100%;
+        display: grid;
+        gap: 10px;
+        margin: 0 0 30px;
+        padding: 0;
+        scroll-margin-top: 0;
+      }
+
+      .project-modal-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .project-modal-heading {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        color: #18181b;
+        font-size: 20px;
+        line-height: 1.35;
+        font-weight: 900;
+      }
+
+      .project-modal-heading-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .project-modal-toggle {
+        min-height: 34px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid #d4d4d8;
+        border-radius: 999px;
+        padding: 7px 12px;
+        color: #18181b;
+        background: #ffffff;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .project-modal-toggle::after {
+        content: "⌃";
+        font-size: 12px;
+        line-height: 1;
+        transition: transform 0.2s ease;
+      }
+
+      .project-modal-toggle:hover {
+        border-color: #18181b;
+        background: #f4f4f5;
+      }
+
+      .project-modal-toggle[aria-expanded="false"]::after {
+        transform: rotate(180deg);
+      }
+
+      .project-modal-interface-body {
+        display: grid;
+        gap: 10px;
+      }
+
+      .project-modal-interface-body[hidden] {
+        display: none;
+      }
+
+      .project-modal-dot {
+        width: 7px;
+        height: 7px;
+        margin-left: 8px;
+        border-radius: 50%;
+        background: #18181b;
+      }
+
+      .project-modal-bar {
+        width: 6px;
+        height: 22px;
+        margin-right: 14px;
+        border-radius: 99px;
+        background: #18181b;
+      }
+
+      .project-modal-bar.soft {
+        background: #a1a1aa;
+      }
+
+      .project-modal-bar.pale {
+        background: #e4e4e7;
+      }
+
+      .project-modal-icon {
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+        color: #71717a;
+      }
+
+      .project-modal-note {
+        border: 1px solid #ececef;
+        border-radius: 12px;
+        padding: 16px 20px;
+        color: #52525b;
+        background: #fafafa;
+        font-size: 16px;
+        line-height: 1.68;
+      }
+
+      .project-modal-showcase {
+        position: relative;
+        border: 1px solid #ececef;
+        border-radius: 12px;
+        background: #f7f7fa;
+        cursor: zoom-in;
+        overflow: hidden;
+      }
+
+      .project-modal-showcase::after {
+        content: "点击查看大图";
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.64);
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: #fff;
+        background: rgba(9, 9, 11, 0.64);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(10px);
+        font-size: 12px;
+        font-weight: 800;
+        pointer-events: none;
+      }
+
+      .project-modal-showcase[hidden] {
+        display: none;
+      }
+
+      .project-modal-showcase img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .image-viewer {
+        position: fixed;
+        inset: 0;
+        z-index: 320;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.22s ease;
+      }
+
+      .image-viewer.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .image-viewer[hidden] {
+        display: none;
+      }
+
+      .image-viewer-backdrop {
+        position: absolute;
+        inset: 0;
+        border: 0;
+        background: rgba(9, 9, 11, 0.82);
+        backdrop-filter: blur(10px);
+        cursor: zoom-out;
+      }
+
+      .image-viewer-shell {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 14px;
+        padding: 22px;
+      }
+
+      .image-viewer-body {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: 178px minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .image-viewer-nav {
+        min-height: 0;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
+        padding: 12px;
+        background: rgba(24, 24, 27, 0.82);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+        overflow: hidden;
+      }
+
+      .image-viewer-nav-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        color: #f4f4f5;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .image-viewer-nav-title span {
+        color: #a1a1aa;
+        font-size: 11px;
+        font-weight: 650;
+      }
+
+      .image-viewer-thumb-scroll {
+        min-height: 0;
+        border-radius: 10px;
+        background: #09090b;
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: #71717a #18181b;
+      }
+
+      .image-viewer-thumb-track {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        cursor: crosshair;
+      }
+
+      .image-viewer-thumb-track:focus-visible {
+        outline: 2px solid #a78bfa;
+        outline-offset: -2px;
+      }
+
+      .image-viewer-thumb-track img {
+        display: block;
+        width: 100%;
+        height: auto;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      .image-viewer-thumb-frame {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        width: 100%;
+        min-width: 22px;
+        min-height: 28px;
+        border: 2px solid #ffffff;
+        border-radius: 8px;
+        background: rgba(167, 139, 250, 0.18);
+        box-shadow:
+          0 0 0 1px rgba(24, 24, 27, 0.6),
+          0 0 24px rgba(167, 139, 250, 0.55);
+        pointer-events: none;
+      }
+
+      .image-viewer-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        color: #fafafa;
+      }
+
+      .image-viewer-zoom-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: auto;
+        padding: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        background: rgba(24, 24, 27, 0.72);
+        backdrop-filter: blur(10px);
+      }
+
+      .image-viewer-zoom-button {
+        min-height: 30px;
+        border: 0;
+        border-radius: 999px;
+        padding: 6px 10px;
+        color: #d4d4d8;
+        background: transparent;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .image-viewer-zoom-button:hover,
+      .image-viewer-zoom-button.active {
+        color: #18181b;
+        background: #ffffff;
+      }
+
+      .image-viewer-title {
+        margin: 0;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .image-viewer-hint {
+        display: block;
+        margin-top: 4px;
+        color: #a1a1aa;
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .image-viewer-close {
+        width: 42px;
+        height: 42px;
+        flex: 0 0 auto;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        color: #18181b;
+        background: rgba(255, 255, 255, 0.94);
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .image-viewer-close:hover {
+        transform: rotate(90deg);
+        background: #fff;
+      }
+
+      .image-viewer-canvas {
+        min-height: 0;
+        border-radius: 14px;
+        background: #f7f7fa;
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+        overflow: auto;
+        overscroll-behavior: contain;
+      }
+
+      .image-viewer-canvas img {
+        display: block;
+        width: calc(100% * var(--image-viewer-zoom, 1));
+        max-width: none;
+        height: auto;
+        margin: 0 auto;
+      }
+
+      .project-modal-text {
+        margin: 0;
+        color: #3f3f46;
+        font-size: 16px;
+        line-height: 1.68;
+      }
+
+      .project-modal-divider {
+        height: 1px;
+        margin: 28px 0 28px;
+        background: #ececef;
+      }
+
+      .project-modal-results {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .project-modal-result {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        border: 1px solid #ececef;
+        border-radius: 12px;
+        padding: 16px;
+        color: #3f3f46;
+        background: #fafafa;
+        font-size: 14px;
+        font-weight: 650;
+        line-height: 1.65;
+      }
+
+      .project-modal-check {
+        width: 20px;
+        height: 20px;
+        flex: 0 0 auto;
+        color: #52525b;
+      }
+
+      .project-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.32s ease;
+      }
+
+      .project-details-inner {
+        display: grid;
+        gap: 12px;
+        padding-top: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .detail-block {
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+      }
+
+      .detail-block b {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--text);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .skill-group {
+        padding: 32px;
+        transition:
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .skill-icon {
+        width: 48px;
+        height: 48px;
+        display: inline-grid;
+        place-items: center;
+        margin-bottom: 26px;
+        border-radius: 14px;
+        color: #18181b;
+        background: #f4f4f5;
+      }
+
+      .skill-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .skill-group:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(24, 24, 27, 0.08);
+      }
+
+      .skill-group h3 {
+        margin-bottom: 16px;
+        color: #18181b;
+        font-size: 20px;
+        line-height: 1.35;
+        font-weight: 800;
+      }
+
+      .skill-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .skill-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #52525b;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .skill-list li::before {
+        content: "";
+        flex: 0 0 auto;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #18181b;
+      }
+
+      .experience-list {
+        position: relative;
+        display: grid;
+        gap: 48px;
+        max-width: 820px;
+        margin: 0 auto;
+        padding-left: 64px;
+      }
+
+      .experience-list::before {
+        content: "";
+        position: absolute;
+        left: 14px;
+        top: 7px;
+        bottom: 8px;
+        width: 2px;
+        background: #f4f4f5;
+      }
+
+      .experience-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 32px;
+        align-items: start;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .experience-item::before {
+        content: "";
+        position: absolute;
+        left: -58px;
+        top: 8px;
+        width: 10px;
+        height: 10px;
+        border: 4px solid #ffffff;
+        border-radius: 50%;
+        background: #09090b;
+        box-shadow: 0 1px 4px rgba(24, 24, 27, 0.16);
+      }
+
+      .period {
+        width: fit-content;
+        border-radius: 6px;
+        padding: 5px 12px;
+        color: #52525b;
+        background: #f4f4f5;
+        font-size: 14px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .experience-item h3 {
+        margin-bottom: 12px;
+        color: #18181b;
+        font-size: 22px;
+        line-height: 1.35;
+        font-weight: 800;
+      }
+
+      .experience-item p {
+        margin-bottom: 0;
+        color: #374151;
+        line-height: 1.85;
+      }
+
+      .role-tag {
+        display: block;
+        margin-bottom: 18px;
+        color: #18181b;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .contact-wrap {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(420px, 0.92fr);
+        gap: 88px;
+        align-items: start;
+      }
+
+      .contact-aside {
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        color: #fff;
+        background: transparent;
+      }
+
+      .contact-aside h2 {
+        color: #ffffff;
+        margin-bottom: 22px;
+        font-size: clamp(32px, 4vw, 42px);
+        line-height: 1.12;
+      }
+
+      .contact-aside p {
+        max-width: 520px;
+        color: #a1a1aa;
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .contact-info {
+        display: grid;
+        gap: 36px;
+        margin-top: 48px;
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        color: #ffffff;
+      }
+
+      .contact-card:hover strong {
+        color: #e4e4e7;
+      }
+
+      .contact-icon {
+        flex: 0 0 auto;
+        width: 48px;
+        height: 48px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 14px;
+        color: #d4d4d8;
+        background: #27272a;
+      }
+
+      .contact-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .contact-text {
+        display: grid;
+        gap: 6px;
+      }
+
+      .contact-text span {
+        color: #71717a;
+        font-size: 14px;
+      }
+
+      .contact-text strong {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+
+      .contact-panel {
+        border-color: #3f3f46;
+        border-radius: 16px;
+        padding: 44px 40px 40px;
+        background: rgba(39, 39, 42, 0.92);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(14px);
+      }
+
+      .contact-panel h3 {
+        margin-bottom: 32px;
+        color: #ffffff;
+        font-size: 26px;
+        line-height: 1.25;
+        font-weight: 800;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field.full {
+        grid-column: 1 / -1;
+      }
+
+      #contact label {
+        color: #a1a1aa;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      #contact input,
+      #contact textarea {
+        width: 100%;
+        border: 1px solid #3f3f46;
+        border-radius: 8px;
+        padding: 13px 16px;
+        color: #ffffff;
+        background: #18181b;
+        outline: none;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      #contact input::placeholder,
+      #contact textarea::placeholder {
+        color: #a1a1aa;
+      }
+
+      #contact input:focus,
+      #contact textarea:focus {
+        border-color: #71717a;
+        box-shadow: 0 0 0 3px rgba(113, 113, 122, 0.28);
+      }
+
+      #contact textarea {
+        min-height: 122px;
+        resize: none;
+      }
+
+      .form-actions {
+        margin-top: 30px;
+      }
+
+      .contact-submit {
+        width: 100%;
+        min-height: 56px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 0;
+        border-radius: 8px;
+        padding: 15px 20px;
+        color: #09090b;
+        background: #ffffff;
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .contact-submit:hover,
+      .contact-submit:focus-visible {
+        background: #e4e4e7;
+        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
+        transform: translateY(-1px);
+      }
+
+      .contact-submit:disabled {
+        cursor: not-allowed;
+        opacity: 0.72;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .contact-submit svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .toast {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 30;
+        max-width: min(360px, calc(100vw - 40px));
+        border: 1px solid rgba(15, 138, 103, 0.22);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        color: #0b4e3d;
+        background: #f0fbf7;
+        box-shadow: var(--shadow-soft);
+        transform: translateY(16px);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.22s ease,
+          transform 0.22s ease;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .site-footer {
+        width: 100%;
+        margin: 0;
+        border-top: 1px solid #27272a;
+        padding: 40px max(24px, calc((100vw - var(--max)) / 2));
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        color: #71717a;
+        background: #09090b;
+        font-size: 13px;
+      }
+
+      .reveal {
+        transform: translateY(28px);
+        opacity: 0;
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.visible {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      #experience.reveal {
+        transform: none;
+        opacity: 1;
+      }
+
+      .motion-item {
+        --motion-x: 0;
+        --motion-y: 24px;
+        opacity: 0;
+        transform: translate3d(var(--motion-x), var(--motion-y), 0);
+        transition:
+          opacity 0.52s ease,
+          transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform;
+      }
+
+      .motion-item.visible {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+
+      .motion-left {
+        --motion-x: -20px;
+        --motion-y: 0;
+      }
+
+      .project-card.motion-item {
+        --motion-y: 24px;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          border-color 0.28s ease,
+          box-shadow 0.28s ease;
+      }
+
+      .skill-group.motion-item {
+        --motion-y: 20px;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.2s ease;
+      }
+
+      .project-card.motion-item.visible:hover,
+      .project-card.motion-item.visible:focus-within {
+        transform: translateY(-8px);
+      }
+
+      .skill-group.motion-item.visible:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-motion {
+        opacity: 0;
+        transform: translateY(var(--hero-y, 16px));
+        animation: hero-enter 0.68s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        animation-delay: var(--hero-delay, 0ms);
+        will-change: opacity, transform;
+      }
+
+      @keyframes hero-enter {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .motion-item,
+        .hero-motion {
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+
+        .hero-cursor-light {
+          display: none;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .about-grid,
+        .contact-wrap,
+        .section-head {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-wrap {
+          gap: 48px;
+        }
+
+        .hero {
+          min-height: 100svh;
+        }
+
+        .projects-grid,
+        .skills-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .experience-item {
+          grid-template-columns: 1fr auto;
+          gap: 16px;
+        }
+
+        .role-tag {
+          justify-self: auto;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          width: min(100% - 28px, var(--max));
+          height: 66px;
+        }
+
+        .menu-toggle {
+          display: inline-grid;
+          place-items: center;
+        }
+
+        .nav-links {
+          position: absolute;
+          left: 14px;
+          right: 14px;
+          top: 72px;
+          display: grid;
+          gap: 6px;
+          border: 1px solid rgba(244, 244, 245, 0.14);
+          border-radius: var(--radius);
+          padding: 10px;
+          background: rgba(9, 9, 11, 0.96);
+          box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+          transform: translateY(-8px);
+          opacity: 0;
+          pointer-events: none;
+          transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .nav-links.open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .nav-link {
+          padding: 12px;
+        }
+
+        section {
+          width: min(100% - 28px, var(--max));
+          padding: 68px 0;
+        }
+
+        #projects,
+        #skills,
+        #experience,
+        #contact {
+          width: 100%;
+          padding: 68px 14px;
+        }
+
+        .hero {
+          min-height: 100svh;
+        }
+
+        .hero-content {
+          width: min(100% - 28px, var(--max));
+          min-height: 100svh;
+          padding: 112px 0 28px;
+        }
+
+        h1 {
+          font-size: clamp(56px, 17vw, 74px);
+          max-width: 100%;
+        }
+
+        .hero-copy {
+          font-size: 16px;
+          max-width: 100%;
+        }
+
+        .hero-stats,
+        .projects-grid,
+        .skills-grid,
+        .result-strip,
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stat {
+          border-left: 0;
+          border-top: 1px solid var(--line-strong);
+          padding: 12px 0 0;
+        }
+
+        .hero-actions .btn {
+          width: auto;
+          flex: 1 1 0;
+        }
+
+        .hero-stats {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          max-width: 100%;
+          gap: 18px;
+        }
+
+        .hero-stats .stat {
+          border-top: 0;
+          border-left: 0;
+          padding: 0;
+        }
+
+        .hero-stats .stat:first-child {
+          padding-left: 0;
+        }
+
+        .hero-stats .stat b {
+          font-size: 25px;
+        }
+
+        .hero-stats .stat span {
+          font-size: 12px;
+        }
+
+        .dashboard-grid,
+        .product-frame {
+          grid-template-columns: 1fr;
+        }
+
+        .side-nav-preview {
+          display: none;
+        }
+
+        .chart {
+          height: 120px;
+        }
+
+        .project-visual {
+          height: 170px;
+        }
+
+        .project-modal {
+          padding: 14px;
+        }
+
+        .project-modal-panel {
+          width: 100%;
+          max-height: calc(100svh - 28px);
+          border-radius: 12px;
+        }
+
+        .project-modal-hero {
+          min-height: 248px;
+          padding: 100px 18px 22px;
+        }
+
+        .project-modal-close {
+          top: 12px;
+          right: 12px;
+          width: 38px;
+          height: 38px;
+        }
+
+        .project-modal-content {
+          padding: 24px 20px 28px;
+        }
+
+        .project-modal-section {
+          margin-bottom: 26px;
+        }
+
+        .project-modal-divider {
+          margin: 22px 0 24px;
+        }
+
+        .project-modal-results {
+          grid-template-columns: 1fr;
+        }
+
+        .image-viewer-shell {
+          gap: 10px;
+          padding: 10px;
+        }
+
+        .image-viewer-toolbar {
+          align-items: flex-start;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .image-viewer-zoom-controls {
+          order: 3;
+          width: 100%;
+          justify-content: center;
+          margin-left: 0;
+        }
+
+        .image-viewer-body {
+          grid-template-columns: 94px minmax(0, 1fr);
+          gap: 10px;
+        }
+
+        .image-viewer-nav {
+          border-radius: 10px;
+          padding: 7px;
+        }
+
+        .image-viewer-nav-title {
+          display: grid;
+          gap: 2px;
+          font-size: 11px;
+        }
+
+        .image-viewer-hint {
+          max-width: 260px;
+        }
+
+        .image-viewer-canvas {
+          border-radius: 10px;
+        }
+
+        .project-desc {
+          min-height: 0;
+        }
+
+        .experience-head {
+          margin-bottom: 48px;
+        }
+
+        .experience-list {
+          gap: 40px;
+          padding-left: 36px;
+        }
+
+        .experience-list::before {
+          left: 10px;
+        }
+
+        .experience-item {
+          grid-template-columns: 1fr;
+        }
+
+        .experience-item::before {
+          left: -31px;
+        }
+
+        .period {
+          order: -1;
+          margin-bottom: 4px;
+        }
+
+        .about-copy,
+        .contact-panel {
+          padding: 22px;
+        }
+
+        .contact-aside {
+          padding: 0;
+        }
+
+        .form-actions,
+        .site-footer {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .brand-text {
+          max-width: 210px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        h1 {
+          font-size: 48px;
+          line-height: 1.05;
+        }
+
+        h2 {
+          font-size: 28px;
+        }
+
+        .hero-actions {
+          margin-bottom: 26px;
+        }
+
+        .hero-content {
+          padding-top: 104px;
+        }
+
+        .dashboard-shell {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="#top" aria-label="返回首页">
+          <span class="brand-ux">UX</span><span class="brand-portfolio">.PORTFOLIO</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a class="nav-link" href="#projects">项目</a>
+          <a class="nav-link" href="#skills">技能</a>
+          <a class="nav-link" href="#experience">经历</a>
+          <a class="nav-link" href="#contact">联系</a>
+          <a class="nav-link nav-cta" href="#contact">联系我</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero reveal" aria-labelledby="heroTitle">
+        <span class="hero-cursor-light" aria-hidden="true"></span>
+        <span class="hero-bg-word" aria-hidden="true">B2B</span>
+        <div class="hero-content">
+          <div class="hero-main">
+            <p class="eyebrow hero-motion" style="--hero-delay: 0ms; --hero-y: 12px;">
+              <span class="availability">AVAILABLE FOR WORK</span>
+              <span>B端 UX / 产品设计师</span>
+            </p>
+            <h1 id="heroTitle" class="hero-motion" style="--hero-delay: 100ms; --hero-y: 20px;">
+              <span class="hero-title-main">Hi，I'm Yinru,</span>
+              <span class="hero-title-outline">A UX Designer</span>
+            </h1>
+          <p class="hero-copy hero-motion" style="--hero-delay: 220ms; --hero-y: 16px;">
+              专注企业级 SaaS · CRM · 数据平台交互设计，<br />
+              3 年深耕 B 端体验，让业务系统真正好用。
+          </p>
+            <div class="hero-tags hero-motion" style="--hero-delay: 320ms; --hero-y: 14px;" aria-label="核心能力标签">
+              <span class="tag">信息架构</span>
+              <span class="tag">交互原型</span>
+              <span class="tag">设计系统</span>
+              <span class="tag">体验度量</span>
+            </div>
+          <div class="hero-actions hero-motion" style="--hero-delay: 420ms; --hero-y: 14px;">
+              <a class="btn primary" href="#projects">查看作品集 <span aria-hidden="true">→</span></a>
+              <a class="btn" href="#contact">联系我</a>
+            </div>
+          </div>
+
+          <div class="hero-bottom hero-motion" style="--hero-delay: 700ms; --hero-y: 0px;">
+            <div class="hero-stats" aria-label="核心成果">
+              <div class="stat">
+                <b>3+</b>
+                <span>年 B 端设计经验</span>
+              </div>
+              <div class="stat">
+                <b>10+</b>
+                <span>企业级项目落地</span>
+              </div>
+              <div class="stat">
+                <b>300+</b>
+                <span>组件设计系统规范</span>
+              </div>
+            </div>
+            <p class="hero-hint">⌁ 点击卡片可查看项目详情</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal" aria-labelledby="projectsTitle">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Selected Works</p>
+            <h2 id="projectsTitle">精选项目</h2>
+          </div>
+          <p class="section-summary">每个项目都聚焦一个典型企业级问题：数据洞察、权限协作、运营决策。</p>
+        </div>
+
+        <div class="projects-grid">
+            <article class="project-card motion-item" data-project="crm" data-motion-delay="0">
+              <div class="project-visual" aria-hidden="true">
+                <img class="project-cover-image" src="assets/crm-system-cover.jpg" alt="CRM 客户管理系统项目封面" loading="lazy" />
+              </div>
+            <div class="project-body">
+              <p class="project-category">ENTERPRISE CRM SYSTEM</p>
+              <h3 class="project-title">CRM 客户管理系统</h3>
+              <p class="project-subtitle">企业业务后台 · 流程优化 · 用户效率提升</p>
+              <p class="project-desc">为大型企业重新设计全流程客户关系管理平台，覆盖线索分配、跟进记录、商机管理到合同签约全链路体验。</p>
+              <div class="project-meta">
+                <span class="tag">CRM系统</span>
+                <span class="tag">流程优化</span>
+                <span class="tag">角色权限</span>
+              </div>
+              <div class="result-strip">
+                <div class="result">
+                  <b>38%</b>
+                  <span>查询路径缩短</span>
+                </div>
+                <div class="result">
+                  <b>2.1x</b>
+                  <span>看板复用提升</span>
+                </div>
+              </div>
+              <button class="project-toggle" type="button" data-project="crm" aria-haspopup="dialog">查看详情</button>
+              <div class="project-details">
+                <div class="project-details-inner">
+                  <div class="detail-block">
+                    <b>背景</b>
+                    <span>原系统存在指标命名不一致、筛选入口分散、数据解释缺失等问题。</span>
+                  </div>
+                  <div class="detail-block">
+                    <b>方法</b>
+                    <span>通过角色访谈、指标盘点、任务流拆解，建立“指标目录 + 查询模板 + 异常归因”的核心框架。</span>
+                  </div>
+                  <div class="detail-block">
+                    <b>成果</b>
+                    <span>完成数据资产导航、看板编辑器、异常详情页与组件规范，降低新用户上手成本。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card motion-item" data-project="ai" data-motion-delay="120">
+            <div class="project-visual" aria-hidden="true">
+              <img class="project-cover-image" src="assets/ai-data-platform.jpg" alt="大模型数据工程开发平台项目封面" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <p class="project-category">AI DATA ENGINEERING PLATFORM</p>
+              <h3 class="project-title">大模型数据工程开发平台</h3>
+              <p class="project-subtitle">数据可视化 · AI研发工具 · 技术平台设计</p>
+              <p class="project-desc">为AI研发团队打造一站式大模型数据处理与训练工程平台，涵盖数据清洗、标注、评估、版本管理全生命周期。</p>
+              <div class="project-meta">
+                <span class="tag">数据可视化</span>
+                <span class="tag">AI工具链</span>
+                <span class="tag">研发效能</span>
+              </div>
+              <div class="result-strip">
+                <div class="result">
+                  <b>46%</b>
+                  <span>配置错误下降</span>
+                </div>
+                <div class="result">
+                  <b>29%</b>
+                  <span>审批耗时下降</span>
+                </div>
+              </div>
+              <button class="project-toggle" type="button" data-project="ai" aria-haspopup="dialog">查看详情</button>
+              <div class="project-details">
+                <div class="project-details-inner">
+                  <div class="detail-block">
+                    <b>背景</b>
+                    <span>权限颗粒度细、角色关系复杂，业务方难以判断申请范围和审批责任。</span>
+                  </div>
+                  <div class="detail-block">
+                    <b>方法</b>
+                    <span>建立权限分层模型，拆分申请、审批、变更、审计四类任务，并设计可解释的风险提示。</span>
+                  </div>
+                  <div class="detail-block">
+                    <b>成果</b>
+                    <span>输出权限矩阵、审批节点配置器、风险核验组件和空状态指引，提升运维稳定性。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card motion-item" data-project="fintech" data-motion-delay="240">
+            <div class="project-visual" aria-hidden="true">
+              <img class="project-cover-image" src="assets/fintech-mobile-tool.jpg" alt="小金 AI 助访项目封面" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <p class="project-category">FINTECH MOBILE TOOL</p>
+              <h3 class="project-title">金融拜访助手</h3>
+              <p class="project-subtitle">金融场景 · 业务赋能 · 合规化轻量化工具</p>
+              <p class="project-desc">为银行客户经理设计合规化的移动端拜访管理工具，实现拜访记录数字化、合规材料一键调取与客户洞察智能推送。</p>
+              <div class="project-meta">
+                <span class="tag">金融场景</span>
+                <span class="tag">移动端设计</span>
+                <span class="tag">合规工具</span>
+              </div>
+              <div class="result-strip">
+                <div class="result">
+                  <b>33%</b>
+                  <span>异常定位提速</span>
+                </div>
+                <div class="result">
+                  <b>18%</b>
+                  <span>库存周转改善</span>
+                </div>
+              </div>
+              <button class="project-toggle" type="button" data-project="fintech" aria-haspopup="dialog">查看详情</button>
+              <div class="project-details">
+                <div class="project-details-inner">
+                  <div class="detail-block">
+                    <b>背景</b>
+                    <span>运营数据分散在多个系统中，异常发现晚，定位链路长，跨角色协作成本高。</span>
+                  </div>
+                  <div class="detail-block">
+                    <b>方法</b>
+                    <span>以“预警优先级、影响范围、建议动作”为主线重组页面层级和表格交互。</span>
+                  </div>
+                  <div class="detail-block">
+                    <b>成果</b>
+                    <span>落地驾驶舱总览、异常下钻、批量处置和策略配置模块，让运营动作闭环。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="reveal" aria-labelledby="skillsTitle">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Capabilities</p>
+            <h2 id="skillsTitle">专业技能</h2>
+          </div>
+          <p class="section-summary">覆盖从业务理解到方案落地的 B 端设计完整链路。</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-group motion-item" data-motion-delay="0">
+            <span class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0l8.57-3.9a1 1 0 0 0 0-1.84Z"></path>
+                <path d="m22 12.18-9.17 4.17a2 2 0 0 1-1.66 0L2 12.18"></path>
+                <path d="m22 17.18-9.17 4.17a2 2 0 0 1-1.66 0L2 17.18"></path>
+              </svg>
+            </span>
+            <h3>业务与研究</h3>
+            <ul class="skill-list">
+              <li>利益相关方访谈</li>
+              <li>业务流程建模</li>
+              <li>角色与权限分析</li>
+              <li>可用性测试</li>
+            </ul>
+          </article>
+          <article class="skill-group motion-item" data-motion-delay="100">
+            <span class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5A5 5 0 1 0 7.5 11.5c.8.8 1.3 1.5 1.5 2.5"></path>
+                <path d="M9 18h6"></path>
+                <path d="M10 22h4"></path>
+              </svg>
+            </span>
+            <h3>产品与交互</h3>
+            <ul class="skill-list">
+              <li>信息架构设计</li>
+              <li>任务流与状态流</li>
+              <li>复杂表格设计</li>
+              <li>低保真到高保真原型</li>
+            </ul>
+          </article>
+          <article class="skill-group motion-item" data-motion-delay="200">
+            <span class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="10" x="3" y="4" rx="2"></rect>
+                <path d="M7 20h4"></path>
+                <path d="M10 14v6"></path>
+                <rect width="6" height="10" x="15" y="10" rx="2"></rect>
+              </svg>
+            </span>
+            <h3>设计系统</h3>
+            <ul class="skill-list">
+              <li>组件规范沉淀</li>
+              <li>设计 Token 管理</li>
+              <li>后台布局模式</li>
+              <li>跨端响应式规则</li>
+            </ul>
+          </article>
+          <article class="skill-group motion-item" data-motion-delay="300">
+            <span class="skill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m18 16 4-4-4-4"></path>
+                <path d="m6 8-4 4 4 4"></path>
+                <path d="m14.5 4-5 16"></path>
+              </svg>
+            </span>
+            <h3>协作与交付</h3>
+            <ul class="skill-list">
+              <li>PRD 与交互说明</li>
+              <li>研发走查与验收</li>
+              <li>数据指标复盘</li>
+              <li>迭代路线拆解</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="reveal" aria-labelledby="experienceTitle">
+        <div class="section-head experience-head">
+          <div>
+            <h2 id="experienceTitle">工作经历</h2>
+          </div>
+          <p class="section-summary">在不断迭代的业务中锤炼设计方法论。</p>
+        </div>
+        <div class="experience-list">
+          <article class="experience-item motion-item motion-left" data-motion-delay="0">
+            <div>
+              <h3>UX/交互设计师</h3>
+              <span class="role-tag">华为技术有限公司</span>
+              <p>参与企业级产品与内部业务系统的体验设计工作，围绕复杂业务流程、信息架构和关键任务路径输出交互方案、高保真原型与设计规范，协同产品、研发推进功能落地与体验优化。</p>
+            </div>
+            <div class="period">2024.01-2026.01</div>
+          </article>
+          <article class="experience-item motion-item motion-left" data-motion-delay="100">
+            <div>
+              <h3>UI设计师</h3>
+              <span class="role-tag">深圳市宝安区科技创新局</span>
+              <p>负责政务与科技服务相关数字化界面的视觉与交互设计，围绕信息发布、业务申报、数据展示等场景优化页面层级、组件样式和操作体验，提升服务入口的清晰度与可用性。</p>
+            </div>
+            <div class="period">2023.02-2024.01</div>
+          </article>
+          <article class="experience-item motion-item motion-left" data-motion-delay="200">
+            <div>
+              <h3>UI设计师</h3>
+              <span class="role-tag">北京澜景科技有限公司</span>
+              <p>参与 Web 与移动端产品的界面设计和基础交互输出，负责页面视觉规范、图标与组件整理、运营物料及产品功能页设计，配合团队完成从需求到上线的设计交付。</p>
+            </div>
+            <div class="period">2020.06-2022.09</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal" aria-labelledby="contactTitle">
+        <div class="contact-wrap">
+          <aside class="contact-aside motion-item motion-left" data-motion-delay="0">
+            <h2 id="contactTitle">开启新的合作</h2>
+            <p>
+              如果您正在寻找一位专业的B端体验设计师，或者想探讨交流关于企业级产品的体验设计话题，欢迎随时与我联系。
+            </p>
+            <div class="contact-info" aria-label="联系方式">
+              <a class="contact-card" href="mailto:yeyinru@qq.com">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </span>
+                <span class="contact-text">
+                  <span>电子邮件</span>
+                  <strong>yeyinru@qq.com</strong>
+                </span>
+              </a>
+              <div class="contact-card">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </span>
+                <span class="contact-text">
+                  <span>所在城市</span>
+                  <strong>中国, 深圳 / 远程协作</strong>
+                </span>
+              </div>
+            </div>
+          </aside>
+
+          <form class="contact-panel motion-item" data-motion-delay="140" id="contactForm">
+            <h3>发送消息</h3>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">您的称呼</label>
+                <input id="name" name="name" type="text" placeholder="例如：张先生" required />
+              </div>
+              <div class="field">
+                <label for="email">电子邮箱</label>
+                <input id="email" name="email" type="email" placeholder="您的工作邮箱" required />
+              </div>
+              <div class="field full">
+                <label for="company">所在公司 (选填)</label>
+                <input id="company" name="company" type="text" placeholder="您所在的公司名称" />
+              </div>
+              <div class="field full">
+                <label for="message">消息内容</label>
+                <textarea id="message" name="message" placeholder="简单描述一下您的项目需求或合作意向..." required></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="contact-submit" type="submit">
+                发送消息
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m22 2-7 20-4-9-9-4Z"></path>
+                  <path d="M22 2 11 13"></path>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 B端UX/产品设计师作品集</span>
+      <span>Designed for enterprise product clarity.</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">已收到信息，感谢联系。</div>
+
+    <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" hidden>
+      <button class="project-modal-backdrop" type="button" data-modal-close aria-label="关闭项目详情弹窗"></button>
+      <article class="project-modal-panel" tabindex="-1">
+        <button class="project-modal-close" type="button" data-modal-close aria-label="关闭项目详情弹窗">×</button>
+        <div class="project-modal-hero">
+          <img id="projectModalImage" src="" alt="" />
+          <div class="project-modal-hero-content">
+            <p class="project-modal-category" id="projectModalCategory"></p>
+            <h3 class="project-modal-title" id="projectModalTitle"></h3>
+            <p class="project-modal-subtitle" id="projectModalSubtitle"></p>
+            <div class="project-modal-tags" id="projectModalTags"></div>
+          </div>
+        </div>
+        <div class="project-modal-content">
+          <section class="project-modal-section">
+            <div class="project-modal-heading-row">
+              <h4 class="project-modal-heading">
+                <svg class="project-modal-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+                  <path d="M8 20h8"></path>
+                  <path d="M12 16v4"></path>
+                </svg>
+                界面展示
+                <span class="project-modal-dot"></span>
+              </h4>
+              <button class="project-modal-toggle" id="projectInterfaceToggle" type="button" aria-expanded="true" aria-controls="projectModalInterfaceBody">收起</button>
+            </div>
+            <div class="project-modal-interface-body" id="projectModalInterfaceBody">
+              <p class="project-modal-note" id="projectModalMockup"></p>
+              <div class="project-modal-showcase" id="projectModalShowcase" hidden>
+                <img id="projectModalShowcaseImage" src="" alt="" loading="lazy" />
+              </div>
+            </div>
+          </section>
+          <div class="project-modal-divider"></div>
+          <section class="project-modal-section">
+            <h4 class="project-modal-heading"><span class="project-modal-bar"></span>设计背景</h4>
+            <p class="project-modal-text" id="projectModalBackground"></p>
+          </section>
+          <section class="project-modal-section">
+            <h4 class="project-modal-heading"><span class="project-modal-bar soft"></span>核心问题</h4>
+            <p class="project-modal-text" id="projectModalChallenge"></p>
+          </section>
+          <section class="project-modal-section">
+            <h4 class="project-modal-heading"><span class="project-modal-bar pale"></span>设计方案</h4>
+            <p class="project-modal-text" id="projectModalSolution"></p>
+          </section>
+          <section class="project-modal-section">
+            <h4 class="project-modal-heading">
+              <svg class="project-modal-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"></path>
+                <path d="m7 14 3-3 4 4 5-7"></path>
+              </svg>
+              设计成果
+            </h4>
+            <div class="project-modal-results" id="projectModalResults"></div>
+          </section>
+        </div>
+      </article>
+    </div>
+
+    <div class="image-viewer" id="imageViewer" role="dialog" aria-modal="true" aria-labelledby="imageViewerTitle" hidden>
+      <button class="image-viewer-backdrop" type="button" data-image-viewer-close aria-label="关闭大图"></button>
+      <div class="image-viewer-shell">
+        <div class="image-viewer-toolbar">
+          <div>
+            <p class="image-viewer-title" id="imageViewerTitle">界面展示大图</p>
+            <span class="image-viewer-hint">左侧缩略图可独立滚动；右侧支持 Ctrl + 鼠标滚轮缩放图片，或使用概览档位。</span>
+          </div>
+          <div class="image-viewer-zoom-controls" aria-label="大图缩放档位">
+            <button class="image-viewer-zoom-button" type="button" data-image-zoom="0.8">80%</button>
+            <button class="image-viewer-zoom-button" type="button" data-image-zoom="0.65">65%</button>
+            <button class="image-viewer-zoom-button" type="button" data-image-zoom="0.5">50%</button>
+          </div>
+          <button class="image-viewer-close" type="button" data-image-viewer-close aria-label="关闭大图">×</button>
+        </div>
+        <div class="image-viewer-body">
+          <aside class="image-viewer-nav" aria-label="长图缩略定位">
+            <div class="image-viewer-nav-title">
+              <strong>缩略定位</strong>
+              <span>点击跳转</span>
+            </div>
+            <div class="image-viewer-thumb-scroll" id="imageViewerThumbScroll">
+              <div class="image-viewer-thumb-track" id="imageViewerThumbTrack" role="button" tabindex="0" aria-label="点击缩略图定位右侧大图">
+                <img id="imageViewerThumbImage" src="" alt="" />
+                <span class="image-viewer-thumb-frame" id="imageViewerThumbFrame" aria-hidden="true"></span>
+              </div>
+            </div>
+          </aside>
+          <div class="image-viewer-canvas" tabindex="0">
+            <img id="imageViewerImage" src="" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const navLinks = document.querySelectorAll(".nav-link");
+      const siteHeader = document.querySelector(".site-header");
+      const hero = document.querySelector(".hero");
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navPanel = document.querySelector("#navLinks");
+      const revealItems = document.querySelectorAll(".reveal, .motion-item");
+      const sections = document.querySelectorAll("main section[id]");
+      const projectCards = document.querySelectorAll(".project-card[data-project]");
+      const projectToggles = document.querySelectorAll(".project-toggle");
+      const projectModal = document.querySelector("#projectModal");
+      const projectModalPanel = projectModal.querySelector(".project-modal-panel");
+      const projectModalImage = document.querySelector("#projectModalImage");
+      const projectModalCategory = document.querySelector("#projectModalCategory");
+      const projectModalTitle = document.querySelector("#projectModalTitle");
+      const projectModalSubtitle = document.querySelector("#projectModalSubtitle");
+      const projectModalTags = document.querySelector("#projectModalTags");
+      const projectInterfaceToggle = document.querySelector("#projectInterfaceToggle");
+      const projectModalInterfaceBody = document.querySelector("#projectModalInterfaceBody");
+      const projectModalMockup = document.querySelector("#projectModalMockup");
+      const projectModalShowcase = document.querySelector("#projectModalShowcase");
+      const projectModalShowcaseImage = document.querySelector("#projectModalShowcaseImage");
+      const projectModalBackground = document.querySelector("#projectModalBackground");
+      const projectModalChallenge = document.querySelector("#projectModalChallenge");
+      const projectModalSolution = document.querySelector("#projectModalSolution");
+      const projectModalResults = document.querySelector("#projectModalResults");
+      const projectModalCloseButtons = projectModal.querySelectorAll("[data-modal-close]");
+      const imageViewer = document.querySelector("#imageViewer");
+      const imageViewerImage = document.querySelector("#imageViewerImage");
+      const imageViewerTitle = document.querySelector("#imageViewerTitle");
+      const imageViewerCanvas = imageViewer.querySelector(".image-viewer-canvas");
+      const imageViewerThumbScroll = document.querySelector("#imageViewerThumbScroll");
+      const imageViewerThumbTrack = document.querySelector("#imageViewerThumbTrack");
+      const imageViewerThumbImage = document.querySelector("#imageViewerThumbImage");
+      const imageViewerThumbFrame = document.querySelector("#imageViewerThumbFrame");
+      const imageViewerZoomButtons = document.querySelectorAll(".image-viewer-zoom-button");
+      const imageViewerCloseButtons = imageViewer.querySelectorAll("[data-image-viewer-close]");
+      const contactForm = document.querySelector("#contactForm");
+      const toast = document.querySelector("#toast");
+      const contactSubmit = contactForm.querySelector(".contact-submit");
+      const contactSubmitDefault = contactSubmit.innerHTML;
+      let activeModalTrigger = null;
+      let activeDetailImage = null;
+      let activeDetailImageTitle = "";
+      let imageViewerZoom = 1;
+      const imageViewerMinZoom = 0.5;
+      const imageViewerMaxZoom = 3;
+      let heroCursorFrame = 0;
+      const heroCursor = {
+        currentX: 50,
+        currentY: 45,
+        targetX: 50,
+        targetY: 45,
+        active: false
+      };
+
+      const setProjectInterfaceExpanded = (isExpanded) => {
+        projectInterfaceToggle.setAttribute("aria-expanded", String(isExpanded));
+        projectInterfaceToggle.textContent = isExpanded ? "收起" : "展开";
+        projectModalInterfaceBody.hidden = !isExpanded;
+      };
+
+      const projectDetails = {
+        crm: {
+          title: "CRM 客户管理系统",
+          subtitle: "企业业务后台 · 流程优化 · 用户效率提升",
+          category: "ENTERPRISE CRM SYSTEM",
+          image: "assets/crm-system-cover.jpg",
+          detailImage: "assets/crm-system-detail.png",
+          tags: ["CRM系统", "流程优化", "角色权限", "SaaS平台"],
+          mockup: "重新设计的客户工作台，将线索、商机、跟进三大模块整合至统一视图，支持多维度筛选与批量操作，极大降低销售人员在系统间的切换成本。",
+          background: "该企业销售团队规模超过500人，原有CRM系统为10年前定制开发的老旧系统，界面信息密度极高却缺乏层级感。销售经理与一线销售人员共用一套界面，导致双方都找不到最关键的信息入口，严重影响日常销售效率与管理决策。",
+          challenge: "核心痛点在于：①业务流程碎片化，线索→商机→合同→回款分属4个不同页面，数据无法联动；②权限角色管理混乱，销售经理无法高效监控团队整体进展；③移动端几乎不可用，外勤销售只能被迫使用PC版，体验极差；④关键数据如“近7天未跟进客户”无法一眼识别，导致大量商机流失。",
+          solution: "深度访谈了销售总监、区域经理和20位一线销售，绘制完整业务旅程图。采用“角色工作台”策略，为不同角色提供差异化首屏视图。重新梳理信息架构，将全链路数据打通，设计“客户360视图”聚合页。针对移动场景专项设计拜访记录与快速跟进模块，支持语音转文字输入。",
+          results: [
+            "核心操作路径平均点击次数由11步缩短至4步",
+            "销售日均有效跟进量提升58%，商机转化率提升23%",
+            "移动端月活跃用户占比从12%提升至67%",
+            "用户满意度NPS评分由-15跃升至+42"
+          ]
+        },
+        ai: {
+          title: "大模型数据工程开发平台",
+          subtitle: "数据可视化 · AI研发工具 · 技术平台设计",
+          category: "AI DATA ENGINEERING PLATFORM",
+          image: "assets/ai-data-platform.jpg",
+          detailImage: "assets/ai-data-engineering-detail.png",
+          tags: ["数据可视化", "AI工具链", "研发效能", "技术平台"],
+          mockup: "数据流水线可视化编排界面，以节点图（DAG）形式直观呈现数据处理全链路，算法工程师可在界面中直接配置每个处理节点的参数，实时查看数据流转状态与质量指标。",
+          background: "面向大型AI公司的算法工程师与数据工程师群体，日均处理TB级训练数据。在AIGC浪潮下，数据工程团队需要以极快速度迭代数据管线，而原有工具链是多个独立工具的拼凑，协作成本极高，数据血缘追踪几乎不可能。",
+          challenge: "技术用户同时也是设计的最大挑战：他们对专业性要求极高但对视觉设计几乎无感知，系统必须在信息密度与可读性之间找到精确平衡。核心问题：①数据集版本管理混乱，缺乏溯源能力；②跨团队协作时数据标准不一致，上游下游频繁产生脏数据；③任务运行状态不可观测，出错定位耗时数小时。",
+          solution: "深入嵌入算法工程师的日常工作流中进行情境研究。设计以“数据资产”为核心概念的信息架构，重新组织所有模块。开发可视化DAG编排器，让工程师像搭积木一样配置数据流水线。设计数据质量看板与异常预警系统，支持从问题结果快速反向追溯到源头数据。",
+          results: [
+            "数据管线配置时间从平均3天缩短至4小时",
+            "数据问题定位排查效率提升80%，平均修复时间显著降低",
+            "跨团队数据协作争议减少90%，数据一致性质量显著提升",
+            "平台获评公司年度最受工程师认可的内部工具"
+          ]
+        },
+        fintech: {
+          title: "金融拜访助手",
+          subtitle: "金融场景 · 业务赋能 · 合规化轻量化工具",
+          category: "FINTECH MOBILE TOOL",
+          image: "assets/fintech-mobile-tool.jpg",
+          tags: ["金融场景", "移动端设计", "合规工具", "轻量化"],
+          mockup: "拜访前智能准备界面，系统根据客户资产状况、近期市场行情与历史沟通记录，自动生成个性化的拜访要点卡片与合规话术建议，帮助客户经理在30秒内完成拜访前备课。",
+          background: "服务于某股份制银行的零售客户经理群体，日常工作需在外出拜访客户的同时完成大量合规记录工作。金融监管要求对每一次客户接触进行留痕，但原有流程是事后回到电脑前补录，记录质量差、遗漏率高，面临监管风险。",
+          challenge: "金融场景的特殊性带来了极高的设计约束：①强合规要求，拜访记录必须实时、有据可查，不能事后篡改；②客户经理年龄跨度大，数字化程度参差不齐；③拜访场景特殊，不适合长时间低头操作手机；④需要调取敏感客户资产数据，安全性要求极高；⑤前端必须对接多个遗留系统API。",
+          solution: "以“极简操作，合规兜底”为设计原则。拜访中：设计一键打卡签到、地理位置留痕、语音转文字记录，单次操作不超过10秒。拜访前：智能推送客户资产变动预警与产品匹配推荐。拜访后：结构化模板引导快速生成合规报告，系统自动归档。",
+          results: [
+            "拜访记录完整性从43%提升至97%，合规风险大幅降低",
+            "客户经理单次记录时间由平均15分钟压缩至90秒",
+            "客户经理人均管户量提升30%，整体业绩贡献提升",
+            "工具荣获金融科技创新优秀实践案例"
+          ]
+        }
+      };
+
+      const updateHeaderState = () => {
+        siteHeader.classList.toggle("scrolled", window.scrollY > 50);
+      };
+
+      updateHeaderState();
+      window.addEventListener("scroll", updateHeaderState, { passive: true });
+
+      const animateHeroCursor = () => {
+        heroCursor.currentX += (heroCursor.targetX - heroCursor.currentX) * 0.22;
+        heroCursor.currentY += (heroCursor.targetY - heroCursor.currentY) * 0.22;
+        hero.style.setProperty("--hero-cursor-x", `${heroCursor.currentX.toFixed(2)}%`);
+        hero.style.setProperty("--hero-cursor-y", `${heroCursor.currentY.toFixed(2)}%`);
+
+        if (
+          heroCursor.active ||
+          Math.abs(heroCursor.currentX - heroCursor.targetX) > 0.05 ||
+          Math.abs(heroCursor.currentY - heroCursor.targetY) > 0.05
+        ) {
+          heroCursorFrame = window.requestAnimationFrame(animateHeroCursor);
+        } else {
+          heroCursorFrame = 0;
+        }
+      };
+
+      const updateHeroCursorTarget = (event) => {
+        const rect = hero.getBoundingClientRect();
+        heroCursor.targetX = ((event.clientX - rect.left) / rect.width) * 100;
+        heroCursor.targetY = ((event.clientY - rect.top) / rect.height) * 100;
+        hero.style.setProperty("--hero-cursor-alpha", "1");
+        heroCursor.active = true;
+
+        if (!heroCursorFrame) {
+          heroCursorFrame = window.requestAnimationFrame(animateHeroCursor);
+        }
+      };
+
+      const createHeroClickRipple = (event) => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const rect = hero.getBoundingClientRect();
+        const ripple = document.createElement("span");
+        ripple.className = "hero-click-ripple";
+        ripple.setAttribute("aria-hidden", "true");
+        ripple.style.setProperty("--ripple-x", `${event.clientX - rect.left}px`);
+        ripple.style.setProperty("--ripple-y", `${event.clientY - rect.top}px`);
+        hero.appendChild(ripple);
+        ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
+        window.setTimeout(() => ripple.remove(), 900);
+      };
+
+      hero.addEventListener("pointerenter", updateHeroCursorTarget);
+      hero.addEventListener("pointermove", updateHeroCursorTarget);
+      hero.addEventListener("pointerdown", (event) => {
+        if (event.pointerType === "mouse" && event.button !== 0) return;
+
+        updateHeroCursorTarget(event);
+        createHeroClickRipple(event);
+      });
+      hero.addEventListener("pointerleave", () => {
+        heroCursor.active = false;
+        hero.style.setProperty("--hero-cursor-alpha", "0");
+      });
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        navPanel.classList.toggle("open", !isOpen);
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.setAttribute("aria-expanded", "false");
+          navPanel.classList.remove("open");
+        });
+      });
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const delay = Number(entry.target.dataset.motionDelay || 0);
+              window.setTimeout(() => entry.target.classList.add("visible"), delay);
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+
+      revealItems.forEach((item) => revealObserver.observe(item));
+
+      const navObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            navLinks.forEach((link) => {
+              link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+            });
+          });
+        },
+        { rootMargin: "-45% 0px -48% 0px", threshold: 0 }
+      );
+
+      sections.forEach((section) => navObserver.observe(section));
+
+      const renderProjectModal = (project) => {
+        setProjectInterfaceExpanded(true);
+        projectModalImage.src = project.image;
+        projectModalImage.alt = `${project.title}项目封面`;
+        projectModalCategory.textContent = project.category;
+        projectModalTitle.textContent = project.title;
+        projectModalSubtitle.textContent = project.subtitle;
+        projectModalMockup.textContent = project.mockup;
+        if (project.detailImage) {
+          projectModalShowcase.hidden = false;
+          projectModalShowcaseImage.src = project.detailImage;
+          projectModalShowcaseImage.alt = `${project.title}界面展示长图`;
+          activeDetailImage = project.detailImage;
+          activeDetailImageTitle = `${project.title}界面展示大图`;
+        } else {
+          projectModalShowcase.hidden = true;
+          projectModalShowcaseImage.removeAttribute("src");
+          projectModalShowcaseImage.alt = "";
+          activeDetailImage = null;
+          activeDetailImageTitle = "";
+        }
+        projectModalBackground.textContent = project.background;
+        projectModalChallenge.textContent = project.challenge;
+        projectModalSolution.textContent = project.solution;
+
+        projectModalTags.replaceChildren(
+          ...project.tags.map((tag) => {
+            const item = document.createElement("span");
+            item.textContent = tag;
+            return item;
+          })
+        );
+
+        projectModalResults.replaceChildren(
+          ...project.results.map((result) => {
+            const item = document.createElement("div");
+            const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            const text = document.createElement("span");
+
+            item.className = "project-modal-result";
+            icon.classList.add("project-modal-check");
+            icon.setAttribute("aria-hidden", "true");
+            icon.setAttribute("viewBox", "0 0 24 24");
+            icon.setAttribute("fill", "none");
+            icon.setAttribute("stroke", "currentColor");
+            icon.setAttribute("stroke-width", "2");
+            icon.setAttribute("stroke-linecap", "round");
+            icon.setAttribute("stroke-linejoin", "round");
+            circle.setAttribute("cx", "12");
+            circle.setAttribute("cy", "12");
+            circle.setAttribute("r", "10");
+            path.setAttribute("d", "m9 12 2 2 4-4");
+            icon.append(circle, path);
+            text.textContent = result;
+            item.append(icon, text);
+            return item;
+          })
+        );
+      };
+
+      const openProjectModal = (projectId, trigger) => {
+        const project = projectDetails[projectId];
+        if (!project) return;
+
+        activeModalTrigger = trigger;
+        renderProjectModal(project);
+        projectModal.hidden = false;
+        document.body.style.overflow = "hidden";
+        window.requestAnimationFrame(() => {
+          projectModal.classList.add("open");
+          projectModalPanel.focus();
+        });
+      };
+
+      const closeProjectModal = () => {
+        closeImageViewer();
+        projectModal.classList.remove("open");
+        document.body.style.overflow = "";
+        window.setTimeout(() => {
+          if (!projectModal.classList.contains("open")) {
+            projectModal.hidden = true;
+            projectModalImage.removeAttribute("src");
+          }
+        }, 240);
+
+        if (activeModalTrigger) {
+          activeModalTrigger.focus();
+          activeModalTrigger = null;
+        }
+      };
+
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+      const syncImageViewerMap = (options = {}) => {
+        if (imageViewer.hidden || !imageViewerImage.naturalWidth || !imageViewerThumbImage.naturalWidth) return;
+
+        const imageWidth = imageViewerImage.scrollWidth || imageViewerImage.clientWidth;
+        const imageHeight = imageViewerImage.scrollHeight || imageViewerImage.clientHeight;
+        const thumbWidth = imageViewerThumbTrack.clientWidth;
+        const thumbHeight = imageViewerThumbImage.getBoundingClientRect().height;
+        if (!imageWidth || !imageHeight || !thumbWidth || !thumbHeight) return;
+
+        const visibleWidthRatio = Math.min(1, imageViewerCanvas.clientWidth / imageWidth);
+        const visibleHeightRatio = Math.min(1, imageViewerCanvas.clientHeight / imageHeight);
+        const frameWidth = Math.max(22, thumbWidth * visibleWidthRatio);
+        const frameHeight = Math.max(28, thumbHeight * visibleHeightRatio);
+        const maxCanvasLeft = Math.max(1, imageViewerCanvas.scrollWidth - imageViewerCanvas.clientWidth);
+        const maxCanvasTop = Math.max(1, imageViewerCanvas.scrollHeight - imageViewerCanvas.clientHeight);
+        const maxFrameLeft = Math.max(0, thumbWidth - frameWidth);
+        const maxFrameTop = Math.max(0, thumbHeight - frameHeight);
+        const frameLeft = maxFrameLeft * (imageViewerCanvas.scrollLeft / maxCanvasLeft);
+        const frameTop = maxFrameTop * (imageViewerCanvas.scrollTop / maxCanvasTop);
+
+        imageViewerThumbFrame.style.width = `${frameWidth}px`;
+        imageViewerThumbFrame.style.height = `${frameHeight}px`;
+        imageViewerThumbFrame.style.transform = `translate(${frameLeft}px, ${frameTop}px)`;
+
+        if (options.keepFrameVisible) {
+          const inset = 10;
+          const visibleTop = imageViewerThumbScroll.scrollTop;
+          const visibleBottom = visibleTop + imageViewerThumbScroll.clientHeight;
+          const targetTop = frameTop < visibleTop + inset
+            ? frameTop - inset
+            : frameTop + frameHeight > visibleBottom - inset
+              ? frameTop + frameHeight - imageViewerThumbScroll.clientHeight + inset
+              : null;
+
+          if (targetTop !== null) {
+            imageViewerThumbScroll.scrollTo({
+              top: clamp(targetTop, 0, imageViewerThumbScroll.scrollHeight - imageViewerThumbScroll.clientHeight),
+              behavior: options.instant ? "auto" : "smooth"
+            });
+          }
+        }
+      };
+
+      const navigateImageViewerFromThumb = (event) => {
+        if (imageViewer.hidden || !imageViewerImage.naturalWidth) return;
+
+        const rect = imageViewerThumbTrack.getBoundingClientRect();
+        const frameWidth = parseFloat(imageViewerThumbFrame.style.width) || 0;
+        const frameHeight = parseFloat(imageViewerThumbFrame.style.height) || 0;
+        const localX = clamp(event.clientX - rect.left, 0, rect.width);
+        const localY = clamp(event.clientY - rect.top, 0, rect.height);
+        const xRatio = rect.width <= frameWidth ? 0 : clamp((localX - frameWidth / 2) / (rect.width - frameWidth), 0, 1);
+        const yRatio = rect.height <= frameHeight ? 0 : clamp((localY - frameHeight / 2) / (rect.height - frameHeight), 0, 1);
+
+        imageViewerCanvas.scrollTo({
+          left: xRatio * (imageViewerCanvas.scrollWidth - imageViewerCanvas.clientWidth),
+          top: yRatio * (imageViewerCanvas.scrollHeight - imageViewerCanvas.clientHeight),
+          behavior: "smooth"
+        });
+
+        window.requestAnimationFrame(() => syncImageViewerMap({ keepFrameVisible: true }));
+      };
+
+      const updateImageViewerZoomControls = () => {
+        imageViewerZoomButtons.forEach((button) => {
+          const buttonZoom = Number(button.dataset.imageZoom);
+          button.classList.toggle("active", Math.abs(buttonZoom - imageViewerZoom) < 0.015);
+        });
+      };
+
+      const setImageViewerZoom = (nextZoom, originX = imageViewerCanvas.clientWidth / 2, originY = imageViewerCanvas.clientHeight / 2) => {
+        const currentWidth = imageViewerCanvas.scrollWidth || imageViewerCanvas.clientWidth;
+        const currentHeight = imageViewerCanvas.scrollHeight || imageViewerCanvas.clientHeight;
+        const xRatio = currentWidth > 0 ? (imageViewerCanvas.scrollLeft + originX) / currentWidth : 0;
+        const yRatio = currentHeight > 0 ? (imageViewerCanvas.scrollTop + originY) / currentHeight : 0;
+
+        imageViewerZoom = clamp(nextZoom, imageViewerMinZoom, imageViewerMaxZoom);
+        imageViewerImage.style.setProperty("--image-viewer-zoom", imageViewerZoom.toFixed(3));
+        updateImageViewerZoomControls();
+
+        window.requestAnimationFrame(() => {
+          const newWidth = imageViewerCanvas.scrollWidth || imageViewerCanvas.clientWidth;
+          const newHeight = imageViewerCanvas.scrollHeight || imageViewerCanvas.clientHeight;
+          imageViewerCanvas.scrollLeft = clamp((xRatio * newWidth) - originX, 0, Math.max(0, newWidth - imageViewerCanvas.clientWidth));
+          imageViewerCanvas.scrollTop = clamp((yRatio * newHeight) - originY, 0, Math.max(0, newHeight - imageViewerCanvas.clientHeight));
+          syncImageViewerMap({ keepFrameVisible: true });
+        });
+      };
+
+      const handleImageViewerWheel = (event) => {
+        if (!event.ctrlKey || imageViewer.hidden) return;
+
+        event.preventDefault();
+        const rect = imageViewerCanvas.getBoundingClientRect();
+        const originX = clamp(event.clientX - rect.left, 0, rect.width);
+        const originY = clamp(event.clientY - rect.top, 0, rect.height);
+        const zoomFactor = Math.exp(-event.deltaY * 0.0015);
+        setImageViewerZoom(imageViewerZoom * zoomFactor, originX, originY);
+      };
+
+      const openImageViewer = () => {
+        if (!activeDetailImage) return;
+
+        imageViewerZoom = 1;
+        imageViewerImage.style.setProperty("--image-viewer-zoom", "1");
+        updateImageViewerZoomControls();
+        imageViewerImage.src = activeDetailImage;
+        imageViewerImage.alt = activeDetailImageTitle;
+        imageViewerThumbImage.src = activeDetailImage;
+        imageViewerThumbImage.alt = `${activeDetailImageTitle}缩略图`;
+        imageViewerTitle.textContent = activeDetailImageTitle;
+        imageViewer.hidden = false;
+        window.requestAnimationFrame(() => {
+          imageViewer.classList.add("open");
+          imageViewerCanvas.scrollTo({ top: 0, left: 0 });
+          imageViewerThumbScroll.scrollTo({ top: 0, left: 0 });
+          syncImageViewerMap({ keepFrameVisible: true, instant: true });
+          imageViewerCanvas.focus();
+        });
+      };
+
+      function closeImageViewer() {
+        if (imageViewer.hidden) return;
+
+        imageViewer.classList.remove("open");
+        window.setTimeout(() => {
+          if (!imageViewer.classList.contains("open")) {
+            imageViewer.hidden = true;
+            imageViewerImage.removeAttribute("src");
+            imageViewerImage.style.removeProperty("--image-viewer-zoom");
+            imageViewerThumbImage.removeAttribute("src");
+            imageViewerThumbFrame.removeAttribute("style");
+            imageViewerZoom = 1;
+            updateImageViewerZoomControls();
+          }
+        }, 220);
+      }
+
+      projectToggles.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openProjectModal(button.dataset.project, button);
+        });
+      });
+
+      projectCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          openProjectModal(card.dataset.project, card.querySelector(".project-toggle"));
+        });
+      });
+
+      projectModalCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeProjectModal);
+      });
+
+      projectModalShowcase.addEventListener("click", openImageViewer);
+
+      projectInterfaceToggle.addEventListener("click", () => {
+        const isExpanded = projectInterfaceToggle.getAttribute("aria-expanded") === "true";
+        setProjectInterfaceExpanded(!isExpanded);
+      });
+
+      let imageViewerSyncFrame = 0;
+      imageViewerCanvas.addEventListener("scroll", () => {
+        window.cancelAnimationFrame(imageViewerSyncFrame);
+        imageViewerSyncFrame = window.requestAnimationFrame(() => syncImageViewerMap({ keepFrameVisible: true }));
+      }, { passive: true });
+
+      imageViewerCanvas.addEventListener("wheel", handleImageViewerWheel, { passive: false });
+
+      imageViewerImage.addEventListener("load", () => {
+        syncImageViewerMap({ keepFrameVisible: true, instant: true });
+      });
+
+      imageViewerThumbImage.addEventListener("load", () => {
+        syncImageViewerMap({ keepFrameVisible: true, instant: true });
+      });
+
+      imageViewerThumbTrack.addEventListener("click", navigateImageViewerFromThumb);
+      imageViewerThumbTrack.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        const frameRect = imageViewerThumbFrame.getBoundingClientRect();
+        navigateImageViewerFromThumb({
+          clientX: frameRect.left + frameRect.width / 2,
+          clientY: frameRect.top + frameRect.height / 2
+        });
+      });
+
+      imageViewerZoomButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const nextZoom = Number(button.dataset.imageZoom);
+          setImageViewerZoom(nextZoom);
+          imageViewerCanvas.focus();
+        });
+      });
+
+      imageViewerCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeImageViewer);
+      });
+
+      window.addEventListener("resize", () => {
+        window.cancelAnimationFrame(imageViewerSyncFrame);
+        imageViewerSyncFrame = window.requestAnimationFrame(() => syncImageViewerMap({ keepFrameVisible: true, instant: true }));
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !imageViewer.hidden) {
+          closeImageViewer();
+          return;
+        }
+
+        if (event.key === "Escape" && !projectModal.hidden) {
+          closeProjectModal();
+        }
+      });
+
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!contactForm.checkValidity()) {
+          contactForm.reportValidity();
+          return;
+        }
+
+        contactSubmit.disabled = true;
+        contactSubmit.textContent = "发送中...";
+
+        window.setTimeout(() => {
+          contactForm.reset();
+          contactSubmit.disabled = false;
+          contactSubmit.innerHTML = contactSubmitDefault;
+          toast.classList.add("show");
+          window.setTimeout(() => toast.classList.remove("show"), 2800);
+        }, 900);
+      });
+    </script>
+  </body>
+</html>
