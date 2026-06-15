@@ -1291,6 +1291,15 @@
         transition: transform 0.38s ease;
       }
 
+      .project-cover-image,
+      .project-modal-showcase img,
+      .image-viewer img {
+        -webkit-user-drag: none;
+        -webkit-touch-callout: none;
+        user-select: none;
+        pointer-events: none;
+      }
+
       .project-card:hover .project-cover-image,
       .project-card:focus-within .project-cover-image {
         transform: scale(1.035);
@@ -2141,16 +2150,11 @@
         display: inline-grid;
         place-items: center;
         margin: 0 auto 18px;
-        border: 1px solid rgba(24, 24, 27, 0.08);
-        border-radius: 50%;
+        border: 0;
+        border-radius: 0;
         color: #18181b;
-        background:
-          radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.96) 0 43%, transparent 44%),
-          radial-gradient(circle at 50% 50%, var(--skill-soft) 0 58%, transparent 60%),
-          #ffffff;
-        box-shadow:
-          0 10px 26px var(--skill-soft),
-          0 0 0 7px rgba(255, 255, 255, 0.72);
+        background: transparent;
+        box-shadow: none;
       }
 
       .skill-group:nth-child(1) .skill-icon {
@@ -2174,8 +2178,8 @@
       }
 
       .skill-icon svg {
-        width: 25px;
-        height: 25px;
+        width: 24px;
+        height: 24px;
         overflow: visible;
       }
 
@@ -3333,13 +3337,13 @@
             <p class="section-kicker">Selected Works</p>
             <h2 id="projectsTitle">精选项目</h2>
           </div>
-          <p class="section-summary">每个项目都聚焦一个典型企业级问题：数据洞察、权限协作、运营决策。</p>
+          <p class="section-summary">聚焦一个典型企业级问题：数据链路、研发协作、质量洞察。</p>
         </div>
 
         <div class="projects-grid">
           <article class="project-card motion-item" data-project="ai" data-motion-delay="0">
             <div class="project-visual" aria-hidden="true">
-              <img class="project-cover-image" src="assets/ai-data-platform.webp" width="1200" height="899" alt="大模型数据工程开发平台项目封面" loading="lazy" decoding="async" fetchpriority="low" />
+              <img class="project-cover-image" src="assets/ai-data-platform.webp" width="1200" height="899" alt="大模型数据工程开发平台项目封面" loading="lazy" decoding="async" fetchpriority="low" draggable="false" data-protected-image />
             </div>
             <div class="project-body">
               <p class="project-category">AI DATA ENGINEERING PLATFORM</p>
@@ -3366,37 +3370,6 @@
             </div>
           </article>
 
-            <article class="project-card motion-item" data-project="crm" data-motion-delay="120">
-              <div class="project-visual" aria-hidden="true">
-                <img class="project-cover-image" src="assets/crm-system-cover.webp" width="1200" height="675" alt="CRM 客户管理系统项目封面" loading="lazy" decoding="async" fetchpriority="low" />
-              </div>
-            <div class="project-body">
-              <p class="project-category">ENTERPRISE CRM SYSTEM</p>
-              <h3 class="project-title">CRM 客户管理系统</h3>
-              <p class="project-subtitle">企业业务后台 · 流程优化 · 用户效率提升</p>
-              <p class="project-desc" title="为大型企业重新设计全流程客户关系管理平台，覆盖线索分配、跟进记录、商机管理到合同签约全链路体验。">为大型企业重新设计全流程客户关系管理平台，覆盖线索分配、跟进记录、商机管理到合同签约全链路体验。</p>
-              <button class="project-toggle" type="button" data-project="crm" aria-haspopup="dialog">查看详情</button>
-              <div class="project-details">
-                <div class="project-details-inner">
-                  <div class="detail-block">
-                    <b>背景</b>
-                    <span>原系统存在指标命名不一致、筛选入口分散、数据解释缺失等问题。</span>
-                  </div>
-                  <div class="detail-block">
-                    <b>方法</b>
-                    <span>通过角色访谈、指标盘点、任务流拆解，建立“指标目录 + 查询模板 + 异常归因”的核心框架。</span>
-                  </div>
-                  <div class="detail-block">
-                    <b>成果</b>
-                    <span>完成数据资产导航、看板编辑器、异常详情页与组件规范，降低新用户上手成本。</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-
-
         </div>
       </section>
 
@@ -3412,9 +3385,9 @@
           <article class="skill-group motion-item" data-motion-delay="0">
             <span class="skill-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0l8.57-3.9a1 1 0 0 0 0-1.84Z" stroke="var(--skill-accent)" stroke-width="2"></path>
-                <path d="m22 12.18-9.17 4.17a2 2 0 0 1-1.66 0L2 12.18" stroke="#18181b" stroke-width="2"></path>
-                <path d="m22 17.18-9.17 4.17a2 2 0 0 1-1.66 0L2 17.18" stroke="#18181b" stroke-width="2"></path>
+                <path d="M12 3 21 7.25 12 11.5 3 7.25 12 3Z" stroke="var(--skill-accent)" stroke-width="2"></path>
+                <path d="M21 12 12 16.25 3 12" stroke="#18181b" stroke-width="2"></path>
+                <path d="M21 16.75 12 21 3 16.75" stroke="#18181b" stroke-width="2"></path>
               </svg>
             </span>
             <h3>业务与研究</h3>
@@ -3428,9 +3401,11 @@
           <article class="skill-group motion-item" data-motion-delay="100">
             <span class="skill-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 14c.2-1 .7-1.7 1.5-2.5A5 5 0 1 0 7.5 11.5c.8.8 1.3 1.5 1.5 2.5" stroke="var(--skill-accent)" stroke-width="2"></path>
-                <path d="M9 18h6" stroke="#18181b" stroke-width="2"></path>
-                <path d="M10 22h4" stroke="#18181b" stroke-width="2"></path>
+                <path d="M3 6h4.75" stroke="#18181b" stroke-width="2"></path>
+                <path d="M12.25 6H18a3.5 3.5 0 0 1 0 7H6a3.5 3.5 0 0 0 0 7h4.75" stroke="#18181b" stroke-width="2"></path>
+                <path d="M17 20h4" stroke="#18181b" stroke-width="2"></path>
+                <circle cx="10" cy="6" r="2.25" stroke="var(--skill-accent)" stroke-width="2"></circle>
+                <circle cx="14" cy="20" r="2.25" stroke="var(--skill-accent)" stroke-width="2"></circle>
               </svg>
             </span>
             <h3>产品与交互</h3>
@@ -3444,10 +3419,10 @@
           <article class="skill-group motion-item" data-motion-delay="200">
             <span class="skill-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="14" height="10" x="3" y="4" rx="2" stroke="var(--skill-accent)" stroke-width="2"></rect>
-                <path d="M7 20h4" stroke="#18181b" stroke-width="2"></path>
-                <path d="M10 14v6" stroke="#18181b" stroke-width="2"></path>
-                <rect width="6" height="10" x="15" y="10" rx="2" stroke="#18181b" stroke-width="2"></rect>
+                <path d="m12 2.25 2.9 2.9L12 8.05l-2.9-2.9L12 2.25Z" stroke="#18181b" stroke-width="2"></path>
+                <path d="m5.5 9.1 2.9 2.9-2.9 2.9L2.6 12l2.9-2.9Z" stroke="var(--skill-accent)" stroke-width="2"></path>
+                <path d="m18.5 9.1 2.9 2.9-2.9 2.9-2.9-2.9 2.9-2.9Z" stroke="var(--skill-accent)" stroke-width="2"></path>
+                <path d="m12 15.95 2.9 2.9-2.9 2.9-2.9-2.9 2.9-2.9Z" stroke="#18181b" stroke-width="2"></path>
               </svg>
             </span>
             <h3>设计系统</h3>
@@ -3461,9 +3436,10 @@
           <article class="skill-group motion-item" data-motion-delay="300">
             <span class="skill-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m18 16 4-4-4-4" stroke="var(--skill-accent)" stroke-width="2"></path>
-                <path d="m6 8-4 4 4 4" stroke="var(--skill-accent)" stroke-width="2"></path>
-                <path d="m14.5 4-5 16" stroke="#18181b" stroke-width="2"></path>
+                <path d="M7 21h-.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3H14l5 5v5.25" stroke="#18181b" stroke-width="2"></path>
+                <path d="M14 3v5h5" stroke="#18181b" stroke-width="2"></path>
+                <path d="m12.75 15.5-2 2 2 2" stroke="var(--skill-accent)" stroke-width="2"></path>
+                <path d="m17.25 15.5 2 2-2 2" stroke="var(--skill-accent)" stroke-width="2"></path>
               </svg>
             </span>
             <h3>协作与交付</h3>
@@ -3552,8 +3528,8 @@
             </div>
             <div class="project-modal-interface-body" id="projectModalInterfaceBody">
               <p class="project-modal-note" id="projectModalMockup"></p>
-              <div class="project-modal-showcase" id="projectModalShowcase" hidden>
-                <img id="projectModalShowcaseImage" alt="" loading="lazy" decoding="async" fetchpriority="low" />
+              <div class="project-modal-showcase" id="projectModalShowcase" hidden data-protected-image-area>
+                <img id="projectModalShowcaseImage" alt="" loading="lazy" decoding="async" fetchpriority="low" draggable="false" data-protected-image />
               </div>
             </div>
           </section>
@@ -3607,14 +3583,14 @@
               <span>点击跳转</span>
             </div>
             <div class="image-viewer-thumb-scroll" id="imageViewerThumbScroll">
-              <div class="image-viewer-thumb-track" id="imageViewerThumbTrack" role="button" tabindex="0" aria-label="点击缩略图定位右侧大图">
-                <img id="imageViewerThumbImage" alt="" decoding="async" fetchpriority="low" />
+              <div class="image-viewer-thumb-track" id="imageViewerThumbTrack" role="button" tabindex="0" aria-label="点击缩略图定位右侧大图" data-protected-image-area>
+                <img id="imageViewerThumbImage" alt="" decoding="async" fetchpriority="low" draggable="false" data-protected-image />
                 <span class="image-viewer-thumb-frame" id="imageViewerThumbFrame" aria-hidden="true"></span>
               </div>
             </div>
           </aside>
-          <div class="image-viewer-canvas" tabindex="0">
-            <img id="imageViewerImage" alt="" decoding="async" fetchpriority="low" />
+          <div class="image-viewer-canvas" tabindex="0" data-protected-image-area>
+            <img id="imageViewerImage" alt="" decoding="async" fetchpriority="low" draggable="false" data-protected-image />
           </div>
         </div>
       </div>
@@ -3667,6 +3643,7 @@
       const imageViewerThumbFrame = document.querySelector("#imageViewerThumbFrame");
       const imageViewerZoomButtons = document.querySelectorAll(".image-viewer-zoom-button");
       const imageViewerCloseButtons = imageViewer.querySelectorAll("[data-image-viewer-close]");
+      const protectedImageTargets = document.querySelectorAll("[data-protected-image], [data-protected-image-area]");
       let activeModalTrigger = null;
       let activeDetailImage = null;
       let activeDetailThumbImage = null;
@@ -3682,27 +3659,6 @@
       };
 
       const projectDetails = {
-        crm: {
-          title: "CRM 客户管理系统",
-          subtitle: "企业业务后台 · 流程优化 · 用户效率提升",
-          category: "ENTERPRISE CRM SYSTEM",
-          image: "assets/crm-system-cover.webp",
-          detailImage: "assets/crm-system-detail.jpg",
-          detailPreviewImage: "assets/crm-system-detail-mobile.webp",
-          tags: ["CRM系统", "流程优化", "角色权限", "SaaS平台"],
-          metrics: [
-            { value: "38%", label: "查询路径缩短" },
-            { value: "2.1x", label: "看板复用提升" }
-          ],
-          mockup: "重新设计的客户工作台，将线索、商机、跟进三大模块整合至统一视图，支持多维度筛选与批量操作，极大降低销售人员在系统间的切换成本。",
-          background: "随着业务不断扩展，原有CRM系统的框架布局逐渐暴露出深层弊端：面对高频切换的多样化使用场景，其老旧的设计语言与低效的操作路径已无法承载日益复杂的业务需求，用户对流畅、智能、场景化体验的诉求迫切，系统重构与体验升级势在必行。",
-          challenge: "核心矛盾是：系统解决了「有没有跟进」的问题，但没有解决「跟得对不对、准不准、能否转化」的问题。功能完整但体验割裂、数据丰富但洞察缺失、流程覆盖但转化断层。",
-          solution: "深度访谈了销售总监、区域经理和一线销售，绘制完整业务旅程图。采用“角色工作台”策略，为不同角色提供差异化首屏视图。重新梳理信息架构，将全链路数据打通，设计“客户360视图”聚合页。针对移动场景专项设计拜访记录与快速跟进模块，支持语音转文字输入。",
-          results: [
-            "核心操作路径平均点击次数由11步缩短至4步",
-            "销售日均有效跟进量提升58%，商机转化率提升23%"
-          ]
-        },
         ai: {
           title: "大模型数据工程开发平台",
           subtitle: "数据可视化 · AI研发工具 · 技术平台设计",
@@ -4528,6 +4484,12 @@
         card.addEventListener("click", () => {
           openProjectModal(card.dataset.project, card.querySelector(".project-toggle"));
         });
+      });
+
+      protectedImageTargets.forEach((target) => {
+        target.addEventListener("contextmenu", (event) => event.preventDefault());
+        target.addEventListener("dragstart", (event) => event.preventDefault());
+        target.addEventListener("selectstart", (event) => event.preventDefault());
       });
 
       projectModalCloseButtons.forEach((button) => {
