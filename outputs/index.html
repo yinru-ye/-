@@ -1731,6 +1731,28 @@
         overflow: hidden;
       }
 
+      .project-modal-showcase::before {
+        content: "图片加载中...";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        min-height: 220px;
+        display: none;
+        place-items: center;
+        color: #71717a;
+        background:
+          linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.78), transparent),
+          #f7f7fa;
+        background-size: 220% 100%, 100% 100%;
+        font-size: 13px;
+        font-weight: 800;
+        animation: modal-image-loading 1.25s linear infinite;
+      }
+
+      .project-modal-showcase.is-loading::before {
+        display: grid;
+      }
+
       .project-modal-showcase::after {
         content: "点击查看大图";
         position: absolute;
@@ -1748,6 +1770,20 @@
         pointer-events: none;
       }
 
+      .project-modal-showcase.is-loading::after {
+        opacity: 0;
+      }
+
+      @keyframes modal-image-loading {
+        from {
+          background-position: 180% 0, 0 0;
+        }
+
+        to {
+          background-position: -80% 0, 0 0;
+        }
+      }
+
       .project-modal-showcase[hidden] {
         display: none;
       }
@@ -1758,6 +1794,13 @@
         max-width: 100%;
         height: auto;
         object-fit: contain;
+        opacity: 1;
+        transition: opacity 0.24s ease;
+      }
+
+      .project-modal-showcase.is-loading img {
+        min-height: 220px;
+        opacity: 0;
       }
 
       .image-viewer {
@@ -2930,8 +2973,33 @@
         }
 
         h1 {
-          font-size: clamp(56px, 17vw, 74px);
+          display: grid;
+          gap: 10px;
+          font-size: clamp(46px, 12.6vw, 62px);
+          line-height: 0.98;
           max-width: 100%;
+        }
+
+        .hero-title-main,
+        .hero-title-outline {
+          width: 100%;
+          max-width: 100%;
+          white-space: nowrap;
+          font-stretch: normal;
+          transform: none;
+        }
+
+        .hero-title-main {
+          margin-bottom: 0;
+          font-size: clamp(46px, 12.6vw, 62px);
+          line-height: 0.98;
+        }
+
+        .hero-title-outline {
+          font-size: clamp(38px, 10.5vw, 50px);
+          line-height: 1.04;
+          -webkit-text-stroke-width: 1px;
+          text-stroke-width: 1px;
         }
 
         .hero-copy {
@@ -3122,8 +3190,18 @@
         }
 
         h1 {
-          font-size: 48px;
-          line-height: 1.05;
+          font-size: clamp(42px, 12vw, 48px);
+          line-height: 1;
+        }
+
+        .hero-title-main {
+          font-size: clamp(42px, 12vw, 48px);
+        }
+
+        .hero-title-outline {
+          font-size: clamp(34px, 9.5vw, 39px);
+          -webkit-text-stroke-width: 0.9px;
+          text-stroke-width: 0.9px;
         }
 
         h2 {
@@ -3544,6 +3622,7 @@
       const imageViewerCloseButtons = imageViewer.querySelectorAll("[data-image-viewer-close]");
       let activeModalTrigger = null;
       let activeDetailImage = null;
+      let activeDetailThumbImage = null;
       let activeDetailImageTitle = "";
       let imageViewerZoom = 1;
       const imageViewerMinZoom = 0.5;
@@ -3562,6 +3641,7 @@
           category: "ENTERPRISE CRM SYSTEM",
           image: "assets/crm-system-cover.webp",
           detailImage: "assets/crm-system-detail.jpg",
+          detailPreviewImage: "assets/crm-system-detail-mobile.webp",
           tags: ["CRM系统", "流程优化", "角色权限", "SaaS平台"],
           metrics: [
             { value: "38%", label: "查询路径缩短" },
@@ -3582,6 +3662,7 @@
           category: "AI DATA ENGINEERING PLATFORM",
           image: "assets/ai-data-platform.webp",
           detailImage: "assets/ai-data-engineering-detail.jpg",
+          detailPreviewImage: "assets/ai-data-engineering-detail-mobile.webp",
           tags: ["数据可视化", "AI工具链", "研发效能", "技术平台"],
           metrics: [
             { value: "46%", label: "配置错误下降" },
@@ -4134,16 +4215,26 @@
         projectModalSubtitle.textContent = project.subtitle;
         projectModalMockup.textContent = project.mockup;
         if (project.detailImage) {
+          const shouldUseLightPreview = window.matchMedia("(max-width: 760px)").matches;
+          const previewImage = shouldUseLightPreview && project.detailPreviewImage
+            ? project.detailPreviewImage
+            : project.detailImage;
+
           projectModalShowcase.hidden = false;
-          projectModalShowcaseImage.src = project.detailImage;
+          projectModalShowcase.classList.add("is-loading");
+          projectModalShowcaseImage.removeAttribute("src");
+          projectModalShowcaseImage.src = previewImage;
           projectModalShowcaseImage.alt = `${project.title}界面展示长图`;
           activeDetailImage = project.detailImage;
+          activeDetailThumbImage = project.detailPreviewImage || project.detailImage;
           activeDetailImageTitle = `${project.title}界面展示大图`;
         } else {
           projectModalShowcase.hidden = true;
+          projectModalShowcase.classList.remove("is-loading");
           projectModalShowcaseImage.removeAttribute("src");
           projectModalShowcaseImage.alt = "";
           activeDetailImage = null;
+          activeDetailThumbImage = null;
           activeDetailImageTitle = "";
         }
         projectModalBackground.textContent = project.background;
@@ -4226,7 +4317,9 @@
             projectModalShowcaseImage.removeAttribute("src");
             projectModalShowcaseImage.alt = "";
             projectModalShowcase.hidden = true;
+            projectModalShowcase.classList.remove("is-loading");
             activeDetailImage = null;
+            activeDetailThumbImage = null;
             activeDetailImageTitle = "";
           }
         }, 240);
@@ -4347,7 +4440,7 @@
         updateImageViewerZoomControls();
         imageViewerImage.src = activeDetailImage;
         imageViewerImage.alt = activeDetailImageTitle;
-        imageViewerThumbImage.src = activeDetailImage;
+        imageViewerThumbImage.src = activeDetailThumbImage || activeDetailImage;
         imageViewerThumbImage.alt = `${activeDetailImageTitle}缩略图`;
         imageViewerTitle.textContent = activeDetailImageTitle;
         imageViewer.hidden = false;
@@ -4395,6 +4488,14 @@
       });
 
       projectModalShowcase.addEventListener("click", openImageViewer);
+
+      projectModalShowcaseImage.addEventListener("load", () => {
+        projectModalShowcase.classList.remove("is-loading");
+      });
+
+      projectModalShowcaseImage.addEventListener("error", () => {
+        projectModalShowcase.classList.remove("is-loading");
+      });
 
       projectInterfaceToggle.addEventListener("click", () => {
         const isExpanded = projectInterfaceToggle.getAttribute("aria-expanded") === "true";
