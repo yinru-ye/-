@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="B端UX/产品设计师个人作品集官网，展示企业级产品设计项目、专业技能、工作经历与联系方式。"
+      content="B端UX/产品设计师个人作品集官网，展示企业级产品设计项目、专业技能与联系方式。"
     />
-    <title>B端UX/产品设计师作品集</title>
+    <title>YinRu的作品集网站-B端UX/产品设计师</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/yinru-favicon.png?v=light" />
+    <link rel="shortcut icon" type="image/png" href="assets/yinru-favicon.png?v=light" />
+    <link rel="apple-touch-icon" href="assets/yinru-favicon.png?v=light" />
     <style>
       :root {
         --bg: #fafafa;
@@ -28,6 +31,32 @@
         --radius: 10px;
         --radius-lg: 16px;
         --max: 1152px;
+        --linear-ease: linear(
+          0,
+          0.068,
+          0.19 2.7%,
+          0.804 8.1%,
+          1.037,
+          1.199 13.2%,
+          1.245,
+          1.27 15.8%,
+          1.274,
+          1.272 17.4%,
+          1.249 19.1%,
+          0.996 28%,
+          0.949,
+          0.928 33.3%,
+          0.926,
+          0.933 36.8%,
+          1.001 45.6%,
+          1.013,
+          1.019 50.8%,
+          1.018 54.4%,
+          1 63.1%,
+          0.995 68%,
+          1.001 85%,
+          1
+        );
       }
 
       * {
@@ -66,19 +95,33 @@
         left: 0;
         right: 0;
         z-index: 20;
-        border-bottom: 1px solid transparent;
+        border: 1px solid transparent;
+        border-radius: 0;
         background: transparent;
         backdrop-filter: blur(18px);
         transition:
+          top 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+          left 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+          right 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+          border-radius 0.32s cubic-bezier(0.22, 1, 0.36, 1),
           background 0.3s ease,
           border-color 0.3s ease,
           box-shadow 0.3s ease;
       }
 
       .site-header.scrolled {
-        border-bottom-color: #f4f4f5;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
+        top: 18px;
+        left: max(32px, calc((100vw - 1200px) / 2));
+        right: max(32px, calc((100vw - 1200px) / 2));
+        border-color: rgba(255, 255, 255, 0.42);
+        border-radius: 24px;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.52), rgba(248, 248, 255, 0.34)),
+          rgba(255, 255, 255, 0.26);
+        box-shadow:
+          0 18px 48px rgba(24, 24, 27, 0.1),
+          0 1px 0 rgba(255, 255, 255, 0.54) inset;
+        backdrop-filter: blur(30px) saturate(1.34);
       }
 
       .nav {
@@ -89,17 +132,36 @@
         align-items: center;
         justify-content: space-between;
         gap: 24px;
+        transition:
+          width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+          height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+          padding 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-header.scrolled .nav {
+        width: 100%;
+        height: 58px;
+        padding: 0 18px 0 22px;
       }
 
       .brand {
         display: inline-flex;
         align-items: center;
-        gap: 0;
+        gap: 9px;
         color: #fafafa;
         font-size: 16px;
         font-weight: 900;
         letter-spacing: 0.08em;
         white-space: nowrap;
+      }
+
+      .brand-logo {
+        width: 30px;
+        height: 30px;
+        flex: 0 0 auto;
+        object-fit: contain;
+        background: transparent;
+        box-shadow: none;
       }
 
       .brand-ux {
@@ -121,28 +183,42 @@
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 24px;
+        gap: 10px;
+        position: relative;
+        isolation: isolate;
+        padding: 0 4px;
+        --color-1: rgba(255, 255, 255, 0.92);
+        --color-2: rgba(228, 228, 231, 0.78);
+        --color-3: rgba(196, 181, 253, 0.42);
+        --color-4: rgba(161, 161, 170, 0.5);
       }
 
       .nav-link {
-        padding: 8px 0;
-        border-radius: var(--radius);
+        position: relative;
+        z-index: 4;
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 13px;
+        border-radius: 999px;
         color: #e4e4e7;
         font-size: 13px;
-        font-weight: 650;
+        font-weight: 760;
         text-shadow: 0 1px 12px rgba(0, 0, 0, 0.24);
+        white-space: nowrap;
         transition:
           color 0.2s ease,
+          text-shadow 0.2s ease,
           background 0.2s ease;
       }
 
       .site-header.scrolled .nav-link {
-        color: #71717a;
+        color: #52525b;
         text-shadow: none;
       }
 
-      .site-header.scrolled .nav-link:hover,
-      .site-header.scrolled .nav-link.active {
+      .site-header.scrolled .nav-link:hover {
         color: #18181b;
       }
 
@@ -150,6 +226,25 @@
       .nav-link.active {
         color: #fafafa;
         background: transparent;
+      }
+
+      .nav-link.active {
+        color: #09090b;
+        text-shadow: none;
+      }
+
+      .site-header:not(.scrolled) .nav-link.active {
+        color: #ffffff;
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.28);
+      }
+
+      .nav-link:focus-visible {
+        outline: 1.5px solid rgba(255, 255, 255, 0.9);
+        outline-offset: 3px;
+      }
+
+      .site-header.scrolled .nav-link.active {
+        color: #09090b;
       }
 
       .nav-cta {
@@ -180,6 +275,174 @@
       .site-header.scrolled .nav-cta.active {
         border-color: #3f3f46;
         background: #3f3f46;
+      }
+
+      .nav-cta.active,
+      .site-header.scrolled .nav-cta.active {
+        border-color: transparent;
+        color: #09090b;
+        background: transparent;
+      }
+
+      .site-header:not(.scrolled) .nav-cta.active {
+        border-color: rgba(244, 244, 245, 0.38);
+        color: #ffffff;
+        background: rgba(82, 82, 91, 0.66);
+      }
+
+      .nav-gooey-effect {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        pointer-events: none;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        transform: translate3d(0, 0, 0.01px);
+        transition:
+          left 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          top 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.2s ease;
+      }
+
+      .nav-gooey-effect.is-ready {
+        opacity: 1;
+      }
+
+      .site-header:not(.scrolled) .nav-gooey-effect.is-ready {
+        opacity: 0;
+      }
+
+      .nav-gooey-filter {
+        z-index: 2;
+        filter: blur(7px) contrast(80);
+        mix-blend-mode: screen;
+      }
+
+      .site-header.scrolled .nav-gooey-filter {
+        filter: none;
+        mix-blend-mode: normal;
+      }
+
+      .nav-gooey-filter::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: 999px;
+        background: #ffffff;
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .site-header.scrolled .nav-gooey-filter::after {
+        background: #f4f4f5;
+        box-shadow:
+          0 0 0 1px rgba(24, 24, 27, 0.08) inset,
+          0 8px 24px rgba(24, 24, 27, 0.08);
+      }
+
+      .nav-gooey-filter.is-animating::after {
+        animation: nav-gooey-pill 0.3s ease both;
+      }
+
+      .nav-gooey-text {
+        z-index: 5;
+        color: #09090b;
+        font-size: 13px;
+        font-weight: 860;
+        line-height: 1;
+        text-shadow: none;
+      }
+
+      @keyframes nav-gooey-pill {
+        from {
+          opacity: 0;
+          transform: scale(0.65);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .nav-particle,
+      .nav-point {
+        display: block;
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        opacity: 0;
+        transform-origin: center;
+        will-change: transform, opacity;
+      }
+
+      .nav-particle {
+        position: absolute;
+        top: calc(50% - 6px);
+        left: calc(50% - 6px);
+        animation: nav-gooey-particle var(--time, 960ms) cubic-bezier(0.22, 1, 0.36, 1) 1;
+      }
+
+      .nav-point {
+        background: var(--color, #ffffff);
+        filter: blur(0.25px);
+        box-shadow: 0 0 10px rgba(196, 181, 253, 0.18);
+        animation: nav-gooey-point var(--time, 960ms) cubic-bezier(0.22, 1, 0.36, 1) 1;
+      }
+
+      @keyframes nav-gooey-particle {
+        0% {
+          transform: rotate(0deg) translate(0, 0);
+          opacity: 0;
+        }
+
+        12% {
+          opacity: 0.82;
+        }
+
+        58% {
+          transform: rotate(calc(var(--rotate) * 0.42)) translate(calc(var(--start-x) * 0.72), calc(var(--start-y) * 0.72));
+          opacity: 0.72;
+        }
+
+        82% {
+          transform: rotate(calc(var(--rotate) * 0.72)) translate(var(--end-x), var(--end-y));
+          opacity: 0.46;
+        }
+
+        100% {
+          transform: rotate(calc(var(--rotate) * 0.88)) translate(calc(var(--end-x) * 0.42), calc(var(--end-y) * 0.42));
+          opacity: 0;
+        }
+      }
+
+      @keyframes nav-gooey-point {
+        0% {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        24% {
+          opacity: 0.84;
+          transform: scale(calc(var(--scale, 1) * 0.72));
+        }
+
+        62% {
+          opacity: 0.72;
+          transform: scale(var(--scale, 1));
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(calc(var(--scale, 1) * 0.28));
+        }
       }
 
       .menu-toggle {
@@ -234,8 +497,7 @@
         scroll-margin-top: 88px;
       }
 
-      #projects,
-      #experience {
+      #projects {
         width: 100%;
         padding-left: max(60px, calc((100vw - var(--max)) / 2));
         padding-right: max(60px, calc((100vw - var(--max)) / 2));
@@ -248,7 +510,7 @@
         border-bottom: 1px solid #f4f4f5;
         padding-left: max(60px, calc((100vw - var(--max)) / 2));
         padding-right: max(60px, calc((100vw - var(--max)) / 2));
-        background: #fafafa;
+        background: #FBF8FF;
       }
 
       #contact {
@@ -258,9 +520,7 @@
         padding-left: max(60px, calc((100vw - var(--max)) / 2));
         padding-right: max(60px, calc((100vw - var(--max)) / 2));
         color: #ffffff;
-        background:
-          radial-gradient(circle at 22% 26%, rgba(63, 63, 70, 0.28), transparent 30%),
-          linear-gradient(90deg, #18181b, #18181b);
+        background: #120F17;
         isolation: isolate;
         overflow: hidden;
       }
@@ -286,16 +546,11 @@
         position: absolute;
         inset: 0;
         z-index: -2;
-        background:
-          radial-gradient(circle at 84% 64%, rgba(63, 63, 70, 0.24), transparent 32%),
-          #18181b;
+        background: #120F17;
         pointer-events: none;
       }
 
       .hero {
-        --hero-cursor-x: 50%;
-        --hero-cursor-y: 45%;
-        --hero-cursor-alpha: 0;
         position: relative;
         width: 100%;
         min-height: 100svh;
@@ -305,58 +560,67 @@
         isolation: isolate;
         overflow: hidden;
         background:
-          radial-gradient(ellipse at 90% 2%, rgba(243, 232, 255, 0.78), transparent 22%),
-          radial-gradient(ellipse at 78% 16%, rgba(192, 132, 252, 0.66), transparent 34%),
-          radial-gradient(ellipse at 58% 20%, rgba(109, 40, 217, 0.52), transparent 46%),
-          linear-gradient(90deg, #000000 0%, #05020d 26%, #1e0b46 58%, #5b21b6 100%);
+          radial-gradient(circle at 50% 36%, rgba(91, 33, 182, 0.12), transparent 34%),
+          radial-gradient(circle at 82% 74%, rgba(168, 85, 247, 0.1), transparent 40%),
+          linear-gradient(180deg, #070711 0%, #090713 52%, #0c0618 78%, #12071f 100%);
       }
 
       .hero::before {
         content: "";
         position: absolute;
         inset: 0;
-        z-index: 1;
+        z-index: 2;
         background:
-          linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px),
-          linear-gradient(rgba(216, 180, 254, 0.2) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(191, 219, 254, 0.16) 1px, transparent 1px),
-          linear-gradient(90deg, transparent 0%, rgba(109, 40, 217, 0.08) 54%, rgba(168, 85, 247, 0.13) 74%, rgba(221, 214, 254, 0.2) 100%);
-        background-size: 60px 60px, 60px 60px, 60px 60px, 60px 60px, 100% 100%;
-        background-position: center;
-        opacity: 0.58;
+          radial-gradient(circle at 46% 44%, rgba(168, 85, 247, 0.08), transparent 38%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 50%, rgba(168, 85, 247, 0.05));
+        opacity: 0.72;
         mix-blend-mode: screen;
         pointer-events: none;
         -webkit-mask-image: linear-gradient(
-          90deg,
-          transparent 0%,
-          transparent 24%,
-          rgba(0, 0, 0, 0.12) 40%,
-          rgba(0, 0, 0, 0.62) 64%,
-          #000 100%
+          180deg,
+          #000 0%,
+          rgba(0, 0, 0, 0.94) 52%,
+          rgba(0, 0, 0, 0.46) 84%,
+          transparent 100%
         );
         mask-image: linear-gradient(
-          90deg,
-          transparent 0%,
-          transparent 24%,
-          rgba(0, 0, 0, 0.12) 40%,
-          rgba(0, 0, 0, 0.62) 64%,
-          #000 100%
+          180deg,
+          #000 0%,
+          rgba(0, 0, 0, 0.94) 52%,
+          rgba(0, 0, 0, 0.46) 84%,
+          transparent 100%
         );
       }
 
       .hero::after {
         content: "";
         position: absolute;
-        inset: -18%;
+        inset: -16% -8% -24%;
         z-index: 0;
         background:
-          radial-gradient(circle at 91% 2%, rgba(255, 255, 255, 0.36), transparent 18%),
-          radial-gradient(circle at 78% 28%, rgba(168, 85, 247, 0.32), transparent 38%),
-          linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.82) 24%, rgba(0, 0, 0, 0.16) 58%, transparent 100%),
-          linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.66) 90%, #000000 100%);
-        filter: blur(0);
+          radial-gradient(56% 20% at 50% 78%, rgba(168, 85, 247, 0.54), transparent 72%),
+          radial-gradient(34% 16% at 18% 82%, rgba(139, 92, 246, 0.34), transparent 70%),
+          radial-gradient(38% 16% at 86% 82%, rgba(217, 70, 239, 0.36), transparent 72%),
+          linear-gradient(153deg, transparent 46%, rgba(139, 92, 246, 0.08) 57%, rgba(192, 132, 252, 0.34) 66%, transparent 78%),
+          linear-gradient(10deg, transparent 54%, rgba(236, 72, 153, 0.1) 62%, rgba(168, 85, 247, 0.32) 72%, transparent 84%),
+          linear-gradient(180deg, transparent 50%, rgba(24, 12, 46, 0.2) 66%, rgba(104, 32, 160, 0.52) 100%);
+        filter: blur(20px) saturate(1.24);
+        opacity: 0.98;
         pointer-events: none;
+        -webkit-mask-image: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 0, 0, 0.08) 30%,
+          rgba(0, 0, 0, 0.68) 58%,
+          #000 100%
+        );
+        mask-image: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 0, 0, 0.08) 30%,
+          rgba(0, 0, 0, 0.68) 58%,
+          #000 100%
+        );
       }
 
       .hero-bg-word {
@@ -373,67 +637,15 @@
         user-select: none;
       }
 
-      .hero-cursor-light {
+      .hero-dot-field {
         position: absolute;
         inset: 0;
-        z-index: 2;
-        opacity: var(--hero-cursor-alpha);
-        background:
-          radial-gradient(
-            circle 8px at var(--hero-cursor-x) var(--hero-cursor-y),
-            rgba(255, 255, 255, 0.96),
-            rgba(221, 214, 254, 0.72) 38%,
-            rgba(168, 85, 247, 0.18) 66%,
-            transparent 100%
-          ),
-          radial-gradient(
-            circle 52px at var(--hero-cursor-x) var(--hero-cursor-y),
-            rgba(216, 180, 254, 0.16),
-            rgba(139, 92, 246, 0.1) 42%,
-            rgba(59, 130, 246, 0.05) 64%,
-            transparent 100%
-          );
-        filter: saturate(1.18);
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        opacity: 0.86;
         mix-blend-mode: screen;
         pointer-events: none;
-        transition: opacity 0.24s ease;
-        will-change: opacity, background;
-      }
-
-      .hero-click-ripple {
-        position: absolute;
-        left: var(--ripple-x);
-        top: var(--ripple-y);
-        z-index: 2;
-        width: 16px;
-        height: 16px;
-        border-radius: 999px;
-        pointer-events: none;
-        background:
-          radial-gradient(circle, rgba(255, 255, 255, 0.94) 0 18%, rgba(221, 214, 254, 0.62) 34%, rgba(168, 85, 247, 0.24) 58%, transparent 72%);
-        box-shadow:
-          0 0 18px rgba(221, 214, 254, 0.72),
-          0 0 34px rgba(139, 92, 246, 0.34);
-        mix-blend-mode: screen;
-        transform: translate(-50%, -50%) scale(1);
-        animation: hero-click-ripple 0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        will-change: transform, opacity;
-      }
-
-      @keyframes hero-click-ripple {
-        0% {
-          opacity: 0.82;
-          transform: translate(-50%, -50%) scale(0.82);
-        }
-
-        55% {
-          opacity: 0.34;
-        }
-
-        100% {
-          opacity: 0;
-          transform: translate(-50%, -50%) scale(7.2);
-        }
       }
 
       .hero-content {
@@ -442,7 +654,7 @@
         width: min(100% - 120px, var(--max));
         margin: 0 auto;
         min-height: 100svh;
-        padding: clamp(112px, 18.5vh, 170px) 0 42px;
+        padding: 380px 0 42px;
         display: flex;
         flex-direction: column;
       }
@@ -459,27 +671,96 @@
       }
 
       .availability {
+        --star-border-color: rgba(255, 255, 255, 0.94);
+        --star-border-speed: 5s;
+        --star-border-thickness: 1px;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: var(--star-border-thickness) 0;
+        color: #f8fafc;
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+        overflow: hidden;
+      }
+
+      .availability::before,
+      .availability::after {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        width: 300%;
+        height: 50%;
+        border-radius: 999px;
+        opacity: 0.72;
+        background: radial-gradient(circle, var(--star-border-color), transparent 10%);
+        pointer-events: none;
+      }
+
+      .availability::before {
+        right: -250%;
+        bottom: -11px;
+        animation: star-movement-bottom var(--star-border-speed) linear infinite alternate;
+      }
+
+      .availability::after {
+        left: -250%;
+        top: -11px;
+        animation: star-movement-top var(--star-border-speed) linear infinite alternate;
+      }
+
+      .availability-inner {
+        position: relative;
+        z-index: 1;
         display: inline-flex;
         align-items: center;
         gap: 8px;
         min-height: 28px;
-        border: 1px solid rgba(244, 244, 245, 0.18);
+        border: 1px solid rgba(244, 244, 245, 0.2);
         border-radius: 999px;
         padding: 4px 13px;
         color: #cbd5e1;
-        background: rgba(39, 39, 42, 0.58);
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.08em;
+        background: rgba(9, 9, 11, 0.82);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.08) inset,
+          0 0 0 1px rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(12px);
       }
 
-      .availability::before {
-        content: "";
+      .availability-dot {
         width: 6px;
         height: 6px;
         border-radius: 50%;
         background: #00e0b8;
         box-shadow: 0 0 16px rgba(0, 224, 184, 0.62);
+      }
+
+      @keyframes star-movement-bottom {
+        0% {
+          transform: translate(0%, 0%);
+          opacity: 1;
+        }
+
+        100% {
+          transform: translate(-100%, 0%);
+          opacity: 0;
+        }
+      }
+
+      @keyframes star-movement-top {
+        0% {
+          transform: translate(0%, 0%);
+          opacity: 1;
+        }
+
+        100% {
+          transform: translate(100%, 0%);
+          opacity: 0;
+        }
       }
 
       h1,
@@ -517,6 +798,35 @@
 
       .hero-title-main {
         margin-bottom: 16px;
+        width: max-content;
+        max-width: 100%;
+        color: transparent;
+        background-image: linear-gradient(
+          120deg,
+          #d7d4e7 0%,
+          #f5f3ff 34%,
+          #ffffff 48%,
+          #f5f3ff 58%,
+          #d7d4e7 100%
+        );
+        background-size: 220% auto;
+        background-position: 150% center;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: hero-shiny-text 3.2s linear infinite;
+        text-shadow: 0 0 32px rgba(255, 255, 255, 0.08);
+      }
+
+      @keyframes hero-shiny-text {
+        0% {
+          background-position: 150% center;
+        }
+
+        72%,
+        100% {
+          background-position: -60% center;
+        }
       }
 
       .hero-copy {
@@ -553,6 +863,23 @@
         color: #e4e4e7;
         background: rgba(63, 63, 70, 0.58);
         box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+        cursor: default;
+        transition:
+          transform 0.22s ease,
+          border-color 0.22s ease,
+          background 0.22s ease,
+          color 0.22s ease,
+          box-shadow 0.22s ease;
+      }
+
+      .hero-tags .tag:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.46);
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.12);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.18) inset,
+          0 10px 24px rgba(0, 0, 0, 0.2);
       }
 
       .btn {
@@ -654,12 +981,6 @@
         align-items: end;
         justify-content: space-between;
         gap: 24px;
-      }
-
-      .hero-hint {
-        margin: 0;
-        color: #71717a;
-        font-size: 12px;
       }
 
       .hero-panel {
@@ -829,16 +1150,17 @@
         display: inline-flex;
         align-items: center;
         width: fit-content;
-        min-height: 26px;
+        min-height: 20px;
         margin-bottom: 16px;
-        border-radius: 999px;
-        padding: 4px 12px;
-        color: #52525b;
-        background: #f4f4f5;
+        border-radius: 4px;
+        padding: 3px 7px;
+        color: #6255ff;
+        background: #f1edff;
         font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: 0;
+        text-transform: none;
       }
 
       h2 {
@@ -857,17 +1179,6 @@
         line-height: 1.65;
       }
 
-      .experience-head {
-        display: block;
-        max-width: 640px;
-        margin: 0 auto 64px;
-        text-align: center;
-      }
-
-      .experience-head h2 {
-        margin-bottom: 12px;
-      }
-
       .about-grid {
         display: grid;
         grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
@@ -877,7 +1188,6 @@
       .about-copy,
       .principles,
       .skill-group,
-      .experience-item,
       .contact-panel {
         border: 1px solid var(--line);
         border-radius: var(--radius-lg);
@@ -920,19 +1230,21 @@
 
       .projects-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 32px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
         align-items: stretch;
       }
 
       .project-card {
         min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: minmax(320px, 0.42fr) minmax(0, 0.58fr);
+        border: 1px solid rgba(139, 92, 246, 0.1);
         border-radius: var(--radius-lg);
-        background: #fafafa;
-        box-shadow: none;
+        background: #ffffff;
+        box-shadow:
+          0 1px 2px rgba(24, 24, 27, 0.03),
+          0 18px 44px rgba(24, 24, 27, 0.05);
         overflow: hidden;
         cursor: pointer;
         transition:
@@ -943,16 +1255,20 @@
 
       .project-card:hover,
       .project-card:focus-within {
-        transform: translateY(-8px);
-        border-color: #e4e4e7;
-        box-shadow: var(--shadow);
+        transform: translateY(-7px);
+        border-color: rgba(139, 92, 246, 0.18);
+        box-shadow:
+          0 2px 8px rgba(24, 24, 27, 0.06),
+          0 26px 58px rgba(24, 24, 27, 0.12);
       }
 
       .project-visual {
-        height: 188px;
+        position: relative;
+        min-height: 300px;
+        height: 100%;
         padding: 0;
-        border-bottom: 1px solid var(--line);
-        background: #f4f4f5;
+        border-bottom: 0;
+        background: #ffffff;
         overflow: hidden;
       }
 
@@ -964,7 +1280,14 @@
         border-radius: 0;
         object-fit: cover;
         object-position: center;
-        background: #f4f4f5;
+        background: transparent;
+        filter: saturate(0.98) contrast(0.98);
+        transition: transform 0.38s ease;
+      }
+
+      .project-card:hover .project-cover-image,
+      .project-card:focus-within .project-cover-image {
+        transform: scale(1.035);
       }
 
       .product-frame {
@@ -1034,24 +1357,17 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        padding: 24px;
+        padding: clamp(28px, 4vw, 44px);
       }
 
       .project-category {
-        margin: 0 0 8px;
+        margin: 0 0 10px;
         color: #a1a1aa;
         font-size: 12px;
         font-weight: 800;
+        line-height: 1.25;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-      }
-
-      .project-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 16px;
-        min-height: 26px;
       }
 
       .tag {
@@ -1070,8 +1386,8 @@
       .project-title {
         margin-bottom: 8px;
         color: #18181b;
-        font-size: 20px;
-        line-height: 1.32;
+        font-size: 21px;
+        line-height: 1.28;
         font-weight: 800;
       }
 
@@ -1084,51 +1400,26 @@
       }
 
       .project-desc {
-        min-height: 48px;
-        margin-bottom: 18px;
+        min-height: 0;
+        margin-bottom: 22px;
         color: #52525b;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.7;
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-      }
-
-      .result-strip {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-top: auto;
-        margin-bottom: 16px;
-      }
-
-      .result {
-        border-left: 2px solid #18181b;
-        padding-left: 10px;
-      }
-
-      .result b {
-        display: block;
-        color: #18181b;
-        font-size: 18px;
-        line-height: 1.1;
-      }
-
-      .result span {
-        color: var(--muted);
-        font-size: 12px;
       }
 
       .project-toggle {
         width: fit-content;
+        margin-top: auto;
         border: 0;
         border-radius: 0;
         padding: 0;
         color: #18181b;
         background: transparent;
-        font-size: 14px;
-        font-weight: 700;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1.6;
+        letter-spacing: 0;
         cursor: pointer;
         transition:
           color 0.2s ease,
@@ -1137,13 +1428,25 @@
 
       .project-toggle::after {
         content: "↗";
+        display: inline-block;
         margin-left: 6px;
-        font-size: 13px;
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 1;
+        transform-origin: 50% 50%;
+        transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform;
       }
 
       .project-toggle:hover {
         color: #52525b;
-        transform: translate(2px, -2px);
+        transform: translateX(2px);
+      }
+
+      .project-card:hover .project-toggle::after,
+      .project-card:focus-within .project-toggle::after,
+      .project-toggle:hover::after {
+        transform: rotate(90deg);
       }
 
       .project-modal {
@@ -1692,6 +1995,35 @@
         gap: 12px;
       }
 
+      .project-modal-metrics {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .project-modal-metric {
+        border: 1px solid #ececef;
+        border-radius: 12px;
+        padding: 18px 20px;
+        background: #fafafa;
+      }
+
+      .project-modal-metric b {
+        display: block;
+        margin-bottom: 6px;
+        color: #18181b;
+        font-size: 26px;
+        line-height: 1.05;
+        font-weight: 900;
+      }
+
+      .project-modal-metric span {
+        color: #71717a;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
       .project-modal-result {
         display: flex;
         gap: 12px;
@@ -1745,26 +2077,57 @@
       }
 
       .skill-group {
-        padding: 32px;
+        padding: 34px 28px 32px;
+        text-align: center;
         transition:
           box-shadow 0.2s ease,
           transform 0.2s ease;
       }
 
       .skill-icon {
-        width: 48px;
-        height: 48px;
+        --skill-accent: #8b5cf6;
+        --skill-soft: rgba(139, 92, 246, 0.14);
+        width: 58px;
+        height: 58px;
         display: inline-grid;
         place-items: center;
-        margin-bottom: 26px;
-        border-radius: 14px;
+        margin: 0 auto 18px;
+        border: 1px solid rgba(24, 24, 27, 0.08);
+        border-radius: 50%;
         color: #18181b;
-        background: #f4f4f5;
+        background:
+          radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.96) 0 43%, transparent 44%),
+          radial-gradient(circle at 50% 50%, var(--skill-soft) 0 58%, transparent 60%),
+          #ffffff;
+        box-shadow:
+          0 10px 26px var(--skill-soft),
+          0 0 0 7px rgba(255, 255, 255, 0.72);
+      }
+
+      .skill-group:nth-child(1) .skill-icon {
+        --skill-accent: #fb923c;
+        --skill-soft: rgba(251, 146, 60, 0.16);
+      }
+
+      .skill-group:nth-child(2) .skill-icon {
+        --skill-accent: #8b5cf6;
+        --skill-soft: rgba(139, 92, 246, 0.14);
+      }
+
+      .skill-group:nth-child(3) .skill-icon {
+        --skill-accent: #38bdf8;
+        --skill-soft: rgba(56, 189, 248, 0.15);
+      }
+
+      .skill-group:nth-child(4) .skill-icon {
+        --skill-accent: #facc15;
+        --skill-soft: rgba(250, 204, 21, 0.18);
       }
 
       .skill-icon svg {
-        width: 24px;
-        height: 24px;
+        width: 25px;
+        height: 25px;
+        overflow: visible;
       }
 
       .skill-group:hover {
@@ -1773,115 +2136,30 @@
       }
 
       .skill-group h3 {
-        margin-bottom: 16px;
+        margin-bottom: 14px;
         color: #18181b;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 1.35;
         font-weight: 800;
       }
 
       .skill-list {
         display: grid;
-        gap: 10px;
+        gap: 7px;
         margin: 0;
         padding: 0;
         list-style: none;
       }
 
       .skill-list li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        display: block;
         color: #52525b;
-        font-size: 14px;
-        line-height: 1.6;
+        font-size: 12px;
+        line-height: 1.55;
       }
 
       .skill-list li::before {
-        content: "";
-        flex: 0 0 auto;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: #18181b;
-      }
-
-      .experience-list {
-        position: relative;
-        display: grid;
-        gap: 48px;
-        max-width: 820px;
-        margin: 0 auto;
-        padding-left: 64px;
-      }
-
-      .experience-list::before {
-        content: "";
-        position: absolute;
-        left: 14px;
-        top: 7px;
-        bottom: 8px;
-        width: 2px;
-        background: #f4f4f5;
-      }
-
-      .experience-item {
-        position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 32px;
-        align-items: start;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-        box-shadow: none;
-      }
-
-      .experience-item::before {
-        content: "";
-        position: absolute;
-        left: -58px;
-        top: 8px;
-        width: 10px;
-        height: 10px;
-        border: 4px solid #ffffff;
-        border-radius: 50%;
-        background: #09090b;
-        box-shadow: 0 1px 4px rgba(24, 24, 27, 0.16);
-      }
-
-      .period {
-        width: fit-content;
-        border-radius: 6px;
-        padding: 5px 12px;
-        color: #52525b;
-        background: #f4f4f5;
-        font-size: 14px;
-        font-weight: 800;
-        white-space: nowrap;
-      }
-
-      .experience-item h3 {
-        margin-bottom: 12px;
-        color: #18181b;
-        font-size: 22px;
-        line-height: 1.35;
-        font-weight: 800;
-      }
-
-      .experience-item p {
-        margin-bottom: 0;
-        color: #374151;
-        line-height: 1.85;
-      }
-
-      .role-tag {
-        display: block;
-        margin-bottom: 18px;
-        color: #18181b;
-        font-size: 16px;
-        font-weight: 500;
+        content: none;
       }
 
       .contact-wrap {
@@ -1966,140 +2244,472 @@
       }
 
       .contact-panel {
-        border-color: #3f3f46;
-        border-radius: 16px;
+        --edge-proximity: 0;
+        --cursor-angle: 45deg;
+        --edge-sensitivity: 30;
+        --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+        --border-radius: 28px;
+        --glow-padding: 40px;
+        --cone-spread: 25;
+        --fill-opacity: 0.42;
+        --card-bg: #120f17;
+        --glow-color: hsl(270deg 92% 76% / 100%);
+        --glow-color-60: hsl(270deg 92% 76% / 60%);
+        --glow-color-50: hsl(270deg 92% 76% / 50%);
+        --glow-color-40: hsl(270deg 92% 76% / 40%);
+        --glow-color-30: hsl(270deg 92% 76% / 30%);
+        --glow-color-20: hsl(270deg 92% 76% / 20%);
+        --glow-color-10: hsl(270deg 92% 76% / 10%);
+        --gradient-one: radial-gradient(at 80% 55%, #c084fc 0px, transparent 50%);
+        --gradient-two: radial-gradient(at 69% 34%, #f472b6 0px, transparent 50%);
+        --gradient-three: radial-gradient(at 8% 6%, #38bdf8 0px, transparent 50%);
+        --gradient-four: radial-gradient(at 41% 38%, #c084fc 0px, transparent 50%);
+        --gradient-five: radial-gradient(at 86% 85%, #f472b6 0px, transparent 50%);
+        --gradient-six: radial-gradient(at 82% 18%, #38bdf8 0px, transparent 50%);
+        --gradient-seven: radial-gradient(at 51% 4%, #f472b6 0px, transparent 50%);
+        --gradient-base: linear-gradient(#c084fc 0 100%);
+
+        position: relative;
+        isolation: isolate;
+        transform: translate3d(0, 0, 0.01px);
+        overflow: visible;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: var(--border-radius);
         padding: 44px 40px 40px;
-        background: rgba(39, 39, 42, 0.92);
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
-        backdrop-filter: blur(14px);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.035)),
+          var(--card-bg);
+        box-shadow:
+          rgba(0, 0, 0, 0.1) 0 1px 2px,
+          rgba(0, 0, 0, 0.1) 0 2px 4px,
+          rgba(0, 0, 0, 0.1) 0 4px 8px,
+          rgba(0, 0, 0, 0.1) 0 8px 16px,
+          rgba(0, 0, 0, 0.1) 0 16px 32px,
+          rgba(0, 0, 0, 0.1) 0 32px 64px,
+          0 1px 0 rgba(255, 255, 255, 0.16) inset;
+        backdrop-filter: blur(24px) saturate(1.35);
+        -webkit-backdrop-filter: blur(24px) saturate(1.35);
+      }
+
+      .contact-panel::before,
+      .contact-panel::after,
+      .contact-panel > .edge-light {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        transition: opacity 0.25s ease-out;
+      }
+
+      .contact-panel:not(:hover):not(.sweep-active)::before,
+      .contact-panel:not(:hover):not(.sweep-active)::after,
+      .contact-panel:not(:hover):not(.sweep-active) > .edge-light {
+        opacity: 0;
+        transition: opacity 0.75s ease-in-out;
+      }
+
+      .contact-panel::before {
+        z-index: 0;
+        border: 1px solid transparent;
+        background:
+          linear-gradient(var(--card-bg) 0 100%) padding-box,
+          linear-gradient(rgb(255 255 255 / 0%) 0 100%) border-box,
+          var(--gradient-one) border-box,
+          var(--gradient-two) border-box,
+          var(--gradient-three) border-box,
+          var(--gradient-four) border-box,
+          var(--gradient-five) border-box,
+          var(--gradient-six) border-box,
+          var(--gradient-seven) border-box,
+          var(--gradient-base) border-box;
+        opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+        mask-image:
+          conic-gradient(
+            from var(--cursor-angle) at center,
+            black calc(var(--cone-spread) * 1%),
+            transparent calc((var(--cone-spread) + 15) * 1%),
+            transparent calc((100 - var(--cone-spread) - 15) * 1%),
+            black calc((100 - var(--cone-spread)) * 1%)
+          );
+      }
+
+      .contact-panel::after {
+        z-index: 0;
+        border: 1px solid transparent;
+        background:
+          var(--gradient-one) padding-box,
+          var(--gradient-two) padding-box,
+          var(--gradient-three) padding-box,
+          var(--gradient-four) padding-box,
+          var(--gradient-five) padding-box,
+          var(--gradient-six) padding-box,
+          var(--gradient-seven) padding-box,
+          var(--gradient-base) padding-box;
+        mask-image:
+          linear-gradient(to bottom, black, black),
+          radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+          radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+          radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+          radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+          radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+          conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+        mask-composite: subtract, add, add, add, add, add;
+        opacity: calc(var(--fill-opacity) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+        mix-blend-mode: soft-light;
+      }
+
+      .contact-panel > .edge-light {
+        inset: calc(var(--glow-padding) * -1);
+        z-index: 1;
+        opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+        mix-blend-mode: plus-lighter;
+        mask-image:
+          conic-gradient(
+            from var(--cursor-angle) at center,
+            black 2.5%,
+            transparent 10%,
+            transparent 90%,
+            black 97.5%
+          );
+      }
+
+      .contact-panel > .edge-light::before {
+        content: "";
+        position: absolute;
+        inset: var(--glow-padding);
+        border-radius: inherit;
+        box-shadow:
+          inset 0 0 0 1px var(--glow-color),
+          inset 0 0 1px 0 var(--glow-color-60),
+          inset 0 0 3px 0 var(--glow-color-50),
+          inset 0 0 6px 0 var(--glow-color-40),
+          inset 0 0 15px 0 var(--glow-color-30),
+          inset 0 0 25px 2px var(--glow-color-20),
+          inset 0 0 50px 2px var(--glow-color-10),
+          0 0 1px 0 var(--glow-color-60),
+          0 0 3px 0 var(--glow-color-50),
+          0 0 6px 0 var(--glow-color-40),
+          0 0 15px 0 var(--glow-color-30),
+          0 0 25px 2px var(--glow-color-20),
+          0 0 50px 2px var(--glow-color-10);
+      }
+
+      .contact-panel > :not(.edge-light) {
+        position: relative;
+        z-index: 2;
+      }
+
+      .contact-panel > .edge-light {
+        pointer-events: none;
       }
 
       .contact-panel h3 {
-        margin-bottom: 32px;
+        margin-bottom: 12px;
         color: #ffffff;
         font-size: 26px;
         line-height: 1.25;
         font-weight: 800;
       }
 
-      .form-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
-      }
-
-      .field {
-        display: grid;
-        gap: 8px;
-      }
-
-      .field.full {
-        grid-column: 1 / -1;
-      }
-
-      #contact label {
+      .contact-panel p {
+        margin: 0;
         color: #a1a1aa;
-        font-size: 14px;
-        font-weight: 600;
+        line-height: 1.75;
       }
 
-      #contact input,
-      #contact textarea {
-        width: 100%;
-        border: 1px solid #3f3f46;
-        border-radius: 8px;
-        padding: 13px 16px;
-        color: #ffffff;
-        background: #18181b;
-        outline: none;
-        transition:
-          border-color 0.2s ease,
-          box-shadow 0.2s ease;
-      }
-
-      #contact input::placeholder,
-      #contact textarea::placeholder {
-        color: #a1a1aa;
-      }
-
-      #contact input:focus,
-      #contact textarea:focus {
-        border-color: #71717a;
-        box-shadow: 0 0 0 3px rgba(113, 113, 122, 0.28);
-      }
-
-      #contact textarea {
-        min-height: 122px;
-        resize: none;
-      }
-
-      .form-actions {
+      .contact-panel .contact-info {
+        gap: 18px;
         margin-top: 30px;
       }
 
-      .contact-submit {
-        width: 100%;
-        min-height: 56px;
-        display: inline-flex;
+      .contact-panel .contact-card {
+        min-height: 96px;
         align-items: center;
-        justify-content: center;
-        gap: 8px;
-        border: 0;
-        border-radius: 8px;
-        padding: 15px 20px;
-        color: #09090b;
-        background: #ffffff;
-        font: inherit;
-        font-weight: 800;
-        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
+        padding: 20px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
         transition:
-          transform 0.2s ease,
+          border-color 0.2s ease,
           background 0.2s ease,
-          box-shadow 0.2s ease;
+          transform 0.2s ease;
       }
 
-      .contact-submit:hover,
-      .contact-submit:focus-visible {
-        background: #e4e4e7;
-        box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
-        transform: translateY(-1px);
+      .contact-panel .contact-card:hover {
+        border-color: rgba(255, 255, 255, 0.24);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05));
+        transform: translateY(-2px);
       }
 
-      .contact-submit:disabled {
-        cursor: not-allowed;
-        opacity: 0.72;
+      .contact-copy-card {
+        position: relative;
+        cursor: copy;
+        text-decoration: none;
+      }
+
+      .contact-copy-card::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: 16px;
+        right: 18px;
+        z-index: 2;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        padding: 6px 10px;
+        color: #18181b;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 1;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateY(-4px);
+        pointer-events: none;
+        transition:
+          opacity 0.18s ease,
+          transform 0.18s ease;
+      }
+
+      .contact-copy-card:hover::after,
+      .contact-copy-card:focus-visible::after {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .contact-panel .contact-icon {
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset;
+      }
+
+      .contact-panel {
+        position: relative;
+        isolation: auto;
         transform: none;
+        overflow: visible;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .contact-panel::before,
+      .contact-panel::after,
+      .contact-panel > .edge-light {
+        display: none;
+      }
+
+      .contact-panel h3,
+      .contact-panel > p {
+        display: none;
+      }
+
+      .contact-panel .contact-info {
+        gap: 20px;
+        margin-top: 0;
+      }
+
+      .contact-panel .contact-card {
+        min-height: 94px;
+        align-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 16px;
+        padding: 24px 28px;
+        background: #27272a;
+        box-shadow: none;
+        transition:
+          border-color 0.2s ease,
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .contact-panel .contact-card:hover {
+        border-color: rgba(255, 255, 255, 0.22);
+        background: #2f2f34;
+        transform: translateY(-2px);
+      }
+
+      .contact-panel .contact-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 13px;
+        color: #e4e4e7;
+        background: #3f3f46;
         box-shadow: none;
       }
 
-      .contact-submit svg {
-        width: 18px;
-        height: 18px;
+      .contact-panel .contact-icon svg {
+        width: 22px;
+        height: 22px;
       }
 
-      .toast {
+      .contact-panel .contact-text span {
+        color: #a1a1aa;
+        font-size: 13px;
+      }
+
+      .contact-panel .contact-text strong {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .magic-contact-card {
+        --glow-x: 50%;
+        --glow-y: 50%;
+        --glow-intensity: 0;
+        --glow-radius: 240px;
+        --glow-color: 132, 0, 255;
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        will-change: transform, box-shadow;
+      }
+
+      .contact-panel .magic-contact-card {
+        border-color: #2f293a;
+        border-radius: 20px;
+        background:
+          radial-gradient(
+            var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+            rgba(var(--glow-color), calc(var(--glow-intensity) * 0.16)) 0%,
+            rgba(var(--glow-color), calc(var(--glow-intensity) * 0.08)) 28%,
+            transparent 62%
+          ),
+          #120f17;
+        box-shadow: 0 4px 20px rgba(46, 24, 78, 0.12);
+        transition:
+          border-color 0.3s ease,
+          background 0.3s ease,
+          box-shadow 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .magic-contact-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        border-radius: inherit;
+        padding: 6px;
+        pointer-events: none;
+        opacity: calc(var(--glow-intensity) * 1);
+        background:
+          radial-gradient(
+            var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+            rgba(var(--glow-color), calc(var(--glow-intensity) * 0.82)) 0%,
+            rgba(var(--glow-color), calc(var(--glow-intensity) * 0.42)) 30%,
+            transparent 62%
+          );
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        transition: opacity 0.3s ease;
+      }
+
+      .magic-contact-card > * {
+        position: relative;
+        z-index: 3;
+      }
+
+      .contact-panel .magic-contact-card:hover {
+        border-color: rgba(132, 0, 255, 0.48);
+        background:
+          radial-gradient(
+            var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+            rgba(var(--glow-color), calc(var(--glow-intensity) * 0.2)) 0%,
+            rgba(var(--glow-color), calc(var(--glow-intensity) * 0.1)) 30%,
+            transparent 64%
+          ),
+          #120f17;
+        box-shadow:
+          0 4px 20px rgba(46, 24, 78, 0.4),
+          0 0 30px rgba(132, 0, 255, 0.2);
+        transform: none;
+      }
+
+      .contact-panel .magic-contact-card .contact-icon {
+        color: #f4f1ff;
+        background: rgba(255, 255, 255, 0.09);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset;
+      }
+
+      .magic-contact-ripple {
+        position: absolute;
+        z-index: 1;
+        width: 220px;
+        height: 220px;
+        border-radius: 999px;
+        pointer-events: none;
+        opacity: 0.75;
+        background:
+          radial-gradient(circle, rgba(132, 0, 255, 0.28) 0%, rgba(132, 0, 255, 0.1) 38%, transparent 70%);
+        transform: translate(-50%, -50%) scale(0);
+        animation: magicContactRipple 0.78s ease-out forwards;
+      }
+
+      .magic-contact-card.contact-copy-card::after {
+        z-index: 6;
+      }
+
+      @keyframes magicContactRipple {
+        to {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(1.45);
+        }
+      }
+
+      .copy-toast {
         position: fixed;
-        right: 24px;
-        bottom: 24px;
-        z-index: 30;
-        max-width: min(360px, calc(100vw - 40px));
-        border: 1px solid rgba(15, 138, 103, 0.22);
-        border-radius: var(--radius);
-        padding: 14px 16px;
-        color: #0b4e3d;
-        background: #f0fbf7;
-        box-shadow: var(--shadow-soft);
-        transform: translateY(16px);
+        top: 88px;
+        right: max(22px, calc((100vw - var(--max)) / 2));
+        z-index: 380;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(24, 24, 27, 0.08);
+        border-radius: 999px;
+        padding: 12px 16px;
+        color: #18181b;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 18px 50px rgba(9, 9, 11, 0.18);
+        backdrop-filter: blur(18px) saturate(1.25);
+        -webkit-backdrop-filter: blur(18px) saturate(1.25);
+        font-size: 14px;
+        font-weight: 800;
         opacity: 0;
+        transform: translateY(-10px);
         pointer-events: none;
         transition:
           opacity 0.22s ease,
           transform 0.22s ease;
       }
 
-      .toast.show {
+      .copy-toast.show {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      .copy-toast::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 16px rgba(34, 197, 94, 0.58);
       }
 
       .site-footer {
@@ -2125,11 +2735,6 @@
 
       .reveal.visible {
         transform: translateY(0);
-        opacity: 1;
-      }
-
-      #experience.reveal {
-        transform: none;
         opacity: 1;
       }
 
@@ -2216,9 +2821,6 @@
           animation: none !important;
         }
 
-        .hero-cursor-light {
-          display: none;
-        }
       }
 
       @media (max-width: 980px) {
@@ -2236,25 +2838,38 @@
           min-height: 100svh;
         }
 
-        .projects-grid,
         .skills-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
-        .experience-item {
-          grid-template-columns: 1fr auto;
-          gap: 16px;
+        .project-card {
+          grid-template-columns: 1fr;
         }
 
-        .role-tag {
-          justify-self: auto;
+        .project-visual {
+          min-height: 260px;
+          height: 260px;
         }
+
       }
 
       @media (max-width: 760px) {
+        .site-header.scrolled {
+          top: 10px;
+          left: 14px;
+          right: 14px;
+          border-radius: 18px;
+        }
+
         .nav {
           width: min(100% - 28px, var(--max));
           height: 66px;
+        }
+
+        .site-header.scrolled .nav {
+          width: 100%;
+          height: 58px;
+          padding: 0 14px;
         }
 
         .menu-toggle {
@@ -2299,7 +2914,6 @@
 
         #projects,
         #skills,
-        #experience,
         #contact {
           width: 100%;
           padding: 68px 14px;
@@ -2327,10 +2941,17 @@
 
         .hero-stats,
         .projects-grid,
-        .skills-grid,
-        .result-strip,
-        .form-grid {
+        .skills-grid {
           grid-template-columns: 1fr;
+        }
+
+        .project-card {
+          grid-template-columns: 1fr;
+        }
+
+        .project-visual {
+          min-height: 220px;
+          height: 220px;
         }
 
         .stat {
@@ -2382,7 +3003,7 @@
         }
 
         .project-visual {
-          height: 170px;
+          height: 210px;
         }
 
         .project-modal {
@@ -2419,7 +3040,8 @@
           margin: 22px 0 24px;
         }
 
-        .project-modal-results {
+        .project-modal-results,
+        .project-modal-metrics {
           grid-template-columns: 1fr;
         }
 
@@ -2469,42 +3091,19 @@
           min-height: 0;
         }
 
-        .experience-head {
-          margin-bottom: 48px;
-        }
-
-        .experience-list {
-          gap: 40px;
-          padding-left: 36px;
-        }
-
-        .experience-list::before {
-          left: 10px;
-        }
-
-        .experience-item {
-          grid-template-columns: 1fr;
-        }
-
-        .experience-item::before {
-          left: -31px;
-        }
-
-        .period {
-          order: -1;
-          margin-bottom: 4px;
-        }
-
         .about-copy,
         .contact-panel {
           padding: 22px;
+        }
+
+        .contact-panel {
+          padding: 0;
         }
 
         .contact-aside {
           padding: 0;
         }
 
-        .form-actions,
         .site-footer {
           align-items: flex-start;
           flex-direction: column;
@@ -2549,7 +3148,8 @@
     <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="#top" aria-label="返回首页">
-          <span class="brand-ux">UX</span><span class="brand-portfolio">.PORTFOLIO</span>
+          <img class="brand-logo" src="assets/yinru-logo.webp?v=light" width="96" height="96" alt="" decoding="async" />
+          <span class="brand-ux">YINRU</span><span class="brand-portfolio">.PORTFOLIO</span>
         </a>
         <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="navLinks">
           <span></span>
@@ -2559,21 +3159,26 @@
         <div class="nav-links" id="navLinks">
           <a class="nav-link" href="#projects">项目</a>
           <a class="nav-link" href="#skills">技能</a>
-          <a class="nav-link" href="#experience">经历</a>
-          <a class="nav-link" href="#contact">联系</a>
           <a class="nav-link nav-cta" href="#contact">联系我</a>
+          <span class="nav-gooey-effect nav-gooey-filter" id="navGooeyFilter" aria-hidden="true"></span>
+          <span class="nav-gooey-effect nav-gooey-text" id="navGooeyText" aria-hidden="true"></span>
         </div>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero reveal" aria-labelledby="heroTitle">
-        <span class="hero-cursor-light" aria-hidden="true"></span>
+        <canvas class="hero-dot-field" id="heroDotField" aria-hidden="true"></canvas>
         <span class="hero-bg-word" aria-hidden="true">B2B</span>
         <div class="hero-content">
           <div class="hero-main">
             <p class="eyebrow hero-motion" style="--hero-delay: 0ms; --hero-y: 12px;">
-              <span class="availability">AVAILABLE FOR WORK</span>
+              <span class="availability">
+                <span class="availability-inner">
+                  <span class="availability-dot" aria-hidden="true"></span>
+                  AVAILABLE FOR WORK
+                </span>
+              </span>
               <span>B端 UX / 产品设计师</span>
             </p>
             <h1 id="heroTitle" class="hero-motion" style="--hero-delay: 100ms; --hero-y: 20px;">
@@ -2582,7 +3187,7 @@
             </h1>
           <p class="hero-copy hero-motion" style="--hero-delay: 220ms; --hero-y: 16px;">
               专注企业级 SaaS · CRM · 数据平台交互设计，<br />
-              3 年深耕 B 端体验，让业务系统真正好用。
+              4 年深耕 B 端体验，让业务系统真正好用。
           </p>
             <div class="hero-tags hero-motion" style="--hero-delay: 320ms; --hero-y: 14px;" aria-label="核心能力标签">
               <span class="tag">信息架构</span>
@@ -2596,23 +3201,6 @@
             </div>
           </div>
 
-          <div class="hero-bottom hero-motion" style="--hero-delay: 700ms; --hero-y: 0px;">
-            <div class="hero-stats" aria-label="核心成果">
-              <div class="stat">
-                <b>3+</b>
-                <span>年 B 端设计经验</span>
-              </div>
-              <div class="stat">
-                <b>10+</b>
-                <span>企业级项目落地</span>
-              </div>
-              <div class="stat">
-                <b>300+</b>
-                <span>组件设计系统规范</span>
-              </div>
-            </div>
-            <p class="hero-hint">⌁ 点击卡片可查看项目详情</p>
-          </div>
         </div>
       </section>
 
@@ -2628,28 +3216,13 @@
         <div class="projects-grid">
             <article class="project-card motion-item" data-project="crm" data-motion-delay="0">
               <div class="project-visual" aria-hidden="true">
-                <img class="project-cover-image" src="assets/crm-system-cover.jpg" alt="CRM 客户管理系统项目封面" loading="lazy" />
+                <img class="project-cover-image" src="assets/crm-system-cover.webp" width="1200" height="675" alt="CRM 客户管理系统项目封面" loading="lazy" decoding="async" fetchpriority="low" />
               </div>
             <div class="project-body">
               <p class="project-category">ENTERPRISE CRM SYSTEM</p>
               <h3 class="project-title">CRM 客户管理系统</h3>
               <p class="project-subtitle">企业业务后台 · 流程优化 · 用户效率提升</p>
-              <p class="project-desc">为大型企业重新设计全流程客户关系管理平台，覆盖线索分配、跟进记录、商机管理到合同签约全链路体验。</p>
-              <div class="project-meta">
-                <span class="tag">CRM系统</span>
-                <span class="tag">流程优化</span>
-                <span class="tag">角色权限</span>
-              </div>
-              <div class="result-strip">
-                <div class="result">
-                  <b>38%</b>
-                  <span>查询路径缩短</span>
-                </div>
-                <div class="result">
-                  <b>2.1x</b>
-                  <span>看板复用提升</span>
-                </div>
-              </div>
+              <p class="project-desc" title="为大型企业重新设计全流程客户关系管理平台，覆盖线索分配、跟进记录、商机管理到合同签约全链路体验。">为大型企业重新设计全流程客户关系管理平台，覆盖线索分配、跟进记录、商机管理到合同签约全链路体验。</p>
               <button class="project-toggle" type="button" data-project="crm" aria-haspopup="dialog">查看详情</button>
               <div class="project-details">
                 <div class="project-details-inner">
@@ -2672,28 +3245,13 @@
 
           <article class="project-card motion-item" data-project="ai" data-motion-delay="120">
             <div class="project-visual" aria-hidden="true">
-              <img class="project-cover-image" src="assets/ai-data-platform.jpg" alt="大模型数据工程开发平台项目封面" loading="lazy" />
+              <img class="project-cover-image" src="assets/ai-data-platform.webp" width="1200" height="899" alt="大模型数据工程开发平台项目封面" loading="lazy" decoding="async" fetchpriority="low" />
             </div>
             <div class="project-body">
               <p class="project-category">AI DATA ENGINEERING PLATFORM</p>
               <h3 class="project-title">大模型数据工程开发平台</h3>
               <p class="project-subtitle">数据可视化 · AI研发工具 · 技术平台设计</p>
-              <p class="project-desc">为AI研发团队打造一站式大模型数据处理与训练工程平台，涵盖数据清洗、标注、评估、版本管理全生命周期。</p>
-              <div class="project-meta">
-                <span class="tag">数据可视化</span>
-                <span class="tag">AI工具链</span>
-                <span class="tag">研发效能</span>
-              </div>
-              <div class="result-strip">
-                <div class="result">
-                  <b>46%</b>
-                  <span>配置错误下降</span>
-                </div>
-                <div class="result">
-                  <b>29%</b>
-                  <span>审批耗时下降</span>
-                </div>
-              </div>
+              <p class="project-desc" title="为AI研发团队打造一站式大模型数据处理与训练工程平台，涵盖数据清洗、标注、评估、版本管理全生命周期。">为AI研发团队打造一站式大模型数据处理与训练工程平台，涵盖数据清洗、标注、评估、版本管理全生命周期。</p>
               <button class="project-toggle" type="button" data-project="ai" aria-haspopup="dialog">查看详情</button>
               <div class="project-details">
                 <div class="project-details-inner">
@@ -2714,49 +3272,6 @@
             </div>
           </article>
 
-          <article class="project-card motion-item" data-project="fintech" data-motion-delay="240">
-            <div class="project-visual" aria-hidden="true">
-              <img class="project-cover-image" src="assets/fintech-mobile-tool.jpg" alt="小金 AI 助访项目封面" loading="lazy" />
-            </div>
-            <div class="project-body">
-              <p class="project-category">FINTECH MOBILE TOOL</p>
-              <h3 class="project-title">金融拜访助手</h3>
-              <p class="project-subtitle">金融场景 · 业务赋能 · 合规化轻量化工具</p>
-              <p class="project-desc">为银行客户经理设计合规化的移动端拜访管理工具，实现拜访记录数字化、合规材料一键调取与客户洞察智能推送。</p>
-              <div class="project-meta">
-                <span class="tag">金融场景</span>
-                <span class="tag">移动端设计</span>
-                <span class="tag">合规工具</span>
-              </div>
-              <div class="result-strip">
-                <div class="result">
-                  <b>33%</b>
-                  <span>异常定位提速</span>
-                </div>
-                <div class="result">
-                  <b>18%</b>
-                  <span>库存周转改善</span>
-                </div>
-              </div>
-              <button class="project-toggle" type="button" data-project="fintech" aria-haspopup="dialog">查看详情</button>
-              <div class="project-details">
-                <div class="project-details-inner">
-                  <div class="detail-block">
-                    <b>背景</b>
-                    <span>运营数据分散在多个系统中，异常发现晚，定位链路长，跨角色协作成本高。</span>
-                  </div>
-                  <div class="detail-block">
-                    <b>方法</b>
-                    <span>以“预警优先级、影响范围、建议动作”为主线重组页面层级和表格交互。</span>
-                  </div>
-                  <div class="detail-block">
-                    <b>成果</b>
-                    <span>落地驾驶舱总览、异常下钻、批量处置和策略配置模块，让运营动作闭环。</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
         </div>
       </section>
 
@@ -2771,10 +3286,10 @@
         <div class="skills-grid">
           <article class="skill-group motion-item" data-motion-delay="0">
             <span class="skill-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0l8.57-3.9a1 1 0 0 0 0-1.84Z"></path>
-                <path d="m22 12.18-9.17 4.17a2 2 0 0 1-1.66 0L2 12.18"></path>
-                <path d="m22 17.18-9.17 4.17a2 2 0 0 1-1.66 0L2 17.18"></path>
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0l8.57-3.9a1 1 0 0 0 0-1.84Z" stroke="var(--skill-accent)" stroke-width="2"></path>
+                <path d="m22 12.18-9.17 4.17a2 2 0 0 1-1.66 0L2 12.18" stroke="#18181b" stroke-width="2"></path>
+                <path d="m22 17.18-9.17 4.17a2 2 0 0 1-1.66 0L2 17.18" stroke="#18181b" stroke-width="2"></path>
               </svg>
             </span>
             <h3>业务与研究</h3>
@@ -2787,10 +3302,10 @@
           </article>
           <article class="skill-group motion-item" data-motion-delay="100">
             <span class="skill-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 14c.2-1 .7-1.7 1.5-2.5A5 5 0 1 0 7.5 11.5c.8.8 1.3 1.5 1.5 2.5"></path>
-                <path d="M9 18h6"></path>
-                <path d="M10 22h4"></path>
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5A5 5 0 1 0 7.5 11.5c.8.8 1.3 1.5 1.5 2.5" stroke="var(--skill-accent)" stroke-width="2"></path>
+                <path d="M9 18h6" stroke="#18181b" stroke-width="2"></path>
+                <path d="M10 22h4" stroke="#18181b" stroke-width="2"></path>
               </svg>
             </span>
             <h3>产品与交互</h3>
@@ -2803,11 +3318,11 @@
           </article>
           <article class="skill-group motion-item" data-motion-delay="200">
             <span class="skill-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="14" height="10" x="3" y="4" rx="2"></rect>
-                <path d="M7 20h4"></path>
-                <path d="M10 14v6"></path>
-                <rect width="6" height="10" x="15" y="10" rx="2"></rect>
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="10" x="3" y="4" rx="2" stroke="var(--skill-accent)" stroke-width="2"></rect>
+                <path d="M7 20h4" stroke="#18181b" stroke-width="2"></path>
+                <path d="M10 14v6" stroke="#18181b" stroke-width="2"></path>
+                <rect width="6" height="10" x="15" y="10" rx="2" stroke="#18181b" stroke-width="2"></rect>
               </svg>
             </span>
             <h3>设计系统</h3>
@@ -2820,10 +3335,10 @@
           </article>
           <article class="skill-group motion-item" data-motion-delay="300">
             <span class="skill-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m18 16 4-4-4-4"></path>
-                <path d="m6 8-4 4 4 4"></path>
-                <path d="m14.5 4-5 16"></path>
+              <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m18 16 4-4-4-4" stroke="var(--skill-accent)" stroke-width="2"></path>
+                <path d="m6 8-4 4 4 4" stroke="var(--skill-accent)" stroke-width="2"></path>
+                <path d="m14.5 4-5 16" stroke="#18181b" stroke-width="2"></path>
               </svg>
             </span>
             <h3>协作与交付</h3>
@@ -2837,41 +3352,6 @@
         </div>
       </section>
 
-      <section id="experience" class="reveal" aria-labelledby="experienceTitle">
-        <div class="section-head experience-head">
-          <div>
-            <h2 id="experienceTitle">工作经历</h2>
-          </div>
-          <p class="section-summary">在不断迭代的业务中锤炼设计方法论。</p>
-        </div>
-        <div class="experience-list">
-          <article class="experience-item motion-item motion-left" data-motion-delay="0">
-            <div>
-              <h3>UX/交互设计师</h3>
-              <span class="role-tag">华为技术有限公司</span>
-              <p>参与企业级产品与内部业务系统的体验设计工作，围绕复杂业务流程、信息架构和关键任务路径输出交互方案、高保真原型与设计规范，协同产品、研发推进功能落地与体验优化。</p>
-            </div>
-            <div class="period">2024.01-2026.01</div>
-          </article>
-          <article class="experience-item motion-item motion-left" data-motion-delay="100">
-            <div>
-              <h3>UI设计师</h3>
-              <span class="role-tag">深圳市宝安区科技创新局</span>
-              <p>负责政务与科技服务相关数字化界面的视觉与交互设计，围绕信息发布、业务申报、数据展示等场景优化页面层级、组件样式和操作体验，提升服务入口的清晰度与可用性。</p>
-            </div>
-            <div class="period">2023.02-2024.01</div>
-          </article>
-          <article class="experience-item motion-item motion-left" data-motion-delay="200">
-            <div>
-              <h3>UI设计师</h3>
-              <span class="role-tag">北京澜景科技有限公司</span>
-              <p>参与 Web 与移动端产品的界面设计和基础交互输出，负责页面视觉规范、图标与组件整理、运营物料及产品功能页设计，配合团队完成从需求到上线的设计交付。</p>
-            </div>
-            <div class="period">2020.06-2022.09</div>
-          </article>
-        </div>
-      </section>
-
       <section id="contact" class="reveal" aria-labelledby="contactTitle">
         <div class="contact-wrap">
           <aside class="contact-aside motion-item motion-left" data-motion-delay="0">
@@ -2879,8 +3359,11 @@
             <p>
               如果您正在寻找一位专业的B端体验设计师，或者想探讨交流关于企业级产品的体验设计话题，欢迎随时与我联系。
             </p>
+          </aside>
+
+          <article class="contact-panel motion-item" data-motion-delay="140" aria-label="联系方式">
             <div class="contact-info" aria-label="联系方式">
-              <a class="contact-card" href="mailto:yeyinru@qq.com">
+              <a class="contact-card contact-copy-card magic-contact-card" href="mailto:yeyinru@qq.com" data-copy-email="yeyinru@qq.com" data-tooltip="点击复制" aria-label="点击复制邮箱地址 yeyinru@qq.com">
                 <span class="contact-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
@@ -2892,7 +3375,7 @@
                   <strong>yeyinru@qq.com</strong>
                 </span>
               </a>
-              <div class="contact-card">
+              <div class="contact-card magic-contact-card">
                 <span class="contact-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"></path>
@@ -2905,55 +3388,22 @@
                 </span>
               </div>
             </div>
-          </aside>
-
-          <form class="contact-panel motion-item" data-motion-delay="140" id="contactForm">
-            <h3>发送消息</h3>
-            <div class="form-grid">
-              <div class="field">
-                <label for="name">您的称呼</label>
-                <input id="name" name="name" type="text" placeholder="例如：张先生" required />
-              </div>
-              <div class="field">
-                <label for="email">电子邮箱</label>
-                <input id="email" name="email" type="email" placeholder="您的工作邮箱" required />
-              </div>
-              <div class="field full">
-                <label for="company">所在公司 (选填)</label>
-                <input id="company" name="company" type="text" placeholder="您所在的公司名称" />
-              </div>
-              <div class="field full">
-                <label for="message">消息内容</label>
-                <textarea id="message" name="message" placeholder="简单描述一下您的项目需求或合作意向..." required></textarea>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button class="contact-submit" type="submit">
-                发送消息
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m22 2-7 20-4-9-9-4Z"></path>
-                  <path d="M22 2 11 13"></path>
-                </svg>
-              </button>
-            </div>
-          </form>
+          </article>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>© 2026 B端UX/产品设计师作品集</span>
+      <span>© 2026 YINRU PORTFOLIO</span>
       <span>Designed for enterprise product clarity.</span>
     </footer>
-
-    <div class="toast" id="toast" role="status" aria-live="polite">已收到信息，感谢联系。</div>
 
     <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" hidden>
       <button class="project-modal-backdrop" type="button" data-modal-close aria-label="关闭项目详情弹窗"></button>
       <article class="project-modal-panel" tabindex="-1">
         <button class="project-modal-close" type="button" data-modal-close aria-label="关闭项目详情弹窗">×</button>
         <div class="project-modal-hero">
-          <img id="projectModalImage" src="" alt="" />
+          <img id="projectModalImage" src="" alt="" decoding="async" />
           <div class="project-modal-hero-content">
             <p class="project-modal-category" id="projectModalCategory"></p>
             <h3 class="project-modal-title" id="projectModalTitle"></h3>
@@ -2978,7 +3428,7 @@
             <div class="project-modal-interface-body" id="projectModalInterfaceBody">
               <p class="project-modal-note" id="projectModalMockup"></p>
               <div class="project-modal-showcase" id="projectModalShowcase" hidden>
-                <img id="projectModalShowcaseImage" src="" alt="" loading="lazy" />
+                <img id="projectModalShowcaseImage" alt="" loading="lazy" decoding="async" fetchpriority="low" />
               </div>
             </div>
           </section>
@@ -3003,6 +3453,7 @@
               </svg>
               设计成果
             </h4>
+            <div class="project-modal-metrics" id="projectModalMetrics"></div>
             <div class="project-modal-results" id="projectModalResults"></div>
           </section>
         </div>
@@ -3032,25 +3483,34 @@
             </div>
             <div class="image-viewer-thumb-scroll" id="imageViewerThumbScroll">
               <div class="image-viewer-thumb-track" id="imageViewerThumbTrack" role="button" tabindex="0" aria-label="点击缩略图定位右侧大图">
-                <img id="imageViewerThumbImage" src="" alt="" />
+                <img id="imageViewerThumbImage" alt="" decoding="async" fetchpriority="low" />
                 <span class="image-viewer-thumb-frame" id="imageViewerThumbFrame" aria-hidden="true"></span>
               </div>
             </div>
           </aside>
           <div class="image-viewer-canvas" tabindex="0">
-            <img id="imageViewerImage" src="" alt="" />
+            <img id="imageViewerImage" alt="" decoding="async" fetchpriority="low" />
           </div>
         </div>
       </div>
     </div>
 
+    <div class="copy-toast" id="copyToast" role="status" aria-live="polite" aria-atomic="true">复制成功</div>
+
     <script>
       const navLinks = document.querySelectorAll(".nav-link");
       const siteHeader = document.querySelector(".site-header");
       const hero = document.querySelector(".hero");
+      const heroDotField = document.querySelector("#heroDotField");
       const menuToggle = document.querySelector(".menu-toggle");
       const navPanel = document.querySelector("#navLinks");
+      const navGooeyFilter = document.querySelector("#navGooeyFilter");
+      const navGooeyText = document.querySelector("#navGooeyText");
       const revealItems = document.querySelectorAll(".reveal, .motion-item");
+      const copyEmailCard = document.querySelector("[data-copy-email]");
+      const copyToast = document.querySelector("#copyToast");
+      const borderGlowCards = document.querySelectorAll(".border-glow-card");
+      const magicContactCards = document.querySelectorAll(".magic-contact-card");
       const sections = document.querySelectorAll("main section[id]");
       const projectCards = document.querySelectorAll(".project-card[data-project]");
       const projectToggles = document.querySelectorAll(".project-toggle");
@@ -3069,6 +3529,7 @@
       const projectModalBackground = document.querySelector("#projectModalBackground");
       const projectModalChallenge = document.querySelector("#projectModalChallenge");
       const projectModalSolution = document.querySelector("#projectModalSolution");
+      const projectModalMetrics = document.querySelector("#projectModalMetrics");
       const projectModalResults = document.querySelector("#projectModalResults");
       const projectModalCloseButtons = projectModal.querySelectorAll("[data-modal-close]");
       const imageViewer = document.querySelector("#imageViewer");
@@ -3081,24 +3542,12 @@
       const imageViewerThumbFrame = document.querySelector("#imageViewerThumbFrame");
       const imageViewerZoomButtons = document.querySelectorAll(".image-viewer-zoom-button");
       const imageViewerCloseButtons = imageViewer.querySelectorAll("[data-image-viewer-close]");
-      const contactForm = document.querySelector("#contactForm");
-      const toast = document.querySelector("#toast");
-      const contactSubmit = contactForm.querySelector(".contact-submit");
-      const contactSubmitDefault = contactSubmit.innerHTML;
       let activeModalTrigger = null;
       let activeDetailImage = null;
       let activeDetailImageTitle = "";
       let imageViewerZoom = 1;
       const imageViewerMinZoom = 0.5;
       const imageViewerMaxZoom = 3;
-      let heroCursorFrame = 0;
-      const heroCursor = {
-        currentX: 50,
-        currentY: 45,
-        targetX: 50,
-        targetY: 45,
-        active: false
-      };
 
       const setProjectInterfaceExpanded = (isExpanded) => {
         projectInterfaceToggle.setAttribute("aria-expanded", String(isExpanded));
@@ -3111,53 +3560,40 @@
           title: "CRM 客户管理系统",
           subtitle: "企业业务后台 · 流程优化 · 用户效率提升",
           category: "ENTERPRISE CRM SYSTEM",
-          image: "assets/crm-system-cover.jpg",
-          detailImage: "assets/crm-system-detail.png",
+          image: "assets/crm-system-cover.webp",
+          detailImage: "assets/crm-system-detail.jpg",
           tags: ["CRM系统", "流程优化", "角色权限", "SaaS平台"],
+          metrics: [
+            { value: "38%", label: "查询路径缩短" },
+            { value: "2.1x", label: "看板复用提升" }
+          ],
           mockup: "重新设计的客户工作台，将线索、商机、跟进三大模块整合至统一视图，支持多维度筛选与批量操作，极大降低销售人员在系统间的切换成本。",
-          background: "该企业销售团队规模超过500人，原有CRM系统为10年前定制开发的老旧系统，界面信息密度极高却缺乏层级感。销售经理与一线销售人员共用一套界面，导致双方都找不到最关键的信息入口，严重影响日常销售效率与管理决策。",
-          challenge: "核心痛点在于：①业务流程碎片化，线索→商机→合同→回款分属4个不同页面，数据无法联动；②权限角色管理混乱，销售经理无法高效监控团队整体进展；③移动端几乎不可用，外勤销售只能被迫使用PC版，体验极差；④关键数据如“近7天未跟进客户”无法一眼识别，导致大量商机流失。",
-          solution: "深度访谈了销售总监、区域经理和20位一线销售，绘制完整业务旅程图。采用“角色工作台”策略，为不同角色提供差异化首屏视图。重新梳理信息架构，将全链路数据打通，设计“客户360视图”聚合页。针对移动场景专项设计拜访记录与快速跟进模块，支持语音转文字输入。",
+          background: "随着业务不断扩展，原有CRM系统的框架布局逐渐暴露出深层弊端：面对高频切换的多样化使用场景，其老旧的设计语言与低效的操作路径已无法承载日益复杂的业务需求，用户对流畅、智能、场景化体验的诉求迫切，系统重构与体验升级势在必行。",
+          challenge: "核心矛盾是：系统解决了「有没有跟进」的问题，但没有解决「跟得对不对、准不准、能否转化」的问题。功能完整但体验割裂、数据丰富但洞察缺失、流程覆盖但转化断层。",
+          solution: "深度访谈了销售总监、区域经理和一线销售，绘制完整业务旅程图。采用“角色工作台”策略，为不同角色提供差异化首屏视图。重新梳理信息架构，将全链路数据打通，设计“客户360视图”聚合页。针对移动场景专项设计拜访记录与快速跟进模块，支持语音转文字输入。",
           results: [
             "核心操作路径平均点击次数由11步缩短至4步",
-            "销售日均有效跟进量提升58%，商机转化率提升23%",
-            "移动端月活跃用户占比从12%提升至67%",
-            "用户满意度NPS评分由-15跃升至+42"
+            "销售日均有效跟进量提升58%，商机转化率提升23%"
           ]
         },
         ai: {
           title: "大模型数据工程开发平台",
           subtitle: "数据可视化 · AI研发工具 · 技术平台设计",
           category: "AI DATA ENGINEERING PLATFORM",
-          image: "assets/ai-data-platform.jpg",
-          detailImage: "assets/ai-data-engineering-detail.png",
+          image: "assets/ai-data-platform.webp",
+          detailImage: "assets/ai-data-engineering-detail.jpg",
           tags: ["数据可视化", "AI工具链", "研发效能", "技术平台"],
+          metrics: [
+            { value: "46%", label: "配置错误下降" },
+            { value: "29%", label: "审批耗时下降" }
+          ],
           mockup: "数据流水线可视化编排界面，以节点图（DAG）形式直观呈现数据处理全链路，算法工程师可在界面中直接配置每个处理节点的参数，实时查看数据流转状态与质量指标。",
           background: "面向大型AI公司的算法工程师与数据工程师群体，日均处理TB级训练数据。在AIGC浪潮下，数据工程团队需要以极快速度迭代数据管线，而原有工具链是多个独立工具的拼凑，协作成本极高，数据血缘追踪几乎不可能。",
           challenge: "技术用户同时也是设计的最大挑战：他们对专业性要求极高但对视觉设计几乎无感知，系统必须在信息密度与可读性之间找到精确平衡。核心问题：①数据集版本管理混乱，缺乏溯源能力；②跨团队协作时数据标准不一致，上游下游频繁产生脏数据；③任务运行状态不可观测，出错定位耗时数小时。",
           solution: "深入嵌入算法工程师的日常工作流中进行情境研究。设计以“数据资产”为核心概念的信息架构，重新组织所有模块。开发可视化DAG编排器，让工程师像搭积木一样配置数据流水线。设计数据质量看板与异常预警系统，支持从问题结果快速反向追溯到源头数据。",
           results: [
             "数据管线配置时间从平均3天缩短至4小时",
-            "数据问题定位排查效率提升80%，平均修复时间显著降低",
-            "跨团队数据协作争议减少90%，数据一致性质量显著提升",
-            "平台获评公司年度最受工程师认可的内部工具"
-          ]
-        },
-        fintech: {
-          title: "金融拜访助手",
-          subtitle: "金融场景 · 业务赋能 · 合规化轻量化工具",
-          category: "FINTECH MOBILE TOOL",
-          image: "assets/fintech-mobile-tool.jpg",
-          tags: ["金融场景", "移动端设计", "合规工具", "轻量化"],
-          mockup: "拜访前智能准备界面，系统根据客户资产状况、近期市场行情与历史沟通记录，自动生成个性化的拜访要点卡片与合规话术建议，帮助客户经理在30秒内完成拜访前备课。",
-          background: "服务于某股份制银行的零售客户经理群体，日常工作需在外出拜访客户的同时完成大量合规记录工作。金融监管要求对每一次客户接触进行留痕，但原有流程是事后回到电脑前补录，记录质量差、遗漏率高，面临监管风险。",
-          challenge: "金融场景的特殊性带来了极高的设计约束：①强合规要求，拜访记录必须实时、有据可查，不能事后篡改；②客户经理年龄跨度大，数字化程度参差不齐；③拜访场景特殊，不适合长时间低头操作手机；④需要调取敏感客户资产数据，安全性要求极高；⑤前端必须对接多个遗留系统API。",
-          solution: "以“极简操作，合规兜底”为设计原则。拜访中：设计一键打卡签到、地理位置留痕、语音转文字记录，单次操作不超过10秒。拜访前：智能推送客户资产变动预警与产品匹配推荐。拜访后：结构化模板引导快速生成合规报告，系统自动归档。",
-          results: [
-            "拜访记录完整性从43%提升至97%，合规风险大幅降低",
-            "客户经理单次记录时间由平均15分钟压缩至90秒",
-            "客户经理人均管户量提升30%，整体业绩贡献提升",
-            "工具荣获金融科技创新优秀实践案例"
+            "数据问题定位排查效率提升80%，平均修复时间显著降低"
           ]
         }
       };
@@ -3167,74 +3603,329 @@
       };
 
       updateHeaderState();
-      window.addEventListener("scroll", updateHeaderState, { passive: true });
+      let headerStateFrame = 0;
+      const requestHeaderState = () => {
+        if (headerStateFrame) return;
 
-      const animateHeroCursor = () => {
-        heroCursor.currentX += (heroCursor.targetX - heroCursor.currentX) * 0.22;
-        heroCursor.currentY += (heroCursor.targetY - heroCursor.currentY) * 0.22;
-        hero.style.setProperty("--hero-cursor-x", `${heroCursor.currentX.toFixed(2)}%`);
-        hero.style.setProperty("--hero-cursor-y", `${heroCursor.currentY.toFixed(2)}%`);
+        headerStateFrame = window.requestAnimationFrame(() => {
+          headerStateFrame = 0;
+          updateHeaderState();
+        });
+      };
+      window.addEventListener("scroll", requestHeaderState, { passive: true });
 
-        if (
-          heroCursor.active ||
-          Math.abs(heroCursor.currentX - heroCursor.targetX) > 0.05 ||
-          Math.abs(heroCursor.currentY - heroCursor.targetY) > 0.05
-        ) {
-          heroCursorFrame = window.requestAnimationFrame(animateHeroCursor);
-        } else {
-          heroCursorFrame = 0;
+      const initHeroDotField = () => {
+        if (!hero || !heroDotField) return;
+
+        const ctx = heroDotField.getContext("2d", { alpha: true });
+        if (!ctx) return;
+
+        const config = {
+          dotRadius: 1.5,
+          dotSpacing: 14,
+          cursorRadius: 500,
+          bulgeStrength: 67,
+          gradientFrom: "rgba(168, 85, 247, 0.35)",
+          gradientTo: "rgba(180, 151, 207, 0.25)"
+        };
+        const dots = [];
+        const pointer = {
+          x: -9999,
+          y: -9999,
+          prevX: -9999,
+          prevY: -9999,
+          speed: 0,
+          engagement: 0
+        };
+        const size = { width: 0, height: 0 };
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let isHeroVisible = true;
+        let frame = 0;
+        let raf = 0;
+        let resizeTimer = 0;
+        let settleFrames = 0;
+
+        const scheduleDraw = () => {
+          if (!raf && isHeroVisible && document.visibilityState === "visible") {
+            raf = window.requestAnimationFrame(draw);
+          }
+        };
+
+        const buildDots = () => {
+          dots.length = 0;
+          const step = config.dotRadius + config.dotSpacing;
+          const cols = Math.floor(size.width / step);
+          const rows = Math.floor(size.height / step);
+          const padX = (size.width % step) / 2;
+          const padY = (size.height % step) / 2;
+
+          for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+              const ax = padX + col * step + step / 2;
+              const ay = padY + row * step + step / 2;
+              dots.push({ ax, ay, sx: ax, sy: ay });
+            }
+          }
+        };
+
+        const resize = () => {
+          const rect = hero.getBoundingClientRect();
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          size.width = rect.width;
+          size.height = rect.height;
+          heroDotField.width = Math.max(1, Math.floor(size.width * dpr));
+          heroDotField.height = Math.max(1, Math.floor(size.height * dpr));
+          heroDotField.style.width = `${size.width}px`;
+          heroDotField.style.height = `${size.height}px`;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          buildDots();
+          settleFrames = 0;
+          scheduleDraw();
+        };
+
+        const queueResize = () => {
+          window.clearTimeout(resizeTimer);
+          resizeTimer = window.setTimeout(resize, 100);
+        };
+
+        const updatePointer = (event) => {
+          const rect = hero.getBoundingClientRect();
+          pointer.x = event.clientX - rect.left;
+          pointer.y = event.clientY - rect.top;
+          scheduleDraw();
+        };
+
+        const hidePointer = () => {
+          pointer.x = -9999;
+          pointer.y = -9999;
+          scheduleDraw();
+        };
+
+        const updatePointerSpeed = () => {
+          const dx = pointer.prevX - pointer.x;
+          const dy = pointer.prevY - pointer.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          pointer.speed += (distance - pointer.speed) * 0.5;
+          if (pointer.speed < 0.001) pointer.speed = 0;
+          pointer.prevX = pointer.x;
+          pointer.prevY = pointer.y;
+        };
+
+        const draw = () => {
+          raf = 0;
+          frame++;
+          updatePointerSpeed();
+          ctx.clearRect(0, 0, size.width, size.height);
+
+          const gradient = ctx.createLinearGradient(0, 0, size.width, size.height);
+          gradient.addColorStop(0, config.gradientFrom);
+          gradient.addColorStop(1, config.gradientTo);
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+
+          const targetEngagement = reduceMotion ? 0 : Math.min(pointer.speed / 5, 1);
+          pointer.engagement += (targetEngagement - pointer.engagement) * 0.06;
+          if (pointer.engagement < 0.001) pointer.engagement = 0;
+
+          const cursorRadiusSq = config.cursorRadius * config.cursorRadius;
+          const radius = config.dotRadius / 2;
+          const isEngaged = pointer.engagement > 0.01;
+
+          for (const dot of dots) {
+            const dx = pointer.x - dot.ax;
+            const dy = pointer.y - dot.ay;
+            const distSq = dx * dx + dy * dy;
+
+            if (distSq < cursorRadiusSq && isEngaged) {
+              const dist = Math.sqrt(distSq);
+              const t = 1 - dist / config.cursorRadius;
+              const push = t * t * config.bulgeStrength * pointer.engagement;
+              const angle = Math.atan2(dy, dx);
+              dot.sx += (dot.ax - Math.cos(angle) * push - dot.sx) * 0.15;
+              dot.sy += (dot.ay - Math.sin(angle) * push - dot.sy) * 0.15;
+            } else {
+              dot.sx += (dot.ax - dot.sx) * 0.1;
+              dot.sy += (dot.ay - dot.sy) * 0.1;
+            }
+
+            ctx.moveTo(dot.sx + radius, dot.sy);
+            ctx.arc(dot.sx, dot.sy, radius, 0, Math.PI * 2);
+          }
+
+          ctx.fill();
+          const hasMotion = !reduceMotion && (pointer.engagement > 0.001 || pointer.speed > 0.001);
+          settleFrames = hasMotion ? 0 : settleFrames + 1;
+
+          if (hasMotion || settleFrames < 18) {
+            scheduleDraw();
+          }
+        };
+
+        resize();
+        hero.addEventListener("pointermove", updatePointer, { passive: true });
+        hero.addEventListener("pointerleave", hidePointer, { passive: true });
+        window.addEventListener("resize", queueResize, { passive: true });
+
+        if ("IntersectionObserver" in window) {
+          const heroCanvasObserver = new IntersectionObserver(([entry]) => {
+            isHeroVisible = entry.isIntersecting;
+            if (isHeroVisible) {
+              settleFrames = 0;
+              scheduleDraw();
+            } else if (raf) {
+              window.cancelAnimationFrame(raf);
+              raf = 0;
+            }
+          }, { threshold: 0 });
+          heroCanvasObserver.observe(hero);
+
+          window.addEventListener("pagehide", () => {
+            heroCanvasObserver.disconnect();
+          }, { once: true });
+        }
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState === "visible") {
+            settleFrames = 0;
+            scheduleDraw();
+          } else if (raf) {
+            window.cancelAnimationFrame(raf);
+            raf = 0;
+          }
+        });
+
+        scheduleDraw();
+
+        window.addEventListener("pagehide", () => {
+          window.cancelAnimationFrame(raf);
+          window.clearTimeout(resizeTimer);
+        }, { once: true });
+      };
+
+      initHeroDotField();
+
+      let activeNavLink = null;
+      const navItems = Array.from(navLinks);
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const navNoise = (value = 1) => value / 2 - Math.random() * value;
+
+      const getNavParticleXY = (distance, pointIndex, totalPoints) => {
+        const angle = ((360 + navNoise(8)) / totalPoints) * pointIndex * (Math.PI / 180);
+        return [distance * Math.cos(angle), distance * Math.sin(angle)];
+      };
+
+      const makeNavParticles = () => {
+        if (!navGooeyFilter || prefersReducedMotion) return;
+
+        const particleCount = 12;
+        const particleDistances = [54, 9];
+        const particleRadius = 64;
+        const animationTime = 480;
+        const timeVariance = 180;
+        const colors = [1, 1, 2, 2, 2, 3, 4, 4];
+
+        navGooeyFilter.querySelectorAll(".nav-particle").forEach((particle) => particle.remove());
+        navGooeyFilter.classList.remove("is-animating");
+        void navGooeyFilter.offsetWidth;
+        navGooeyFilter.classList.add("is-animating");
+        window.setTimeout(() => navGooeyFilter.classList.remove("is-animating"), 360);
+
+        for (let i = 0; i < particleCount; i++) {
+          const time = animationTime * 2 + navNoise(timeVariance * 2);
+          const start = getNavParticleXY(particleDistances[0], particleCount - i, particleCount);
+          const end = getNavParticleXY(particleDistances[1] + navNoise(7), particleCount - i, particleCount);
+          const rotateBase = navNoise(particleRadius / 10);
+          const rotate = rotateBase > 0
+            ? (rotateBase + particleRadius / 20) * 10
+            : (rotateBase - particleRadius / 20) * 10;
+
+          window.setTimeout(() => {
+            const particle = document.createElement("span");
+            const point = document.createElement("span");
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            particle.className = "nav-particle";
+            point.className = "nav-point";
+            particle.style.setProperty("--start-x", `${start[0]}px`);
+            particle.style.setProperty("--start-y", `${start[1]}px`);
+            particle.style.setProperty("--end-x", `${end[0]}px`);
+            particle.style.setProperty("--end-y", `${end[1]}px`);
+            particle.style.setProperty("--time", `${Math.max(680, time)}ms`);
+            particle.style.setProperty("--scale", `${0.82 + navNoise(0.12)}`);
+            particle.style.setProperty("--rotate", `${rotate}deg`);
+            point.style.setProperty("--color", `var(--color-${color}, #ffffff)`);
+            particle.appendChild(point);
+            navGooeyFilter.appendChild(particle);
+            window.setTimeout(() => particle.remove(), Math.max(520, time + 120));
+          }, 30);
         }
       };
 
-      const updateHeroCursorTarget = (event) => {
-        const rect = hero.getBoundingClientRect();
-        heroCursor.targetX = ((event.clientX - rect.left) / rect.width) * 100;
-        heroCursor.targetY = ((event.clientY - rect.top) / rect.height) * 100;
-        hero.style.setProperty("--hero-cursor-alpha", "1");
-        heroCursor.active = true;
+      const updateNavGooeyPosition = (link, withParticles = false) => {
+        if (!link || !navPanel || !navGooeyFilter || !navGooeyText) return;
 
-        if (!heroCursorFrame) {
-          heroCursorFrame = window.requestAnimationFrame(animateHeroCursor);
+        const containerRect = navPanel.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+        const effectStyles = {
+          left: `${linkRect.left - containerRect.left}px`,
+          top: `${linkRect.top - containerRect.top}px`,
+          width: `${linkRect.width}px`,
+          height: `${linkRect.height}px`
+        };
+
+        Object.assign(navGooeyFilter.style, effectStyles);
+        Object.assign(navGooeyText.style, effectStyles);
+        navGooeyText.textContent = link.textContent.trim();
+        navGooeyFilter.classList.add("is-ready");
+        navGooeyText.classList.add("is-ready");
+
+        if (withParticles) {
+          makeNavParticles();
         }
       };
 
-      const createHeroClickRipple = (event) => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const setActiveNavLink = (targetHref, options = {}) => {
+        const preferredLink = options.preferredLink;
+        const target = preferredLink ||
+          navItems.find((link) => link.getAttribute("href") === targetHref && !link.classList.contains("nav-cta")) ||
+          navItems.find((link) => link.getAttribute("href") === targetHref);
 
-        const rect = hero.getBoundingClientRect();
-        const ripple = document.createElement("span");
-        ripple.className = "hero-click-ripple";
-        ripple.setAttribute("aria-hidden", "true");
-        ripple.style.setProperty("--ripple-x", `${event.clientX - rect.left}px`);
-        ripple.style.setProperty("--ripple-y", `${event.clientY - rect.top}px`);
-        hero.appendChild(ripple);
-        ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
-        window.setTimeout(() => ripple.remove(), 900);
+        if (!target) return;
+
+        navItems.forEach((link) => link.classList.toggle("active", link === target));
+        const changed = activeNavLink !== target;
+        activeNavLink = target;
+        updateNavGooeyPosition(target, Boolean(options.particles && changed));
       };
 
-      hero.addEventListener("pointerenter", updateHeroCursorTarget);
-      hero.addEventListener("pointermove", updateHeroCursorTarget);
-      hero.addEventListener("pointerdown", (event) => {
-        if (event.pointerType === "mouse" && event.button !== 0) return;
+      window.requestAnimationFrame(() => {
+        const initialHash = window.location.hash || "#projects";
+        setActiveNavLink(initialHash);
+      });
 
-        updateHeroCursorTarget(event);
-        createHeroClickRipple(event);
-      });
-      hero.addEventListener("pointerleave", () => {
-        heroCursor.active = false;
-        hero.style.setProperty("--hero-cursor-alpha", "0");
-      });
+      window.addEventListener("resize", () => updateNavGooeyPosition(activeNavLink), { passive: true });
+
+      if ("ResizeObserver" in window && navPanel) {
+        const navResizeObserver = new ResizeObserver(() => updateNavGooeyPosition(activeNavLink));
+        navResizeObserver.observe(navPanel);
+      }
 
       menuToggle.addEventListener("click", () => {
         const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
         menuToggle.setAttribute("aria-expanded", String(!isOpen));
         navPanel.classList.toggle("open", !isOpen);
+        window.requestAnimationFrame(() => updateNavGooeyPosition(activeNavLink));
       });
 
       navLinks.forEach((link) => {
         link.addEventListener("click", () => {
           menuToggle.setAttribute("aria-expanded", "false");
           navPanel.classList.remove("open");
+          setActiveNavLink(link.getAttribute("href"), {
+            preferredLink: link,
+            particles: true
+          });
         });
       });
 
@@ -3253,13 +3944,180 @@
 
       revealItems.forEach((item) => revealObserver.observe(item));
 
+      let copyToastTimer = 0;
+
+      const showCopyToast = (message = "复制成功") => {
+        if (!copyToast) return;
+
+        copyToast.textContent = message;
+        copyToast.classList.add("show");
+        window.clearTimeout(copyToastTimer);
+        copyToastTimer = window.setTimeout(() => {
+          copyToast.classList.remove("show");
+        }, 1800);
+      };
+
+      const copyTextToClipboard = async (text) => {
+        const fallbackCopy = () => {
+          const field = document.createElement("textarea");
+          field.value = text;
+          field.setAttribute("readonly", "");
+          field.style.position = "fixed";
+          field.style.left = "-9999px";
+          field.style.top = "0";
+          field.style.opacity = "0";
+          document.body.appendChild(field);
+          field.focus();
+          field.select();
+          field.setSelectionRange(0, field.value.length);
+
+          try {
+            const copied = document.execCommand("copy");
+            if (!copied) throw new Error("Legacy copy command failed");
+            return true;
+          } finally {
+            field.remove();
+          }
+        };
+
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (error) {
+            return fallbackCopy();
+          }
+        }
+
+        return fallbackCopy();
+      };
+
+      copyEmailCard?.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const email = copyEmailCard.dataset.copyEmail || copyEmailCard.textContent.trim();
+
+        try {
+          await copyTextToClipboard(email);
+          showCopyToast("复制成功");
+        } catch (error) {
+          showCopyToast("复制失败，请手动复制");
+        }
+      });
+
+      const resetMagicContactCard = (card) => {
+        card.style.setProperty("--glow-intensity", "0");
+        card.style.transform = "";
+      };
+
+      const createMagicContactRipple = (card, event) => {
+        const rect = card.getBoundingClientRect();
+        const ripple = document.createElement("span");
+
+        ripple.className = "magic-contact-ripple";
+        ripple.style.left = `${event.clientX - rect.left}px`;
+        ripple.style.top = `${event.clientY - rect.top}px`;
+        card.appendChild(ripple);
+        window.setTimeout(() => ripple.remove(), 820);
+      };
+
+      const moveMagicContactCard = (card, event) => {
+        if (prefersReducedMotion) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        card.style.setProperty("--glow-x", `${((x / rect.width) * 100).toFixed(2)}%`);
+        card.style.setProperty("--glow-y", `${((y / rect.height) * 100).toFixed(2)}%`);
+        card.style.setProperty("--glow-intensity", "1");
+        card.style.setProperty("--glow-radius", "240px");
+      };
+
+      const syncMagicContactCards = (event) => {
+        if (prefersReducedMotion) return;
+
+        magicContactCards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const isInside =
+            event.clientX >= rect.left &&
+            event.clientX <= rect.right &&
+            event.clientY >= rect.top &&
+            event.clientY <= rect.bottom;
+
+          if (isInside) {
+            moveMagicContactCard(card, event);
+          } else {
+            resetMagicContactCard(card);
+          }
+        });
+      };
+
+      magicContactCards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.setProperty("--glow-intensity", "1");
+        }, { passive: true });
+
+        card.addEventListener("pointermove", (event) => moveMagicContactCard(card, event), { passive: true });
+        card.addEventListener("mousemove", (event) => moveMagicContactCard(card, event), { passive: true });
+
+        card.addEventListener("click", (event) => {
+          if (prefersReducedMotion) return;
+          createMagicContactRipple(card, event);
+        });
+      });
+
+      document.addEventListener("pointermove", syncMagicContactCards, { passive: true });
+      document.addEventListener("mousemove", syncMagicContactCards, { passive: true });
+      window.addEventListener("blur", () => magicContactCards.forEach(resetMagicContactCard), { passive: true });
+
+      const getGlowCenter = (element) => {
+        const { width, height } = element.getBoundingClientRect();
+        return [width / 2, height / 2];
+      };
+
+      const getGlowEdgeProximity = (element, x, y) => {
+        const [centerX, centerY] = getGlowCenter(element);
+        const dx = x - centerX;
+        const dy = y - centerY;
+        const kx = dx === 0 ? Infinity : centerX / Math.abs(dx);
+        const ky = dy === 0 ? Infinity : centerY / Math.abs(dy);
+        return Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+      };
+
+      const getGlowCursorAngle = (element, x, y) => {
+        const [centerX, centerY] = getGlowCenter(element);
+        const dx = x - centerX;
+        const dy = y - centerY;
+        if (dx === 0 && dy === 0) return 0;
+
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+        return angle < 0 ? angle + 360 : angle;
+      };
+
+      borderGlowCards.forEach((card) => {
+        card.addEventListener("pointermove", (event) => {
+          if (prefersReducedMotion) return;
+
+          const rect = card.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+          const edge = getGlowEdgeProximity(card, x, y);
+          const angle = getGlowCursorAngle(card, x, y);
+
+          card.style.setProperty("--edge-proximity", `${(edge * 100).toFixed(3)}`);
+          card.style.setProperty("--cursor-angle", `${angle.toFixed(3)}deg`);
+        }, { passive: true });
+
+        card.addEventListener("pointerleave", () => {
+          card.style.setProperty("--edge-proximity", "0");
+        }, { passive: true });
+      });
+
       const navObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-            navLinks.forEach((link) => {
-              link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
-            });
+            setActiveNavLink(`#${entry.target.id}`);
           });
         },
         { rootMargin: "-45% 0px -48% 0px", threshold: 0 }
@@ -3296,6 +4154,20 @@
           ...project.tags.map((tag) => {
             const item = document.createElement("span");
             item.textContent = tag;
+            return item;
+          })
+        );
+
+        projectModalMetrics.replaceChildren(
+          ...(project.metrics || []).map((metric) => {
+            const item = document.createElement("div");
+            const value = document.createElement("b");
+            const label = document.createElement("span");
+
+            item.className = "project-modal-metric";
+            value.textContent = metric.value;
+            label.textContent = metric.label;
+            item.append(value, label);
             return item;
           })
         );
@@ -3351,6 +4223,11 @@
           if (!projectModal.classList.contains("open")) {
             projectModal.hidden = true;
             projectModalImage.removeAttribute("src");
+            projectModalShowcaseImage.removeAttribute("src");
+            projectModalShowcaseImage.alt = "";
+            projectModalShowcase.hidden = true;
+            activeDetailImage = null;
+            activeDetailImageTitle = "";
           }
         }, 240);
 
@@ -3579,24 +4456,6 @@
         }
       });
 
-      contactForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        if (!contactForm.checkValidity()) {
-          contactForm.reportValidity();
-          return;
-        }
-
-        contactSubmit.disabled = true;
-        contactSubmit.textContent = "发送中...";
-
-        window.setTimeout(() => {
-          contactForm.reset();
-          contactSubmit.disabled = false;
-          contactSubmit.innerHTML = contactSubmitDefault;
-          toast.classList.add("show");
-          window.setTimeout(() => toast.classList.remove("show"), 2800);
-        }, 900);
-      });
     </script>
   </body>
 </html>
